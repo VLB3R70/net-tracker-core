@@ -1,5 +1,7 @@
+import subprocess
 from typing import Union
 from collections.abc import Iterable
+from parsers import NmapParser
 
 
 class Scanner:
@@ -10,7 +12,11 @@ class Scanner:
 
     - **Objetivos**: puede ser una dirección de red en formato CIDR, una dirección IP o varias direcciones IP separadas por comas.
 
-    - **Puertos**: es un parámetro que establece los puertos que se escnearán, si no se establece nada se escanean todos.
+    - **Puertos**: es un parámetro que establece los puertos que se escanearán, si no se establece nada se escanean todos.
+    El formato de los puertos es:
+        - '80' -> Solo se escanea el puerto 80
+        - '80,443' -> Se escanean los puertos 80 y 443 únicamente
+        - '1-1024' -> Solo se escanean los puertos comprendidos entre el 1 y el 1024
 
     - **Parámetros**: son otros parámetros permitidos por Nmap
 
@@ -27,10 +33,18 @@ class Scanner:
         self.targets = targets
         self.ports = ports
         self.params = params
+        self.parser = NmapParser()
 
     def scan(self):
-        pass
+        command = self.parser.create_command(self.targets, self.ports, self.params)
+        # process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        # print(process.stdout.readlines())
+        print(command)
 
 
 class ScannerResult:
     pass
+
+
+sn = Scanner(targets='localhost', ports='1,1024')
+sn.scan()
