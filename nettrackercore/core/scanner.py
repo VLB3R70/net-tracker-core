@@ -39,6 +39,3 @@ class Scanner:
 class ScannerResult:
     pass
 
-
-sn = Scanner(targets='192.168.0.10', ports='1-1024')
-sn.scan()
