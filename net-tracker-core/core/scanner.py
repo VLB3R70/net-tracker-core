@@ -1,6 +1,3 @@
-import subprocess
-from typing import Union
-from collections.abc import Iterable
 from parsers import NmapParser
 
 
@@ -28,8 +25,7 @@ class Scanner:
     :rtype: ScannerResult
     """
 
-    def __init__(self, targets: Union[str, Iterable] = None, ports: Union[None, int, str, Iterable] = None,
-                 params: str = None):
+    def __init__(self, targets=None, ports=None, params=None):
         self.targets = targets
         self.ports = ports
         self.params = params
@@ -37,8 +33,6 @@ class Scanner:
 
     def scan(self):
         command = self.parser.create_command(self.targets, self.ports, self.params)
-        # process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        # print(process.stdout.readlines())
         print(command)
 
 
@@ -46,5 +40,5 @@ class ScannerResult:
     pass
 
 
-sn = Scanner(targets='localhost', ports='1,1024')
+sn = Scanner(targets='192.168.0.10', ports='1-1024')
 sn.scan()
