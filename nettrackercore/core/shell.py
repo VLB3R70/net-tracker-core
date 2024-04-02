@@ -1,8 +1,18 @@
 from rich import print
 from rich.console import Console
+from rich.markdown import Markdown
 from rich.prompt import Prompt
 
 console = Console()
+
+HELP = """
+# Comandos de uso
+
+- `help` - Muestra este menú de ayuda
+- `scanner` - Crea un nuevo objeto Scanner. Es necesario para escanear la red y/o dispositivos
+- `tracker` - Crea un nuevo objeto Tracker. Es necesario para monitorizar los paquetes de la red
+
+"""
 
 
 class Shell:
@@ -13,6 +23,8 @@ class Shell:
 """
 
     def help(self):
+        markdown = Markdown(HELP)
+        print(markdown)
         pass
 
     def run(self, args):
