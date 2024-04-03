@@ -1,3 +1,5 @@
+import signal
+
 from rich import print
 from rich.console import Console
 from rich.markdown import Markdown
@@ -14,39 +16,57 @@ HELP = """
 
 """
 
+PROMPT = "[underline]net-tracker[/underline]"
+
 
 class Shell:
-    LOGO = """[bold][magenta] _  _  ___  _____        _____  ___  ___   ___  _  __ ___  ___ 
+    LOGO = """[magenta] _  _  ___  _____        _____  ___  ___   ___  _  __ ___  ___ 
 | \| || __||_   _|      |_   _|| _ \/   \ / __|| |/ /| __|| _ \\
 | .  || _|   | |          | |  |   /| - || (__ |   < | _| |   /
 |_|\_||___|  |_|          |_|  |_|_\|_|_| \___||_|\_\|___||_|_\\
 """
 
+    def handler(self, signum=None, frame=None):
+        console.print("\n[magenta][bold]Goodbye! 👋")
+        exit(1)
+
     def help(self):
         markdown = Markdown(HELP)
         print(markdown)
-        pass
+        self.main_menu()
 
     def run(self, args):
         pass
 
     def scanner(self):
-        pass
-
-    def tracker(self):
-        pass
-
-    def main_menu(self):
-        option = ""
-        print(self.LOGO)
         while True:
-            option = Prompt.ask(f"[underline]net-tracker[/underline] ([bold][red]{option}[/red][/bold]) ")
-            if option == "help":
-                self.help()
-            elif option == "scanner":
-                self.scanner()
+            option = Prompt.ask(PROMPT + "([bold][red]scanner[/red][/bold])")
+            if option == "exit":
+                exit(0)
             elif option == "tracker":
                 self.tracker()
+
+    def tracker(self):
+        while True:
+            option = Prompt.ask(PROMPT + "([bold][red]tracker[/red][/bold])")
+            if option == "exit":
+                exit(0)
+            elif option == "scanner":
+                self.scanner()
+
+    def main_menu(self):
+        signal.signal(signal.SIGINT, self.handler)
+
+        print(self.LOGO)
+        option = Prompt.ask(PROMPT)
+        if option == "help":
+            self.help()
+        elif option == "scanner":
+            self.scanner()
+        elif option == "tracker":
+            self.tracker()
+        elif option == "exit":
+            exit(0)
 
 
 shell = Shell()
