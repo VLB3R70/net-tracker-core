@@ -25,17 +25,13 @@ class Scanner:
     :rtype: ScannerResult
     """
 
-    def __init__(self, targets=None, ports=None, params=None):
-        self.targets = targets
-        self.ports = ports
-        self.params = params
+    def __init__(self):
         self.parser = NmapParser()
 
-    def scan(self):
-        command = self.parser.create_command(self.targets, self.ports, self.params)
+    def scan(self, targets=None, ports=None, params=None):
+        command = self.parser.create_command(targets, ports, params)
         print(command)
 
 
-class ScannerResult:
-    pass
-
+sc = Scanner()
+sc.scan('localhost', '80', '-sS')

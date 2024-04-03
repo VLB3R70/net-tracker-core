@@ -12,6 +12,8 @@ class NmapParser:
             ipaddress.ip_address(address)
             return True
         except ValueError:
+            if address == 'localhost':
+                return True
             return False
 
     @staticmethod
@@ -41,6 +43,12 @@ class NmapParser:
         elif '-' in ports:
             ports_list = ports.split('-')
             return ports_list
+        else:
+            return ports.split()
+
+    @staticmethod
+    def parse_params(params):
+        return params.split()
 
     @staticmethod
     def create_command(targets=None, ports=None, params=None) -> list:
@@ -53,6 +61,10 @@ class NmapParser:
         if ports:
             parsed_ports = NmapParser.parse_ports(ports)
             nmap_command.extend(['-p', parsed_ports])
+
+        if params:
+            parsed_params = NmapParser.parse_params(params)
+            nmap_command.extend(parsed_params)
 
         return nmap_command
 
