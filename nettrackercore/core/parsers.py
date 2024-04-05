@@ -1,5 +1,7 @@
 import ipaddress
 
+from nettrackercore.core.exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+
 
 class NmapParser:
     """
@@ -21,12 +23,12 @@ class NmapParser:
         for port in port_list:
             port = int(port)
             if not 0 < port < 65536:
-                raise Exception("Port")
+                raise InvalidPortsException("Port {} is invalid".format(port))
 
     @staticmethod
     def parse_targets(targets):
         if not NmapParser.validate_address(targets):
-            raise ValueError("Invalid target address")
+            raise InvalidAddressException("Target address {} is invalid".format(targets))
         return targets
 
     @staticmethod
@@ -48,6 +50,8 @@ class NmapParser:
 
     @staticmethod
     def parse_params(params):
+        if '-oX' or '-oN' or '-oS' or '-oG' in params:
+            raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
         return params.split()
 
     @staticmethod
