@@ -1,7 +1,5 @@
 import ipaddress
 
-from exceptions import InvalidPortsException, InvalidAddressException
-
 
 class NmapParser:
     """
@@ -23,12 +21,12 @@ class NmapParser:
         for port in port_list:
             port = int(port)
             if not 0 < port < 65536:
-                raise InvalidPortsException("Port {} is not valid".format(port))
+                raise Exception("Port")
 
     @staticmethod
     def parse_targets(targets):
         if not NmapParser.validate_address(targets):
-            raise InvalidAddressException("The target address {} is not valid".format(targets))
+            raise ValueError("Invalid target address")
         return targets
 
     @staticmethod
