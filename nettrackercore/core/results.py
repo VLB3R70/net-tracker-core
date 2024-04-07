@@ -1,0 +1,2 @@
+class JSONResult:
+    pass

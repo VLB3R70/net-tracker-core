@@ -1,5 +1,5 @@
-import os
 import subprocess
+import tempfile
 
 from parsers import NmapParser
 
@@ -30,14 +30,15 @@ class Scanner:
 
     def __init__(self):
         self.parser = NmapParser()
+        self.tmp_file = tempfile.NamedTemporaryFile(mode='w', suffix='.xml')
 
-    def scan(self, targets=None, ports=None, params=None):
-        command = self.parser.create_command(targets, ports, params)
+    def scan(self, targets=None, ports=None, params=None, sudo=False):
+        command = self.parser.create_command(targets, ports, params, sudo, self.tmp_file)
         process = subprocess.Popen(command, stdout=subprocess.PIPE)
-        output, error = process
+        output = process.stdout.read().decode('utf-8')
 
         print(output)
 
 
 sc = Scanner()
-sc.scan('localhost', '80', '-sS')
+sc.scan('localhost', '80', '-O', True)

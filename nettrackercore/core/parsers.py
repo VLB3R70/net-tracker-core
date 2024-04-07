@@ -1,6 +1,6 @@
 import ipaddress
 
-from nettrackercore.core.exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
 class NmapParser:
@@ -57,8 +57,12 @@ class NmapParser:
         return params.split()
 
     @staticmethod
-    def create_command(targets=None, ports=None, params=None) -> list:
+    def create_command(targets=None, ports=None, params=None, sudo=False, temp_file=None) -> list:
         nmap_command = ['nmap']
+        output_format = ['-oX', temp_file.name]
+
+        if sudo:
+            nmap_command.insert(0, 'sudo')
 
         if targets:
             parsed_targets = NmapParser.parse_targets(targets)
@@ -72,8 +76,11 @@ class NmapParser:
             parsed_params = NmapParser.parse_params(params)
             nmap_command.extend(parsed_params)
 
+        nmap_command.extend(output_format)
+
         return nmap_command
 
 
 class JSONNmapParser:
-    pass
+    def __init__(self, xml_file):
+        self.xml_file = xml_file
