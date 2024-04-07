@@ -1,3 +1,6 @@
+import os
+import subprocess
+
 from parsers import NmapParser
 
 
@@ -30,7 +33,10 @@ class Scanner:
 
     def scan(self, targets=None, ports=None, params=None):
         command = self.parser.create_command(targets, ports, params)
-        print(command)
+        process = subprocess.Popen(command, stdout=subprocess.PIPE)
+        output, error = process
+
+        print(output)
 
 
 sc = Scanner()

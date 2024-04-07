@@ -50,7 +50,9 @@ class NmapParser:
 
     @staticmethod
     def parse_params(params):
-        if '-oX' or '-oN' or '-oS' or '-oG' in params:
+        inavlid_params = ['-oX', '-oN', '-oS', '-oG']
+
+        if any(option in params for option in inavlid_params):
             raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
         return params.split()
 
