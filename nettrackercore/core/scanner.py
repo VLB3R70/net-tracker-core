@@ -1,7 +1,16 @@
+import datetime
+import os
 import subprocess
-import tempfile
+from pathlib import Path
 
-from parsers import NmapParser
+import rich
+
+from parsers import NmapParser, JSONNmapParser
+
+DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+MAIN_DIR = Path.home().joinpath('.nettracker')
+LOG_DIR = Path.joinpath(MAIN_DIR, 'logs')
+TEMP_DIR = Path.joinpath(MAIN_DIR, 'temp')
 
 
 class Scanner:
@@ -29,16 +38,35 @@ class Scanner:
     """
 
     def __init__(self):
+        MAIN_DIR.mkdir(exist_ok=True)
+        LOG_DIR.mkdir(exist_ok=True)
+        TEMP_DIR.mkdir(exist_ok=True)
+        self.temp_file = TEMP_DIR.joinpath('scanner.xml')
+        self.temp_file.touch()  # Creo el fichero temporal vacío
+        self.log_file = LOG_DIR.joinpath('scanner.log')
+        self.err_file = LOG_DIR.joinpath('err.log')
         self.parser = NmapParser()
-        self.tmp_file = tempfile.NamedTemporaryFile(mode='w', suffix='.xml')
+        self.json_parser = None
 
     def scan(self, targets=None, ports=None, params=None, sudo=False):
-        command = self.parser.create_command(targets, ports, params, sudo, self.tmp_file)
-        process = subprocess.Popen(command, stdout=subprocess.PIPE)
-        output = process.stdout.read().decode('utf-8')
+        command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
+        output, err = self.execute_command(command)
+        with open(self.log_file, 'a') as log:
+            log.write(f'[{DATE}]\n' + output + '\n')
+        # pruebas
+        self.json_parser = JSONNmapParser(self.temp_file)
+        rich.print(type(self.json_parser.data['nmaprun']['host']))
 
-        print(output)
+    def execute_command(self, command):
+        with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as process:
+            output = process.stdout.read().decode('utf-8')
+            err = process.stderr.read().decode('utf-8')
+            return output, err
+
+    def cleanup(self):
+        os.remove(self.temp_file)
 
 
 sc = Scanner()
-sc.scan('localhost', '80', '-O', True)
+sc.scan(targets='192.168.1.0/24')
+sc.scan(targets='localhost')
