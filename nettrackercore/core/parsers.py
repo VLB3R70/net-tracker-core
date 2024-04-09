@@ -97,3 +97,9 @@ class JSONNmapParser:
         json_data = xmltodict.parse(content)
 
         return json_data
+
+    def get_hosts(self):
+        return self.data['nmaprun']['host']
+
+    def get_host_address(self, host):
+        return host['address']['@addr']
