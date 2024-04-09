@@ -6,7 +6,7 @@ from pathlib import Path
 
 import rich
 
-from parsers import NmapParser, JSONNmapParser
+from .parsers import NmapParser, JSONNmapParser
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 MAIN_DIR = Path.home().joinpath('.nettracker')
@@ -86,6 +86,6 @@ class Scanner:
         os.remove(self.temp_file)
 
 
-sc = Scanner()
-#  sc.scan(targets='192.168.1.0/24')
-sc.scan(targets='192.168.1.132-140')
+# sc = Scanner()
+# sc.scan(targets='192.168.1.0/24')
+# sc.scan(targets='192.168.1.132-140')

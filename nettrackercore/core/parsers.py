@@ -2,7 +2,7 @@ import ipaddress
 
 import xmltodict
 
-from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+from .exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
 class NmapParser:

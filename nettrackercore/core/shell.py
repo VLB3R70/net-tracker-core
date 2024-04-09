@@ -3,8 +3,9 @@ import signal
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.prompt import Prompt
+from rich import print
 
-from scanner import Scanner
+from .scanner import Scanner
 
 console = Console()
 
@@ -83,7 +84,7 @@ class Shell:
                     other += "-O "
                     sudo = True
 
-                sc.scan(target=target, ports=ports, params=other, sudo=sudo)
+                sc.scan(targets=target, ports=ports, params=other, sudo=sudo)
 
     def tracker(self):
         while True:
@@ -107,5 +108,5 @@ class Shell:
                 exit(0)
 
 
-shell = Shell()
-shell.main_menu()
+# shell = Shell()
+# shell.main_menu()

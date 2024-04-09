@@ -1,5 +1,10 @@
 from core import shell as sh
 
-if __name__ == '__main__':
+
+def main():
     shell = sh.Shell()
     shell.main_menu()
+
+
+if __name__ == '__main__':
+    main()
