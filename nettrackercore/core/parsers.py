@@ -1,5 +1,7 @@
 import ipaddress
 
+import xmltodict
+
 from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
@@ -13,10 +15,12 @@ class NmapParser:
         try:
             ipaddress.ip_address(address)
             return True
-        except ValueError:
-            if address == 'localhost':
+        except ValueError:  # Si no es una dirección IP válida se lanza el error
+            try:
+                ipaddress.ip_network(address)
                 return True
-            return False
+            except ValueError:  # Se comprueba que la dirección pasada es una red válida
+                return address == 'localhost'  # Por último se comprueba si el usuario ha escrito 'localhost'
 
     @staticmethod
     def validate_ports(port_list):
@@ -59,7 +63,7 @@ class NmapParser:
     @staticmethod
     def create_command(targets=None, ports=None, params=None, sudo=False, temp_file=None) -> list:
         nmap_command = ['nmap']
-        output_format = ['-oX', temp_file.name]
+        output_format = ['-oX', temp_file]
 
         if sudo:
             nmap_command.insert(0, 'sudo')
@@ -84,3 +88,12 @@ class NmapParser:
 class JSONNmapParser:
     def __init__(self, xml_file):
         self.xml_file = xml_file
+        self.data = self.get_data()
+
+    def get_data(self):
+        with open(self.xml_file, 'r', encoding='utf-8') as file:
+            content = file.read()
+
+        json_data = xmltodict.parse(content)
+
+        return json_data
