@@ -1,4 +1,36 @@
-from parsers import NmapParser
+import datetime
+import os
+import subprocess
+import traceback
+from pathlib import Path
+
+import rich
+
+from parsers import NmapParser, JSONNmapParser
+
+DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+MAIN_DIR = Path.home().joinpath('.nettracker')
+LOG_DIR = Path.joinpath(MAIN_DIR, 'logs')
+TEMP_DIR = Path.joinpath(MAIN_DIR, 'temp')
+
+MAIN_DIR.mkdir(exist_ok=True)
+LOG_DIR.mkdir(exist_ok=True)
+TEMP_DIR.mkdir(exist_ok=True)
+
+
+class Logger:
+
+    @staticmethod
+    def log(message):
+        log_file = LOG_DIR.joinpath('scanner.log')
+        with open(log_file, 'a') as log:
+            log.write(f'[{DATE}]\n' + message + '\n')
+
+    @staticmethod
+    def error():
+        error_file = LOG_DIR.joinpath('err.log')
+        with open(error_file, 'a') as log:
+            log.write(f'[{DATE}]\n' + traceback.format_exc() + '\n')
 
 
 class Scanner:
@@ -26,12 +58,34 @@ class Scanner:
     """
 
     def __init__(self):
+        self.temp_file = TEMP_DIR.joinpath('scanner.xml')
+        self.temp_file.touch()  # Creo el fichero temporal vacío
         self.parser = NmapParser()
+        self.json_parser = None
 
-    def scan(self, targets=None, ports=None, params=None):
-        command = self.parser.create_command(targets, ports, params)
-        print(command)
+    def scan(self, targets=None, ports=None, params=None, sudo=False):
+        command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
+        output, err, code = self.execute_command(command)
+        Logger.log(output)
+        Logger.error()
+
+        # pruebas
+        self.json_parser = JSONNmapParser(self.temp_file)
+        # rich.print(self.json_parser.data)
+        rich.print(self.json_parser.get_host_address(self.json_parser.get_hosts()))
+        rich.print(type(self.json_parser.get_hosts()))
+
+    def execute_command(self, command):
+        with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as process:
+            output = process.stdout.read().decode('utf-8')
+            err = process.stderr.read().decode('utf-8')
+            code = process.returncode
+            return output, err, code
+
+    def cleanup(self):
+        os.remove(self.temp_file)
 
 
 sc = Scanner()
-sc.scan('localhost', '80', '-sS')
+#  sc.scan(targets='192.168.1.0/24')
+sc.scan(targets='192.168.1.132-140')

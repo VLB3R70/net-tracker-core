@@ -1,6 +1,8 @@
 import ipaddress
 
-from nettrackercore.core.exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+import xmltodict
+
+from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
 class NmapParser:
@@ -13,10 +15,12 @@ class NmapParser:
         try:
             ipaddress.ip_address(address)
             return True
-        except ValueError:
-            if address == 'localhost':
+        except ValueError:  # Si no es una dirección IP válida se lanza el error
+            try:
+                ipaddress.ip_network(address)
                 return True
-            return False
+            except ValueError:  # Se comprueba que la dirección pasada es una red válida
+                return address == 'localhost'  # Por último se comprueba si el usuario ha escrito 'localhost'
 
     @staticmethod
     def validate_ports(port_list):
@@ -50,13 +54,19 @@ class NmapParser:
 
     @staticmethod
     def parse_params(params):
-        if '-oX' or '-oN' or '-oS' or '-oG' in params:
+        inavlid_params = ['-oX', '-oN', '-oS', '-oG']
+
+        if any(option in params for option in inavlid_params):
             raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
         return params.split()
 
     @staticmethod
-    def create_command(targets=None, ports=None, params=None) -> list:
+    def create_command(targets=None, ports=None, params=None, sudo=False, temp_file=None) -> list:
         nmap_command = ['nmap']
+        output_format = ['-oX', temp_file]
+
+        if sudo:
+            nmap_command.insert(0, 'sudo')
 
         if targets:
             parsed_targets = NmapParser.parse_targets(targets)
@@ -70,8 +80,26 @@ class NmapParser:
             parsed_params = NmapParser.parse_params(params)
             nmap_command.extend(parsed_params)
 
+        nmap_command.extend(output_format)
+
         return nmap_command
 
 
 class JSONNmapParser:
-    pass
+    def __init__(self, xml_file):
+        self.xml_file = xml_file
+        self.data = self.get_data()
+
+    def get_data(self):
+        with open(self.xml_file, 'r', encoding='utf-8') as file:
+            content = file.read()
+
+        json_data = xmltodict.parse(content)
+
+        return json_data
+
+    def get_hosts(self):
+        return self.data['nmaprun']['host']
+
+    def get_host_address(self, host):
+        return host['address']['@addr']
