@@ -2,21 +2,12 @@ import signal
 
 from rich import print
 from rich.console import Console
-from rich.markdown import Markdown
 from rich.prompt import Prompt
 
+from .helpers import Helper
 from .scanner import Scanner
 
 console = Console()
-
-HELP = """
-# Comandos de uso
-
-- `help` - Muestra este menú de ayuda
-- `scanner` - Crea un nuevo objeto Scanner. Es necesario para escanear la red y/o dispositivos
-- `tracker` - Crea un nuevo objeto Tracker. Es necesario para monitorizar los paquetes de la red
-
-"""
 
 PROMPT = "[underline]net-tracker[/underline]"
 
@@ -34,10 +25,6 @@ class Shell:
     def handler(self, signum=None, frame=None):
         console.print("\n[magenta][bold]Goodbye! 👋")
         exit(1)
-
-    def help(self):
-        markdown = Markdown(HELP)
-        print(markdown)
 
     def scanner(self):
         sc = Scanner()
@@ -76,6 +63,8 @@ class Shell:
                 with console.status("[bold green]Scanning[/bold green]"):
                     sc.scan(targets=options["TARGET"], ports=options["PORT"], params=options["OTHER"],
                             sudo=options["SUDO"])
+            elif option == "help":
+                Helper.print_scan_help()
 
     def tracker(self):
         while True:
@@ -90,13 +79,10 @@ class Shell:
         while True:
             option = Prompt.ask(PROMPT)
             if option == "help":
-                self.help()
+                Helper.print_main_help()
             elif option == "scanner":
                 self.scanner()
             elif option == "tracker":
                 self.tracker()
             elif option == "exit":
                 exit(0)
-
-# shell = Shell()
-# shell.main_menu()
