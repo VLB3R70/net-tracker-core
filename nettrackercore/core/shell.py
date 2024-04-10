@@ -1,9 +1,9 @@
 import signal
 
+from rich import print
 from rich.console import Console
 from rich.markdown import Markdown
 from rich.prompt import Prompt
-from rich import print
 
 from .scanner import Scanner
 
@@ -39,17 +39,11 @@ class Shell:
         markdown = Markdown(HELP)
         print(markdown)
 
-    # se necesita optimizar esta parte del código
     def scanner(self):
         sc = Scanner()
-        target = ""
-        ports = ""
-        other = ""
-        silent = False
-        tcp = False
-        udp = False
-        os = False
-        sudo = False
+        # mapeo las posibles opciones y valores predeterminados
+        options = {"TARGET": "localhost", "PORT": "", "OTHER": "", "SILENT": False, "TCP": False, "UDP": False,
+                   "OS": False, "SUDO": False}
 
         while True:
             option = Prompt.ask(PROMPT + "([bold red]scanner[/bold red])")
@@ -59,32 +53,22 @@ class Shell:
                 self.tracker()
             elif option.startswith("set"):
                 option = option.split()
-                if option[1] == "target":
-                    target = str(option[2])
-                elif option[1] == "ports":
-                    ports = str(option[2])
-                elif option[1] == "other":
-                    other = str(option[2])
-                elif option[1] == "silent":
-                    silent = option[2]
-                elif option[1] == "tcp":
-                    tcp = option[2]
-                elif option[1] == "udp":
-                    udp = option[2]
-                elif option[1] == "os":
-                    os = option[2]
+                if option[1] in options.keys():
+                    options[option[1]] = str(option[2])
             elif option == "scan":
-                if silent:
-                    other += "-sS "
-                elif tcp:
-                    other += "-sT "
-                elif udp:
-                    other += "-sU "
-                elif os:
-                    other += "-O "
-                    sudo = True
+                params = ""
+                if options["SILENT"]:
+                    params += "-sS "
+                elif options["TCP"]:
+                    params += "-sT "
+                elif options["UDP"]:
+                    params += "-sU "
+                elif options["OS"]:
+                    params += "-O "
 
-                sc.scan(targets=target, ports=ports, params=other, sudo=sudo)
+                with console.status("[bold green]Scanning[/bold green]"):
+                    sc.scan(targets=options["TARGET"], ports=options["PORT"], params=options["OTHER"],
+                            sudo=options["SUDO"])
 
     def tracker(self):
         while True:
@@ -106,7 +90,6 @@ class Shell:
                 self.tracker()
             elif option == "exit":
                 exit(0)
-
 
 # shell = Shell()
 # shell.main_menu()
