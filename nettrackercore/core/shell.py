@@ -42,12 +42,13 @@ class Shell:
     def scanner(self):
         sc = Scanner()
         # mapeo las posibles opciones y valores predeterminados
-        options = {"TARGET": "localhost", "PORT": "", "OTHER": "", "SILENT": False, "TCP": False, "UDP": False,
+        options = {"TARGET": "localhost", "PORT": None, "OTHER": None, "SILENT": False, "TCP": False, "UDP": False,
                    "OS": False, "SUDO": False}
 
         while True:
             option = Prompt.ask(PROMPT + "([bold red]scanner[/bold red])")
             if option == "exit":
+                console.print("\n[magenta][bold]Goodbye! 👋")
                 exit(0)
             elif option == "tracker":
                 self.tracker()
@@ -55,16 +56,22 @@ class Shell:
                 option = option.split()
                 if option[1] in options.keys():
                     options[option[1]] = str(option[2])
+            elif option.startswith("get"):
+                option = option.split()
+                if option[1] in options.keys():
+                    print(f"[cyan]{option[1]}[/cyan]\t\t {options.get(option[1])}")
+                elif option[1] == 'ALL':
+                    for key, value in options.items():
+                        print(f"[cyan]{key}[/cyan]\t\t {value}")
             elif option == "scan":
-                params = ""
                 if options["SILENT"]:
-                    params += "-sS "
+                    options["OTHER"] += "-sS "
                 elif options["TCP"]:
-                    params += "-sT "
+                    options["OTHER"] += "-sT "
                 elif options["UDP"]:
-                    params += "-sU "
+                    options["OTHER"] += "-sU "
                 elif options["OS"]:
-                    params += "-O "
+                    options["OTHER"] += "-O "
 
                 with console.status("[bold green]Scanning[/bold green]"):
                     sc.scan(targets=options["TARGET"], ports=options["PORT"], params=options["OTHER"],
