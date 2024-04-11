@@ -4,8 +4,8 @@ from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
 
+from nettrackercore.core.scanner import Scanner
 from .helpers import Helper
-from .scanner import Scanner
 
 console = Console()
 
@@ -29,7 +29,7 @@ class Shell:
     def scanner(self):
         sc = Scanner()
         # mapeo las posibles opciones y valores predeterminados
-        options = {"TARGET": "localhost", "PORT": None, "OTHER": None, "SILENT": False, "TCP": False, "UDP": False,
+        options = {"TARGET": "localhost", "PORT": "", "OTHER": "", "SILENT": False, "TCP": False, "UDP": False,
                    "OS": False, "SUDO": False}
 
         while True:
