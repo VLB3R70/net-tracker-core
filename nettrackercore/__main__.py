@@ -1,4 +1,4 @@
-from core import shell as sh
+from .core import shell as sh
 
 
 def main():
