@@ -4,9 +4,7 @@ import subprocess
 import traceback
 from pathlib import Path
 
-import rich
-
-from .parsers import NmapParser, JSONNmapParser
+from parsers import NmapParser
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 MAIN_DIR = Path.home().joinpath('.nettracker')
@@ -61,7 +59,6 @@ class Scanner:
         self.temp_file = TEMP_DIR.joinpath('scanner.xml')
         self.temp_file.touch()  # Creo el fichero temporal vacío
         self.parser = NmapParser()
-        self.json_parser = None
 
     def scan(self, targets=None, ports=None, params=None, sudo=False):
         command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
@@ -70,10 +67,10 @@ class Scanner:
         Logger.error()
 
         # pruebas
-        self.json_parser = JSONNmapParser(self.temp_file)
-        # rich.print(self.json_parser.data)
-        rich.print(self.json_parser.get_host_address(self.json_parser.get_hosts()))
-        rich.print(type(self.json_parser.get_hosts()))
+        # data = JSONNmapParser.get_data_from_file(self.temp_file)
+        # hosts = JSONNmapParser.get_hosts(data)
+        # rich.print(hosts)
+        # rich.print(JSONNmapParser.get_services(hosts))
 
     def execute_command(self, command):
         with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as process:
@@ -85,7 +82,6 @@ class Scanner:
     def cleanup(self):
         os.remove(self.temp_file)
 
-
 # sc = Scanner()
 # sc.scan(targets='192.168.1.0/24')
-# sc.scan(targets='192.168.1.132-140')
+# sc.scan(targets='localhost')
