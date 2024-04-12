@@ -45,9 +45,9 @@ class Shell:
                     options[option[1]] = str(option[2])
             elif option.startswith("get"):
                 option = option.split()
-                if option[1] in options.keys():
-                    print(f"[cyan]{option[1]}[/cyan]\t\t {options.get(option[1])}")
-                elif option[1] == 'ALL':
+                if option[1].upper() in options.keys():
+                    print(f"[cyan]{option[1].upper()}[/cyan]\t\t {options.get(option[1])}")
+                elif option[1].upper() == 'ALL':
                     for key, value in options.items():
                         print(f"[cyan]{key}[/cyan]\t\t {value}")
             elif option == "scan":
