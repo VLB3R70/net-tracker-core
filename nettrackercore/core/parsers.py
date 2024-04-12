@@ -1,8 +1,6 @@
 import ipaddress
 
-import xmltodict
-
-from .exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
 class NmapParser:
@@ -54,9 +52,9 @@ class NmapParser:
 
     @staticmethod
     def parse_params(params):
-        inavlid_params = ['-oX', '-oN', '-oS', '-oG']
+        invalid_params = ['-oX', '-oN', '-oS', '-oG']
 
-        if any(option in params for option in inavlid_params):
+        if any(option in params for option in invalid_params):
             raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
         return params.split()
 
@@ -83,23 +81,3 @@ class NmapParser:
         nmap_command.extend(output_format)
 
         return nmap_command
-
-
-class JSONNmapParser:
-    def __init__(self, xml_file):
-        self.xml_file = xml_file
-        self.data = self.get_data()
-
-    def get_data(self):
-        with open(self.xml_file, 'r', encoding='utf-8') as file:
-            content = file.read()
-
-        json_data = xmltodict.parse(content)
-
-        return json_data
-
-    def get_hosts(self):
-        return self.data['nmaprun']['host']
-
-    def get_host_address(self, host):
-        return host['address']['@addr']
