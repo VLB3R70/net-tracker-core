@@ -1,7 +1,5 @@
 import ipaddress
 
-import xmltodict
-
 from exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
@@ -54,9 +52,9 @@ class NmapParser:
 
     @staticmethod
     def parse_params(params):
-        inavlid_params = ['-oX', '-oN', '-oS', '-oG']
+        invalid_params = ['-oX', '-oN', '-oS', '-oG']
 
-        if any(option in params for option in inavlid_params):
+        if any(option in params for option in invalid_params):
             raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
         return params.split()
 
@@ -83,45 +81,3 @@ class NmapParser:
         nmap_command.extend(output_format)
 
         return nmap_command
-
-
-class JSONNmapParser:
-    @staticmethod
-    def get_data_from_file(file):
-        with open(file, 'r', encoding='utf-8') as file:
-            content = file.read()
-
-        json_data = xmltodict.parse(content)
-
-        return json_data
-
-    @staticmethod
-    def get_hosts(data):
-        return data['nmaprun']['host']
-
-    @staticmethod
-    def get_host_address(host):
-        address = host['address']
-        if isinstance(address, dict):
-            return address['@addr']
-        elif isinstance(address, list):
-            return address[0]['@addr']
-
-    @staticmethod
-    def get_os(host):
-        try:
-            os = host['os']['osmatch']
-            if isinstance(os, dict):
-                return os['@name']
-            elif isinstance(os, list):
-                return os[0]['@name']
-        except TypeError:
-            return "Sistema operativo no encontrado"
-
-    @staticmethod
-    def get_services(host):
-        ports = host['ports']['port']
-        services = {}
-        for port in ports:
-            services[port['@portid']] = port['service']['@name']
-        return services

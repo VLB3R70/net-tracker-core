@@ -4,7 +4,10 @@ import subprocess
 import traceback
 from pathlib import Path
 
+import xmltodict
+
 from parsers import NmapParser
+from results import JSONResult
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 MAIN_DIR = Path.home().joinpath('.nettracker')
@@ -66,11 +69,12 @@ class Scanner:
         Logger.log(output)
         Logger.error()
 
-        # pruebas
-        # data = JSONNmapParser.get_data_from_file(self.temp_file)
-        # hosts = JSONNmapParser.get_hosts(data)
-        # rich.print(hosts)
-        # rich.print(JSONNmapParser.get_services(hosts))
+        with open(self.temp_file, 'r') as file:
+            json_data = xmltodict.parse(file.read())
+
+        result = JSONResult(json_data)
+
+        return result
 
     def execute_command(self, command):
         with subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as process:
@@ -83,5 +87,9 @@ class Scanner:
         os.remove(self.temp_file)
 
 # sc = Scanner()
-# sc.scan(targets='192.168.1.0/24')
-# sc.scan(targets='localhost')
+# # sc.scan(targets='192.168.1.0/24')
+# resultado = sc.scan(targets='localhost', params='-O', sudo=True)
+# host = resultado.get_host()
+# rich.print(resultado.get_host_address(host))
+# rich.print(resultado.get_host_os(host))
+# rich.print(resultado.get_host_services(host))
