@@ -4,10 +4,11 @@ import subprocess
 import traceback
 from pathlib import Path
 
+import rich
 import xmltodict
 
-from parsers import NmapParser
-from results import JSONResult
+from .parsers import NmapParser
+from .results import JSONResult
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 MAIN_DIR = Path.home().joinpath('.nettracker')
@@ -60,9 +61,10 @@ class Scanner:
     - **ports**: es un parámetro que establece los puertos que se escanearán, si no se establece nada se escanean todos.
 
     El formato de los puertos es:
-    - `80` -> Solo se escanea el puerto 80
-    - `80,443` -> Se escanean los puertos 80 y 443 únicamente
-    - `1-1024` -> Solo se escanean los puertos comprendidos entre el 1 y el 1024
+
+        - `80` -> Solo se escanea el puerto 80
+        - `80,443` -> Se escanean los puertos 80 y 443 únicamente
+        - `1-1024` -> Solo se escanean los puertos comprendidos entre el 1 y el 1024
 
     - **params**: son otros parámetros permitidos por Nmap.
 
@@ -76,19 +78,24 @@ class Scanner:
     def scan(self, targets=None, ports=None, params=None, sudo=False):
         """
         El método `scan` realiza el escaneo sobre los objetivos asignados usando el paquete Nmap. La salida estándar del
-        comando se almacena de un fichero de log y el resultado del escaneo se encapsula en un objeto `JSONResult`.
+        comando se almacena de un fichero de log y el resultado del escaneo se encapsula en un objeto
+        :py:class:`~nettrackercore.core.results.JSONResult`
 
         :param targets: Es la dirección IP hacia donde se hará el escaneo. Puede ser una dirección de red o una
-        dirección de equipo.
+            dirección de equipo.
+
         :param ports: Son los puertos hacia donde se hará el escaneo. Los puertos deben estar comprendidos entre el 1 y
-        el 65535, ambos incluidos.
+            el 65535, ambos incluidos.
+
         :param params: Son parámetros opcionales introducidos por el usuario y aceptados por Nmap.
+
         :param sudo: Ciertos parámetros necesitan permisos de superusuario para ejecutarse.
+
         :type targets: str
         :type ports: str
         :type params: str
         :type sudo: bool
-        :return: El resultado del escaneo se encapsula en un objeto `JSONResult`.
+        :return: El resultado del escaneo se encapsula en un objeto :py:class:`~nettrackercore.core.results.JSONResult`.
         :rtype: JSONResult
         """
         command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
@@ -125,10 +132,12 @@ class Scanner:
         """
         os.remove(self.temp_file)
 
+
 # sc = Scanner()
-# # sc.scan(targets='192.168.1.0/24')
-# resultado = sc.scan(targets='localhost', params='-O', sudo=True)
+# sc.scan(targets='192.168.1.0/24')
+# resultado = sc.scan(targets='192.168.1.128', params='-O', sudo=True)
 # host = resultado.get_host()
-# rich.print(resultado.get_host_address(host))
-# rich.print(resultado.get_host_os(host))
-# rich.print(resultado.get_host_services(host))
+# rich.print(host)
+# rich.print(resultado.get_address(host))
+# rich.print(resultado.get_os(host))
+# rich.print(resultado.get_services(host))

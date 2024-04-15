@@ -4,7 +4,7 @@ from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
 
-from nettrackercore.core.scanner import Scanner
+from ..core.scanner import Scanner
 from .helpers import Helper
 
 console = Console()

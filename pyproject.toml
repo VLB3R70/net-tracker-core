@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "net-tracker"
+version = "0.0.1"
+
+[tool.setuptools.packages]
+find = { }
+
+[project.scripts]
+net-tracker = "nettrackercore.__main__:main"
