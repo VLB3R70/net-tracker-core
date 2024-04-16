@@ -4,8 +4,8 @@ from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
 
-from ..core.scanner import Scanner
 from .helpers import Helper
+from ..core.scanner import Scanner
 
 console = Console()
 
@@ -26,6 +26,28 @@ class Shell:
         console.print("\n[magenta][bold]Goodbye! 👋")
         exit(1)
 
+    def set_options(self, options, option, value):
+        options[option] = str(value)
+
+    def get_options(self, options, option):
+        if option.upper() in options.keys():
+            print(f"[cyan]{option.upper()}[/cyan]\t\t {options.get(option)}")
+        elif option.upper() == 'ALL':
+            for key, value in options.items():
+                print(f"[cyan]{key}[/cyan]\t\t {value}")
+
+    def build_params(self, options):
+        if options["SILENT"]:
+            options["OTHER"] += "-sS "
+        elif options["TCP"]:
+            options["OTHER"] += "-sT "
+        elif options["UDP"]:
+            options["OTHER"] += "-sU "
+        elif options["OS"]:
+            options["OTHER"] += "-O "
+
+        return options["OTHER"]
+
     def scanner(self):
         sc = Scanner()
         # mapeo las posibles opciones y valores predeterminados
@@ -40,29 +62,19 @@ class Shell:
             elif option == "tracker":
                 self.tracker()
             elif option.startswith("set"):
-                option = option.split()
-                if option[1] in options.keys():
-                    options[option[1]] = str(option[2])
+                _, key, value = option.split()
+                if key.upper() in options.keys():
+                    self.set_options(options, key.upper(), value)
             elif option.startswith("get"):
                 option = option.split()
-                if option[1].upper() in options.keys():
-                    print(f"[cyan]{option[1].upper()}[/cyan]\t\t {options.get(option[1])}")
-                elif option[1].upper() == 'ALL':
-                    for key, value in options.items():
-                        print(f"[cyan]{key}[/cyan]\t\t {value}")
+                self.get_options(options, option[1])
             elif option == "scan":
-                if options["SILENT"]:
-                    options["OTHER"] += "-sS "
-                elif options["TCP"]:
-                    options["OTHER"] += "-sT "
-                elif options["UDP"]:
-                    options["OTHER"] += "-sU "
-                elif options["OS"]:
-                    options["OTHER"] += "-O "
-
                 with console.status("[bold green]Scanning[/bold green]"):
-                    sc.scan(targets=options["TARGET"], ports=options["PORT"], params=options["OTHER"],
-                            sudo=options["SUDO"])
+                    params = self.build_params(options)
+                    result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
+                                     sudo=options["SUDO"])
+
+                print(result)
             elif option == "help":
                 Helper.print_scan_help()
 
