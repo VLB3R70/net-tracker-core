@@ -1,5 +1,6 @@
 import signal
 
+from nettrackercore.core.results import JSONResult
 from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
@@ -10,6 +11,8 @@ from ..core.scanner import Scanner
 console = Console()
 
 PROMPT = "[underline]net-tracker[/underline]"
+SCANNER_PROMPT = PROMPT + "([bold red]scanner[/bold red])"
+TRACKER_PROMPT = PROMPT + "([bold red]tracker[/bold red])"
 
 
 class Shell:
@@ -48,6 +51,16 @@ class Shell:
 
         return options["OTHER"]
 
+    def save_scan(self, scan_result: JSONResult, options):
+        if "/" in options["TARGET"]:
+            console.print("The system detected the target as a network.")
+            address, netmask = options["TARGET"].split("/")
+            network_name = Prompt.ask("Please provide a name to identify your network")
+            console.print(scan_result)
+            console.print(f"[cyan]{address}[/cyan]")
+            console.print(f"[cyan]{netmask}[/cyan]")
+            console.print(f"[cyan]{network_name}[/cyan]")
+
     def scanner(self):
         sc = Scanner()
         # mapeo las posibles opciones y valores predeterminados
@@ -55,7 +68,7 @@ class Shell:
                    "OS": False, "SUDO": False}
 
         while True:
-            option = Prompt.ask(PROMPT + "([bold red]scanner[/bold red])")
+            option = Prompt.ask(SCANNER_PROMPT)
             if option == "exit":
                 console.print("\n[magenta][bold]Goodbye! 👋")
                 exit(0)
@@ -69,18 +82,21 @@ class Shell:
                 option = option.split()
                 self.get_options(options, option[1])
             elif option == "scan":
-                with console.status("[bold green]Scanning[/bold green]"):
+                with console.status("[bold green]Scanning[/bold green]", spinner="aesthetic"):
                     params = self.build_params(options)
                     result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
                                      sudo=options["SUDO"])
 
-                print(result)
+                console.print("[green]Successfully scanned target[/green]")
+                save = Prompt.ask("[blue]Save scan [Y/n][/blue]")
+                if save.lower() == "y":
+                    self.save_scan(result, options)
             elif option == "help":
                 Helper.print_scan_help()
 
     def tracker(self):
         while True:
-            option = Prompt.ask(PROMPT + "([bold red]tracker[/bold red])")
+            option = Prompt.ask(TRACKER_PROMPT)
             if option == "exit":
                 exit(0)
             elif option == "scanner":
