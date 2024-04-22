@@ -4,6 +4,7 @@ class JSONResult(dict):
     `dict <https://docs.python.org/3/library/stdtypes.html#dict>`_ y obtiene un diccionario mediante el constructor que
     actualiza su valor. Este diccionario se obtiene en la lectura del fichero XML con el resultado del escaneo.
     """
+
     def __init__(self, *args, **kwargs):
         if args and isinstance(args[0], dict) and 'nmaprun' in args[0]:
             self.update(args[0]['nmaprun'])
@@ -103,15 +104,24 @@ class JSONResult(dict):
     def get_services(self, host):
         """
         Este método se encarga de obtener los valores correspondientes a los puertos abiertos y los servicios corriendo
-        en ellos. Se retorna un diccionario con la siguiente sintaxis: `{puerto: nombre_servicio}`
+        en ellos. Se retorna una lista de diccionarios donde la sintaxis de estos es la siguiente:
+
+        .. code-block::
+            :caption: Sintaxis de estos puertos abiertos
+
+                {"name": nombre, "port":puerto, "protocol": protocolo}
 
         :param host: el valor que corresponde a `host`.
         :type host: dict
-        :return: diccionario con el valor numérico del puerto y el nombre del servicio corriendo.
-        :rtype: dict
+        :return: lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos.
+        :rtype: list
         """
         ports = host['ports']['port']
         services = {}
+        service_list = []
         for port in ports:
-            services[port['@portid']] = port['service']['@name']
-        return services
+            services["name"] = port['service']['@name']
+            services["port"] = port['@portid']
+            services["protocol"] = port["@protocol"]
+            service_list.append(services)
+        return service_list
