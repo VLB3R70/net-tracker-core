@@ -76,7 +76,7 @@ class Shell:
             de todas las opciones.
         """
         if option.upper() in options.keys():
-            print(f"[cyan]{option.upper()}[/cyan]\t\t {options.get(option)}")
+            print(f"[cyan]{option.upper()}[/cyan]\t\t {options.get(option.upper())}")
         elif option.upper() == 'ALL':
             for key, value in options.items():
                 print(f"[cyan]{key}[/cyan]\t\t {value}")
