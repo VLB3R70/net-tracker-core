@@ -46,6 +46,13 @@ class JSONResult(dict):
         """
         return self.get('host')
 
+    def get_hostname(self, host):
+        try:
+            hostname = host['hostnames']['hostname']
+            return hostname['@name']
+        except TypeError:
+            return "None"
+
     def get_address(self, host):
         """
         Obtiene el valor cuya clave corresponde a `address`. Este método además tiene en cuenta que el escaneo detecta

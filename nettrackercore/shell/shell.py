@@ -1,10 +1,10 @@
 import signal
 
-from nettrackercore.core.results import JSONResult
 from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
 
+from nettrackercore.core.results import JSONResult
 from .helpers import Helper
 from ..core.scanner import Scanner
 
