@@ -1,12 +1,11 @@
 import datetime
 import os
 import subprocess
-import traceback
 from pathlib import Path
 
-import rich
 import xmltodict
 
+from .exceptions import ExecutionError
 from .parsers import NmapParser
 from .results import JSONResult
 
@@ -27,7 +26,7 @@ class Logger:
     """
 
     @staticmethod
-    def log(message):
+    def log(message, command):
         """
         Este método se encarga escribir un mensaje concreto en el log. Para añadir más información se escribe la fecha
         del día en el momento de la ejecución del programa.
@@ -36,10 +35,10 @@ class Logger:
         """
         log_file = LOG_DIR.joinpath('scanner.log')
         with open(log_file, 'a') as log:
-            log.write(f'[{DATE}]\n' + message + '\n')
+            log.write(f'[{DATE}]\n{command}\n{message}')
 
     @staticmethod
-    def error():
+    def error(message):
         """
         Este método se encarga de escribir los mensajes de error en un log. Cuando ha ocurrido un error o se ha lanzado
         una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este
@@ -47,7 +46,7 @@ class Logger:
         """
         error_file = LOG_DIR.joinpath('err.log')
         with open(error_file, 'a') as log:
-            log.write(f'[{DATE}]\n' + traceback.format_exc() + '\n')
+            log.write(f'[{DATE}]\n' + message + '\n')
 
 
 class Scanner:
@@ -99,9 +98,12 @@ class Scanner:
         :rtype: JSONResult
         """
         command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
+        print(command)
         output, err, code = self.execute_command(command)
-        Logger.log(output)
-        Logger.error()
+        if err:
+            Logger.error(err)
+            raise ExecutionError(err)
+        Logger.log(output, command)
 
         with open(self.temp_file, 'r') as file:
             json_data = xmltodict.parse(file.read())
@@ -132,12 +134,12 @@ class Scanner:
         """
         os.remove(self.temp_file)
 
-
 # sc = Scanner()
 # sc.scan(targets='192.168.1.0/24')
-# resultado = sc.scan(targets='192.168.1.128', params='-O', sudo=True)
+# resultado = sc.scan(targets='192.168.1.0/24', params='-sV ')
 # host = resultado.get_host()
 # rich.print(host)
 # rich.print(resultado.get_address(host))
 # rich.print(resultado.get_os(host))
 # rich.print(resultado.get_services(host))
+# rich.print(resultado.get_hostname(host))
