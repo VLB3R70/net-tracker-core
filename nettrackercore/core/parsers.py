@@ -1,6 +1,6 @@
 import ipaddress
 
-from .exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
+from nettrackercore.core.exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
 
 class NmapParser:

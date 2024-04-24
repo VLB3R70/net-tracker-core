@@ -107,6 +107,8 @@ class JSONResult(dict):
                 return os[0]['@name']
         except TypeError:
             return "OS not found."
+        except KeyError:
+            return 0
 
     def get_services(self, host):
         """
@@ -123,12 +125,15 @@ class JSONResult(dict):
         :return: lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos.
         :rtype: list
         """
-        ports = host['ports']['port']
-        services = {}
-        service_list = []
-        for port in ports:
-            services["name"] = port['service']['@name']
-            services["port"] = port['@portid']
-            services["protocol"] = port["@protocol"]
-            service_list.append(services)
-        return service_list
+        try:
+            ports = host['ports']['port']
+            services = {}
+            service_list = []
+            for port in ports:
+                services["name"] = port['service']['@name']
+                services["port"] = port['@portid']
+                services["protocol"] = port["@protocol"]
+                service_list.append(services)
+            return service_list
+        except KeyError:
+            return "No se encontro un puerto abierto."

@@ -5,9 +5,9 @@ from pathlib import Path
 
 import xmltodict
 
-from .exceptions import ExecutionError
-from .parsers import NmapParser
-from .results import JSONResult
+from nettrackercore.core.exceptions import ExecutionError
+from nettrackercore.core.parsers import NmapParser
+from nettrackercore.core.results import JSONResult
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 MAIN_DIR = Path.home().joinpath('.nettracker')

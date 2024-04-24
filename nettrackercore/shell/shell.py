@@ -4,9 +4,10 @@ from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
 
+from nettrackercore.core.controller import NettrackerDAO
 from nettrackercore.core.results import JSONResult
-from .helpers import Helper
-from ..core.scanner import Scanner
+from nettrackercore.core.scanner import Scanner
+from nettrackercore.shell.helpers import Helper
 
 console = Console()
 
@@ -115,14 +116,13 @@ class Shell:
         :type options: dict
 
         """
+        dao = NettrackerDAO(scan_result)
         if "/" in options["TARGET"]:
             console.print("The system detected the target as a network.")
             address, netmask = options["TARGET"].split("/")
             network_name = Prompt.ask("Please provide a name to identify your network")
             console.print(scan_result)
-            console.print(f"[cyan]{address}[/cyan]")
-            console.print(f"[cyan]{netmask}[/cyan]")
-            console.print(f"[cyan]{network_name}[/cyan]")
+            dao.new_network(name=network_name, address=address, submask=netmask)
 
     def scanner(self):
         """

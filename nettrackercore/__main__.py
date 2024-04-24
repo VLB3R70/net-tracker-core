@@ -1,8 +1,8 @@
-from .shell import shell as sh
+from nettrackercore.shell.shell import Shell
 
 
 def main():
-    shell = sh.Shell()
+    shell = Shell()
     shell.main_menu()
 
 
