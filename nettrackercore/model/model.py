@@ -11,7 +11,6 @@ class Device(EmbeddedDocument):
     device_id = StringField(primary_key=True)
     device_name = StringField(required=True)
     address = StringField(required=True)
-    netmask = IntField(required=True)
     services = ListField(EmbeddedDocumentField(Service))
     os_type = StringField(required=True)
 
