@@ -98,7 +98,6 @@ class Scanner:
         :rtype: JSONResult
         """
         command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
-        print(command)
         output, err, code = self.execute_command(command)
         if err:
             Logger.error(err)

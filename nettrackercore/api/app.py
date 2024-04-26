@@ -2,7 +2,7 @@ from flask import Flask, jsonify, redirect
 from flask_mongoengine import MongoEngine
 from mongoengine import DoesNotExist
 
-from nettrackercore.model.model import Network
+from nettrackercore.core.controller import NettrackerDAO
 
 app = Flask(__name__)
 app.config['MONGODB_SETTINGS'] = {'db': 'nettracker-test', 'host': 'localhost', 'port': 27017, }
@@ -16,13 +16,13 @@ def home():
 
 @app.route('/networks', methods=['GET'])
 def get_networks():
-    networks = Network.objects().all()
+    networks = NettrackerDAO.get_all_networks()
     return jsonify(networks), 200
 
 
 @app.route('/networks/<network_name>', methods=['GET'])
 def get_network(network_name):
-    network = Network.objects(network_name=network_name).first()
+    network = NettrackerDAO.get_network_from_name(network_name)
     if network:
         return jsonify(network), 200
     else:
@@ -32,8 +32,7 @@ def get_network(network_name):
 @app.route('/networks/<network_name>/devices', methods=['GET'])
 def get_devices(network_name):
     try:
-        network = Network.objects(network_name=network_name).first()
-        devices = network.devices
+        devices = NettrackerDAO.get_devices_from_network(network_name)
         return jsonify(devices), 200
     except AttributeError:
         return jsonify({'error': 'Network not found'}), 404
@@ -42,8 +41,7 @@ def get_devices(network_name):
 @app.route('/networks/<network_name>/devices/<address>', methods=['GET'])
 def get_device_from_address(network_name, address):
     try:
-        network = Network.objects.get(network_name=network_name)
-        device = next((device for device in network.devices if device.address == address), None)
+        device = NettrackerDAO.get_device_from_address(network_name, address)
         if device:
             return jsonify(device.to_mongo()), 200
         else:

@@ -1,5 +1,6 @@
 import signal
 
+from mongoengine.errors import NotUniqueError
 from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
@@ -117,11 +118,20 @@ class Shell:
 
         """
         dao = NettrackerDAO(scan_result)
+
+        def create_network(address, netmask):
+            while True:
+                network_name = Prompt.ask("Please provide a name to identify your network")
+                try:
+                    dao.new_network(name=network_name, address=address, submask=netmask)
+                    break  # Salir del bucle si se guarda correctamente
+                except NotUniqueError:
+                    console.print(f"[red]{network_name}[/red] is not unique. Please choose another name.")
+
         if "/" in options["TARGET"]:
             console.print("The system detected the target as a network.")
             address, netmask = options["TARGET"].split("/")
-            network_name = Prompt.ask("Please provide a name to identify your network")
-            dao.new_network(name=network_name, address=address, submask=netmask)
+            create_network(address, netmask)
 
     def scanner(self):
         """

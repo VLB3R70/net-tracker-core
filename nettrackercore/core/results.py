@@ -137,6 +137,6 @@ class JSONResult(dict):
                 }
                 service_list.append(service)
         except KeyError:
-            service_list.append("No se encontró un puerto abierto.")
+            service_list.append(0)
 
         return service_list
