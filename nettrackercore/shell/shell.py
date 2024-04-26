@@ -121,7 +121,6 @@ class Shell:
             console.print("The system detected the target as a network.")
             address, netmask = options["TARGET"].split("/")
             network_name = Prompt.ask("Please provide a name to identify your network")
-            console.print(scan_result)
             dao.new_network(name=network_name, address=address, submask=netmask)
 
     def scanner(self):

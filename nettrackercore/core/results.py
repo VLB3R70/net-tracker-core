@@ -125,15 +125,18 @@ class JSONResult(dict):
         :return: lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos.
         :rtype: list
         """
+        service_list = []
+
         try:
             ports = host['ports']['port']
-            services = {}
-            service_list = []
             for port in ports:
-                services["name"] = port['service']['@name']
-                services["port"] = port['@portid']
-                services["protocol"] = port["@protocol"]
-                service_list.append(services)
-            return service_list
+                service = {
+                    "name": port['service']['@name'],
+                    "port": port['@portid'],
+                    "protocol": port["@protocol"]
+                }
+                service_list.append(service)
         except KeyError:
-            return "No se encontro un puerto abierto."
+            service_list.append("No se encontró un puerto abierto.")
+
+        return service_list
