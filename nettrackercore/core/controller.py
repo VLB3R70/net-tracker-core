@@ -84,7 +84,7 @@ class NettrackerDAO:
 
     @staticmethod
     def get_all_networks():
-        return Network.objects.all()
+        return Network.objects.only('network_name')
 
     @staticmethod
     def get_network_from_name(name):
