@@ -5,18 +5,14 @@ from pathlib import Path
 
 import xmltodict
 
+from nettrackercore.__main__ import Configuration
 from nettrackercore.core.exceptions import ExecutionError
 from nettrackercore.core.parsers import NmapParser
 from nettrackercore.core.results import JSONResult
 
-DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-MAIN_DIR = Path.home().joinpath('.nettracker')
-LOG_DIR = Path.joinpath(MAIN_DIR, 'logs')
-TEMP_DIR = Path.joinpath(MAIN_DIR, 'temp')
+config = Configuration()
 
-MAIN_DIR.mkdir(exist_ok=True)
-LOG_DIR.mkdir(exist_ok=True)
-TEMP_DIR.mkdir(exist_ok=True)
+DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
 
 class Logger:
@@ -33,7 +29,7 @@ class Logger:
 
         :param message: Mensaje a escribir dentro del log.
         """
-        log_file = LOG_DIR.joinpath('scanner.log')
+        log_file = Path(config.data['log_dir']).joinpath('scanner.log')
         with open(log_file, 'a') as log:
             log.write(f'[{DATE}]\n{command}\n{message}')
 
@@ -44,7 +40,7 @@ class Logger:
         una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este
         formato también se guarda la fecha.
         """
-        error_file = LOG_DIR.joinpath('err.log')
+        error_file = Path(config.data['log_dir']).joinpath('err.log')
         with open(error_file, 'a') as log:
             log.write(f'[{DATE}]\n' + message + '\n')
 
@@ -70,7 +66,7 @@ class Scanner:
     """
 
     def __init__(self):
-        self.temp_file = TEMP_DIR.joinpath('scanner.xml')
+        self.temp_file = Path(config.data['temp_dir']).joinpath('scanner.xml')
         self.temp_file.touch()  # Creo el fichero temporal vacío
         self.parser = NmapParser()
 
@@ -132,13 +128,3 @@ class Scanner:
         Este método se encarga de eliminar el fichero temporal necesario para la lógica del programa.
         """
         os.remove(self.temp_file)
-
-# sc = Scanner()
-# sc.scan(targets='192.168.1.0/24')
-# resultado = sc.scan(targets='192.168.1.0/24', params='-sV ')
-# host = resultado.get_host()
-# rich.print(host)
-# rich.print(resultado.get_address(host))
-# rich.print(resultado.get_os(host))
-# rich.print(resultado.get_services(host))
-# rich.print(resultado.get_hostname(host))

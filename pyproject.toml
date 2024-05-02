@@ -9,5 +9,8 @@ version = "0.0.1"
 [tool.setuptools.packages]
 find = { }
 
+[tool.setuptools.package-data]
+nettrackercore = ['locales/*.*', 'locales/e*/LC_MESSAGES/*.*']
+
 [project.scripts]
 net-tracker = "nettrackercore.__main__:main"

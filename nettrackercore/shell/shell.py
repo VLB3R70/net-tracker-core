@@ -1,9 +1,10 @@
+import gettext
 import signal
 
 from mongoengine.errors import NotUniqueError
-from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
+from rich import print
 
 from nettrackercore.core.controller import NettrackerDAO
 from nettrackercore.core.exceptions import *
@@ -12,6 +13,7 @@ from nettrackercore.core.scanner import Scanner
 from nettrackercore.shell.helpers import Helper
 
 console = Console()
+# config = Config()
 
 PROMPT = "[underline]net-tracker[/underline]"
 SCANNER_PROMPT = PROMPT + "([bold red]scanner[/bold red])"
@@ -43,14 +45,15 @@ class Shell:
 |_|\_||___|  |_|          |_|  |_|_\|_|_| \___||_|\_\|___||_|_\\
 """
 
-    def __init__(self):
+    def __init__(self, translator):
         signal.signal(signal.SIGINT, self.handler)
+        self.translator = translator
 
     def handler(self, signum=None, frame=None):
         """
         Este método es necesario para capturar la señal de teclado `Ctrl+C`
         """
-        console.print("[magenta][bold]Goodbye! 👋")
+        print(self.translator.translate("goodbye"))
         exit(1)
 
     def set_options(self, options, option, value):
@@ -79,10 +82,10 @@ class Shell:
             de todas las opciones.
         """
         if option.upper() in options.keys():
-            print(f"[cyan]{option.upper()}[/cyan]\t\t {options.get(option.upper())}")
+            console.print(f"[cyan]{option.upper()}[/cyan]\t\t {options.get(option.upper())}")
         elif option.upper() == 'ALL':
             for key, value in options.items():
-                print(f"[cyan]{key}[/cyan]\t\t {value}")
+                console.print(f"[cyan]{key}[/cyan]\t\t {value}")
 
     def build_params(self, options):
         """
@@ -122,15 +125,15 @@ class Shell:
 
         def create_network(address, netmask):
             while True:
-                network_name = Prompt.ask("Please provide a name to identify your network")
+                network_name = Prompt.ask(self.translator.translate("provide_network_name"))
                 try:
                     dao.new_network(name=network_name, address=address, submask=netmask)
                     break  # Salir del bucle si se guarda correctamente
                 except NotUniqueError:
-                    console.print(f"[red]{network_name}[/red] is not unique. Please choose another name.")
+                    console.print(self.translator.translate("network_not_unique").format(network_name))
 
         if "/" in options["TARGET"]:
-            console.print("The system detected the target as a network.")
+            console.print(self.translator.translate("network_detected"))
             address, netmask = options["TARGET"].split("/")
             create_network(address, netmask)
 
@@ -158,7 +161,7 @@ class Shell:
         while True:
             option = Prompt.ask(SCANNER_PROMPT)
             if option == "exit":
-                console.print("\n[magenta][bold]Goodbye!👋")
+                console.print(self.translator.translate("goodbye"))
                 exit(0)
             elif option.startswith("set"):
                 _, key, value = option.split()
@@ -169,13 +172,13 @@ class Shell:
                 self.get_options(options, option[1])
             elif option == "scan":
                 try:
-                    with console.status("[bold green]Scanning[/bold green]", spinner="aesthetic"):
+                    with console.status(self.translator.translate("scanning"), spinner="aesthetic"):
                         params = self.build_params(options)
                         result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
                                          sudo=options["SUDO"])
 
-                    console.print("[green]Successfully scanned target[/green]")
-                    save = Prompt.ask("[blue]Save scan [Y/n][/blue]")
+                    console.print(self.translator.translate("successful_scan"))
+                    save = Prompt.ask(self.translator.translate("save_scan"))
                     if save.lower() == "y":
                         self.save_scan(result, options)
                 except (ExecutionError, InvalidArgumentsException, IllegalArgumentException, InvalidAddressException,
@@ -184,7 +187,7 @@ class Shell:
             elif option == "help":
                 Helper.print_scan_help()
             else:
-                console.print("[yellow]Unknown option[/yellow]")
+                console.print(self.translator.translate("unknown_option"))
 
     def main_menu(self):
         """
