@@ -19,6 +19,6 @@ class Network(Document):
     network_id = StringField(primary_key=True)
     network_name = StringField(required=True)
     address = StringField(required=True)
-    gateway = StringField(required=True)
+    gateway = EmbeddedDocumentField(Device, required=True)
     subnet_mask = IntField(required=True)
     devices = ListField(EmbeddedDocumentField(Device), required=True)

@@ -70,14 +70,22 @@ class NettrackerDAO:
         )
         return device
 
+    def __build_gateway(self):
+        devices = self.__build_devices()
+        for device in devices:
+            if 'gateway' in device.device_name:
+                return device
+        return ''
+
     def new_network(self, name: str, address: str, submask: int):
         network_id = sha256(f'{name}_{address}_{submask}'.encode()).hexdigest()
         devices = self.__build_devices()
+        gateway = self.__build_gateway()
         Network(
             network_id=network_id,
             network_name=name,
             address=address,
-            gateway='',
+            gateway=gateway,
             subnet_mask=submask,
             devices=devices
         ).save(force_insert=True)  # se obliga a realizar una inserción
