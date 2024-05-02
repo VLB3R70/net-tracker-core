@@ -6,6 +6,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 
 from nettrackercore.core.controller import NettrackerDAO
+from nettrackercore.core.exceptions import *
 from nettrackercore.core.results import JSONResult
 from nettrackercore.core.scanner import Scanner
 from nettrackercore.shell.helpers import Helper
@@ -157,10 +158,8 @@ class Shell:
         while True:
             option = Prompt.ask(SCANNER_PROMPT)
             if option == "exit":
-                console.print("\n[magenta][bold]Goodbye! 👋")
+                console.print("\n[magenta][bold]Goodbye!👋")
                 exit(0)
-            elif option == "tracker":
-                self.tracker()
             elif option.startswith("set"):
                 _, key, value = option.split()
                 if key.upper() in options.keys():
@@ -169,25 +168,23 @@ class Shell:
                 option = option.split()
                 self.get_options(options, option[1])
             elif option == "scan":
-                with console.status("[bold green]Scanning[/bold green]", spinner="aesthetic"):
-                    params = self.build_params(options)
-                    result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
-                                     sudo=options["SUDO"])
+                try:
+                    with console.status("[bold green]Scanning[/bold green]", spinner="aesthetic"):
+                        params = self.build_params(options)
+                        result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
+                                         sudo=options["SUDO"])
 
-                console.print("[green]Successfully scanned target[/green]")
-                save = Prompt.ask("[blue]Save scan [Y/n][/blue]")
-                if save.lower() == "y":
-                    self.save_scan(result, options)
+                    console.print("[green]Successfully scanned target[/green]")
+                    save = Prompt.ask("[blue]Save scan [Y/n][/blue]")
+                    if save.lower() == "y":
+                        self.save_scan(result, options)
+                except (ExecutionError, InvalidArgumentsException, IllegalArgumentException, InvalidAddressException,
+                        InvalidPortsException) as e:
+                    console.print(f"[red]{e}[/red]")
             elif option == "help":
                 Helper.print_scan_help()
-
-    def tracker(self):
-        while True:
-            option = Prompt.ask(TRACKER_PROMPT)
-            if option == "exit":
-                exit(0)
-            elif option == "scanner":
-                self.scanner()
+            else:
+                console.print("[yellow]Unknown option[/yellow]")
 
     def main_menu(self):
         """
@@ -200,7 +197,5 @@ class Shell:
                 Helper.print_main_help()
             elif option == "scanner":
                 self.scanner()
-            elif option == "tracker":
-                self.tracker()
             elif option == "exit":
                 exit(0)

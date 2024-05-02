@@ -40,9 +40,12 @@ class NmapParser:
         :raise exceptions.InvalidPortsException:
         """
         for port in port_list:
-            port = int(port)
-            if not 0 < port < 65536:
-                raise InvalidPortsException("Port {} is invalid".format(port))
+            try:
+                port = int(port)
+                if not 0 < port < 65536:
+                    raise InvalidPortsException(f"Port {port} is invalid")
+            except ValueError:
+                raise InvalidPortsException(f"Port {port} is invalid")
 
     @staticmethod
     def parse_targets(targets):

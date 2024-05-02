@@ -101,7 +101,7 @@ class Scanner:
         output, err, code = self.execute_command(command)
         if err:
             Logger.error(err)
-            raise ExecutionError(err)
+            raise ExecutionError(code=code)
         Logger.log(output, command)
 
         with open(self.temp_file, 'r') as file:
