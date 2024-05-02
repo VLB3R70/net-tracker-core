@@ -1,0 +1,52 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-05-02 15:25+0200\n"
+"PO-Revision-Date: 2024-05-02 15:26+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: shell/shell.py:55 shell/shell.py:166
+msgid "goodbye"
+msgstr "[magenta][bold]Goodbye! 👋"
+
+#: shell/shell.py:128
+msgid "provide_network_name"
+msgstr "Please provide a name to identify the network"
+
+#: shell/shell.py:133
+msgid "network_not_unique"
+msgstr "[red]{network_name}[/red] is not unique. Please choose another name."
+
+#: shell/shell.py:137
+msgid "network_detected"
+msgstr "The system detected the target as a network."
+
+#: shell/shell.py:174
+msgid "scanning"
+msgstr "[bold green]Scanning[/bold green]"
+
+#: shell/shell.py:180
+msgid "successful_scan"
+msgstr "[green]Successfully scanned target[/green]"
+
+#: shell/shell.py:182
+msgid "save_scan"
+msgstr "[blue]Save scan [Y/n][/blue]"
+
+#: shell/shell.py:189
+msgid "unknown_option"
+msgstr "[yellow]Unknown option[/yellow]"
+
