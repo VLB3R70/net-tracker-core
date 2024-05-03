@@ -1,7 +1,7 @@
-nettrackercore package
-======================
+Documentación de la API
+=======================
 
-Subpackages
+Paquetes
 -----------
 
 .. toctree::
@@ -10,9 +10,10 @@ Subpackages
    nettrackercore.core
    nettrackercore.model
    nettrackercore.shell
+   nettrackercore.api
 
-Module contents
----------------
+Contenido de los módulos
+------------------------
 
 .. automodule:: nettrackercore
    :members:

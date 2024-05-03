@@ -1,4 +1,3 @@
-import gettext
 import signal
 
 from mongoengine.errors import NotUniqueError
@@ -13,7 +12,6 @@ from nettrackercore.core.scanner import Scanner
 from nettrackercore.shell.helpers import Helper
 
 console = Console()
-# config = Config()
 
 PROMPT = "[underline]net-tracker[/underline]"
 SCANNER_PROMPT = PROMPT + "([bold red]scanner[/bold red])"
@@ -45,9 +43,10 @@ class Shell:
 |_|\_||___|  |_|          |_|  |_|_\|_|_| \___||_|\_\|___||_|_\\
 """
 
-    def __init__(self, translator):
+    def __init__(self, translator, config):
         signal.signal(signal.SIGINT, self.handler)
         self.translator = translator
+        self.config = config
 
     def handler(self, signum=None, frame=None):
         """
@@ -153,7 +152,7 @@ class Shell:
         - **scan** Empieza a escanear la red con los datos establecidos por el usuario y pregunta al usuario si quiere almacenar dicha información en la base de datos.
 
         """
-        sc = Scanner()
+        sc = Scanner(self.config)
         # mapeo las posibles opciones y valores predeterminados
         options = {"TARGET": "localhost", "PORT": "", "OTHER": "", "SILENT": False, "TCP": False, "UDP": False,
                    "OS": False, "SUDO": False}

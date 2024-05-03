@@ -1,0 +1,893 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-03 14:40+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/api/nettrackercore.rst:2
+msgid "Documentación de la API"
+msgstr "API Documentation"
+
+#: ../../source/api/nettrackercore.rst:5
+msgid "Paquetes"
+msgstr "Packages"
+
+#: ../../source/api/nettrackercore.api.rst:16
+#: ../../source/api/nettrackercore.core.rst:40
+#: ../../source/api/nettrackercore.model.rst:16
+#: ../../source/api/nettrackercore.rst:16
+#: ../../source/api/nettrackercore.shell.rst:24
+msgid "Contenido de los módulos"
+msgstr "Module contents"
+
+#: ../../source/api/nettrackercore.api.rst:2
+msgid "Paquete nettrackercore.api"
+msgstr "nettrackercore.api package"
+
+#: ../../source/api/nettrackercore.api.rst:5
+#: ../../source/api/nettrackercore.model.rst:5
+#: ../../source/api/nettrackercore.shell.rst:5
+msgid "Submódulos"
+msgstr "Submodules"
+
+#: ../../source/api/nettrackercore.api.rst:8
+msgid "Módulo nettrackercore.api.app"
+msgstr "nettrackercore.api.app module"
+
+#: ../../source/api/nettrackercore.core.rst:2
+msgid "Paquete nettrackercore.core"
+msgstr "nettrackercore.core package"
+
+#: ../../source/api/nettrackercore.core.rst:5
+msgid "Submódulo"
+msgstr "Submodule"
+
+#: ../../source/api/nettrackercore.core.rst:8
+msgid "Módulo nettrackercore.core.exceptions"
+msgstr "nettrackercore.core.exceptions module"
+
+#: nettrackercore.core.exceptions.ExecutionError:1
+#: nettrackercore.core.exceptions.IllegalArgumentException:1
+#: nettrackercore.core.exceptions.InvalidAddressException:1
+#: nettrackercore.core.exceptions.InvalidArgumentsException:1
+#: nettrackercore.core.exceptions.InvalidPortsException:1 of
+msgid "Bases: :py:class:`~nettrackercore.core.exceptions.NettrackerException`"
+msgstr ""
+
+#: nettrackercore.core.exceptions.ExecutionError:1 of
+msgid ""
+"Esta excepción se lanza cuando ocurre un error durante la ejecución del "
+"programa."
+msgstr ""
+"This exception is thrown when an error occurs during the execution of the program."
+
+#: nettrackercore.core.exceptions.IllegalArgumentException:1 of
+msgid ""
+"Esta excepción se lanza cuando el usuario ha introducido un argumento que"
+" no debería introducir."
+msgstr ""
+"This exception is thrown when the user has entered an argument that should not be entered."
+
+#: nettrackercore.core.exceptions.InvalidAddressException:1 of
+msgid ""
+"Esta excepción se lanza cuando la dirección IP introducida por el usuario"
+" no es válida."
+msgstr ""
+"This exception is thrown when the IP address entered by the user is not valid."
+
+#: nettrackercore.core.exceptions.InvalidArgumentsException:1 of
+msgid ""
+"Esta excepción se lanza cuando un argumento introducido por el usuario no"
+" es válido."
+msgstr ""
+"This exception is thrown when the user has entered an argument that is no valid."
+
+#: nettrackercore.core.exceptions.InvalidPortsException:1 of
+msgid ""
+"Esta excepción se lanza cuando los puertos introducidos por el usuario no"
+" son válidos."
+msgstr ""
+"This exception is thrown when the ports entered by the user are not valid."
+
+#: nettrackercore.core.exceptions.NettrackerException:1 of
+msgid "Bases: :py:class:`Exception`"
+msgstr ""
+
+#: nettrackercore.core.exceptions.NettrackerException:1 of
+msgid "Excepción base para todas las excepciones del programa."
+msgstr "Base exception for all program exceptions"
+
+#: ../../source/api/nettrackercore.core.rst:16
+msgid "Módulo nettrackercore.core.parsers"
+msgstr "nettrackercore.core.parsers module"
+
+#: nettrackercore.core.parsers.NmapParser:1
+#: nettrackercore.core.scanner.Logger:1 nettrackercore.core.scanner.Scanner:1
+#: nettrackercore.shell.helpers.Helper:1 nettrackercore.shell.shell.Shell:1 of
+msgid "Bases: :py:class:`object`"
+msgstr ""
+
+#: nettrackercore.core.parsers.NmapParser:1 of
+msgid ""
+"NmapParser se encarga de formatear los parámetros introducidos por el "
+"usuario y los devuelve como una lista."
+msgstr ""
+"NmapParser is responsible for formatting the parameters entered by the "
+"user and returning them as a list."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:1 of
+msgid ""
+"El objeto `Popen <https://docs.python.org/3/library/subprocess.html"
+"#popen-objects>`_ necesita los argumentos que posteriormente ejecutará en"
+" un formato de lista."
+msgstr ""
+"The `Popen <https://docs.python.org/3/library/subprocess.html#popen-objects>`_ "
+"object requires the arguments it will subsequently execute in list format."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:4 of
+msgid ""
+"Este método es el encargado de crear dicha lista después de validar todos"
+" los parámetros introducidos por el usuario. Además, el resultado de la "
+"ejecución se debe de almacenar en un fichero XML por lo que de forma "
+"predeterminada se establece el parámetro `-oX`."
+msgstr ""
+"This method is responsible for creating such a list after validating all"
+"the parameters entered by the user. Additionally, the execution result"
+"should be stored in an XML file, so the -oX parameter is set by default."
+
+#: nettrackercore.core.parsers.NmapParser.create_command
+#: nettrackercore.core.parsers.NmapParser.parse_params
+#: nettrackercore.core.parsers.NmapParser.parse_ports
+#: nettrackercore.core.parsers.NmapParser.parse_targets
+#: nettrackercore.core.parsers.NmapParser.ports_to_list
+#: nettrackercore.core.parsers.NmapParser.validate_address
+#: nettrackercore.core.parsers.NmapParser.validate_ports
+#: nettrackercore.core.results.JSONResult.get_address
+#: nettrackercore.core.results.JSONResult.get_os
+#: nettrackercore.core.results.JSONResult.get_services
+#: nettrackercore.core.scanner.Logger.log
+#: nettrackercore.core.scanner.Scanner.execute_command
+#: nettrackercore.core.scanner.Scanner.scan
+#: nettrackercore.shell.shell.Shell.build_params
+#: nettrackercore.shell.shell.Shell.get_options
+#: nettrackercore.shell.shell.Shell.save_scan
+#: nettrackercore.shell.shell.Shell.set_options of
+msgid "Parámetros"
+msgstr "Params"
+
+#: nettrackercore.core.parsers.NmapParser.create_command:8 of
+msgid "Direcciones IP introducidas por el usuario."
+msgstr "User-entered IP addresses."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:10 of
+msgid "Son los puertos introducidos por el usuario."
+msgstr "They are the ports entered by the user."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:12 of
+msgid "Son los parámetros opcionales introducidos por el usuario."
+msgstr "These are the optional parameters entered by the user."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:14 of
+msgid ""
+"Opción elegida por el usuario para ejecutar el comando con privilegios o "
+"no."
+msgstr ""
+"Option chosen by the user to execute the command with privileges or not."
+
+#: nettrackercore.core.parsers.NmapParser.create_command:16 of
+msgid ""
+"Ruta absoluta del fichero temporal donde se almacenará el resultado en "
+"formato XML."
+msgstr ""
+"Absolute path of the temporary file where the result will be stored in"
+"XML format."
+
+#: nettrackercore.core.parsers.NmapParser.create_command
+#: nettrackercore.core.parsers.NmapParser.parse_params
+#: nettrackercore.core.parsers.NmapParser.parse_ports
+#: nettrackercore.core.parsers.NmapParser.parse_targets
+#: nettrackercore.core.parsers.NmapParser.ports_to_list
+#: nettrackercore.core.parsers.NmapParser.validate_address
+#: nettrackercore.core.results.JSONResult.get_address
+#: nettrackercore.core.results.JSONResult.get_host
+#: nettrackercore.core.results.JSONResult.get_items
+#: nettrackercore.core.results.JSONResult.get_keys
+#: nettrackercore.core.results.JSONResult.get_os
+#: nettrackercore.core.results.JSONResult.get_services
+#: nettrackercore.core.results.JSONResult.get_values
+#: nettrackercore.core.scanner.Scanner.execute_command
+#: nettrackercore.core.scanner.Scanner.scan
+#: nettrackercore.shell.shell.Shell.build_params of
+msgid "Devuelve"
+msgstr "Returns"
+
+#: nettrackercore.core.parsers.NmapParser.create_command:19 of
+msgid "La lista del comando completo que se ejecutará con :py:mod:`subprocess`"
+msgstr "The list of the complete command that will be executed with :py:mod:`subprocess`."
+
+#: nettrackercore.core.parsers.NmapParser.create_command
+#: nettrackercore.core.parsers.NmapParser.parse_params
+#: nettrackercore.core.parsers.NmapParser.parse_ports
+#: nettrackercore.core.parsers.NmapParser.parse_targets
+#: nettrackercore.core.parsers.NmapParser.ports_to_list
+#: nettrackercore.core.parsers.NmapParser.validate_address
+#: nettrackercore.core.results.JSONResult.get_address
+#: nettrackercore.core.results.JSONResult.get_items
+#: nettrackercore.core.results.JSONResult.get_keys
+#: nettrackercore.core.results.JSONResult.get_os
+#: nettrackercore.core.results.JSONResult.get_services
+#: nettrackercore.core.results.JSONResult.get_values
+#: nettrackercore.core.scanner.Scanner.execute_command
+#: nettrackercore.core.scanner.Scanner.scan
+#: nettrackercore.shell.shell.Shell.build_params of
+msgid "Tipo del valor devuelto"
+msgstr "Return type"
+
+#: nettrackercore.core.parsers.NmapParser.parse_params:1 of
+msgid ""
+"Este método se encarga de devolver los parámetros opcionales introducidos"
+" por el usuario formateados como una lista."
+msgstr ""
+"This method is responsible for returning the optional parameters entered"
+" by the user formatted as a list."
+
+#: nettrackercore.core.parsers.NmapParser.parse_params:4 of
+msgid "Parámetros opcionales introducidos por el usuario."
+msgstr "Optional parameters entered by the user."
+
+#: nettrackercore.core.parsers.NmapParser.parse_params
+#: nettrackercore.core.parsers.NmapParser.parse_targets
+#: nettrackercore.core.parsers.NmapParser.validate_ports of
+msgid "Muestra"
+msgstr "Shows"
+
+#: nettrackercore.core.parsers.NmapParser.parse_params:7 of
+msgid "Lista de parámetros opcionales introducidos por el usuario."
+msgstr "List of optional parameters entered by the user."
+
+#: nettrackercore.core.parsers.NmapParser.parse_ports:1 of
+msgid ""
+"Este método se encarga de formatear y validar los puertos introducidos "
+"por el usuario."
+msgstr ""
+"This method is responsible for formatting and validating the ports entered"
+" by the user."
+
+#: nettrackercore.core.parsers.NmapParser.parse_ports:3 of
+msgid "Son los puertos a validar"
+msgstr "The ports to validate"
+
+#: nettrackercore.core.parsers.NmapParser.parse_ports:5 of
+msgid "Puertos validados"
+msgstr "Validated ports"
+
+#: nettrackercore.core.parsers.NmapParser.parse_targets:1 of
+msgid ""
+"Este método se encarga de devolver las direcciones correctamente "
+"validadas. Si no son válidas se lanza una excepción."
+msgstr ""
+"This method is responsible for returning the correctly validated "
+"addresses. If they are not valid, an exception is thrown."
+
+#: nettrackercore.core.parsers.NmapParser.parse_targets:3 of
+msgid "Dirección IP introducida por el usuario."
+msgstr "IP address entered by the user."
+
+#: nettrackercore.core.parsers.NmapParser.parse_targets:6 of
+msgid "Direcciones IP validadas"
+msgstr "Validated IP addresses"
+
+#: nettrackercore.core.parsers.NmapParser.ports_to_list:1 of
+msgid ""
+"Por cómo funciona Nmap, es posible establecer los puertos con comas (,) o"
+" guiones (-) para establecer rangos o puertos concretos."
+msgstr ""
+"Due to how Nmap works, it's possible to set ports with commas (,) or "
+"hyphens (-) to establish ranges or specific ports."
+
+#: nettrackercore.core.parsers.NmapParser.ports_to_list:4 of
+msgid "Son los puertos a validar."
+msgstr "Ports to validate"
+
+#: nettrackercore.core.parsers.NmapParser.ports_to_list:6 of
+msgid "Puertos introducidos en formato de lista."
+msgstr "Ports entered in list format."
+
+#: nettrackercore.core.parsers.NmapParser.validate_address:1 of
+msgid ""
+"Este método se encarga de validar las direcciones IP ya sean de red o no "
+"con el módulo `ipaddress "
+"<https://docs.python.org/3/library/ipaddress.html#module-ipaddress>`_"
+msgstr ""
+"This method is responsible for validating IP addresses, whether they are "
+"network or non-network addresses, using the "
+"`ipaddress module <https://docs.python.org/3/library/ipaddress.html#module-ipaddress>`_."
+
+#: nettrackercore.core.parsers.NmapParser.validate_address:4 of
+msgid "Es la dirección IP a validar"
+msgstr "IP address to validate"
+
+#: nettrackercore.core.parsers.NmapParser.validate_address:6 of
+msgid "Verdadero o falso en función de la dirección IP"
+msgstr "True or false depending on the IP address."
+
+#: nettrackercore.core.parsers.NmapParser.validate_ports:1 of
+msgid ""
+"Este método se encarga de validar los puertos introducidos por el usuario"
+" dentro de una lista. Si existe algún puerto inválido se lanza una "
+"excepción."
+msgstr ""
+"This method is responsible for validating the ports entered by the user"
+" within a list. If there is any invalid port, an exception is thrown."
+
+#: nettrackercore.core.parsers.NmapParser.validate_ports:4 of
+msgid "Es la lista de puertos a validar"
+msgstr "It's the list of ports to validate."
+
+#: ../../source/api/nettrackercore.core.rst:24
+msgid "Módulo nettrackercore.core.results"
+msgstr "nettrackercore.core.results module"
+
+#: nettrackercore.core.results.JSONResult:1 of
+msgid "Bases: :py:class:`dict`"
+msgstr ""
+
+#: nettrackercore.core.results.JSONResult:1 of
+msgid ""
+"Este objeto encapsula el resultado de la ejecución del escaneo. Este "
+"objeto hereda el objeto `dict "
+"<https://docs.python.org/3/library/stdtypes.html#dict>`_ y obtiene un "
+"diccionario mediante el constructor que actualiza su valor. Este "
+"diccionario se obtiene en la lectura del fichero XML con el resultado del"
+" escaneo."
+msgstr ""
+"This object encapsulates the result of the scan execution. It inherits the "
+"`dict <https://docs.python.org/3/library/stdtypes.html#dict>`_ object and obtains"
+" a dictionary through the constructor that updates its value. This dictionary"
+" is obtained by reading the XML file with the scan result."
+
+#: nettrackercore.core.results.JSONResult.get_address:1 of
+msgid ""
+"Obtiene el valor cuya clave corresponde a `address`. Este método además "
+"tiene en cuenta que el escaneo detecta la dirección MAC del equipo. Dicho"
+" valor se añade a la clave `address` y corresponde a una lista."
+msgstr ""
+"It retrieves the value whose key corresponds to address. Additionally, "
+" this method takes into account that the scan detects the MAC address of "
+"the device. This value is added to the `address` key and corresponds to a list."
+
+#: nettrackercore.core.results.JSONResult.get_address:4 of
+msgid "Ejemplo"
+msgstr "Example"
+
+#: nettrackercore.core.results.JSONResult.get_address:13
+#: nettrackercore.core.results.JSONResult.get_host:3
+#: nettrackercore.core.results.JSONResult.get_os:15
+#: nettrackercore.core.results.JSONResult.get_services:9 of
+msgid "el valor que corresponde a `host`."
+msgstr "the value corresponding to `host`."
+
+#: nettrackercore.core.results.JSONResult.get_address:15 of
+msgid "el valor que corresponde a `address`."
+msgstr "the value corresponding to `address`."
+
+#: nettrackercore.core.results.JSONResult.get_host:1 of
+msgid "Obtiene el valor cuya clave corresponde a `host`."
+msgstr "It retrieves the value whose key corresponds to `host`."
+
+#: nettrackercore.core.results.JSONResult.get_items:1 of
+msgid "Obtiene todos los pares clave-valor del objeto JSONResult."
+msgstr "It retrieves all key-value pairs from the JSONResult object."
+
+#: nettrackercore.core.results.JSONResult.get_items:3 of
+msgid "lista con todos los pares clave-valor del objeto."
+msgstr "List with all key-value pairs of the object."
+
+#: nettrackercore.core.results.JSONResult.get_keys:1 of
+msgid "Obtiene todas las claves del objeto JSONResult."
+msgstr "It retrieves all keys of the JSONResult object."
+
+#: nettrackercore.core.results.JSONResult.get_keys:3 of
+msgid "lista con todas las claves del objeto."
+msgstr "List with all keys of the object."
+
+#: nettrackercore.core.results.JSONResult.get_os:1 of
+msgid ""
+"Este método obtiene el valor de la calve que corresponde a `os` dentro de"
+" `host`. Este valor a su vez contiene más información que para la lógica "
+"del programa no es relevante por lo que el dato final corresponde a "
+"`osmatch`."
+msgstr ""
+"This method retrieves the value of the key corresponding to `os` within `host`. "
+"This value, in turn, contains more information that is not relevant for the "
+"program's logic, so the final data corresponds to `osmatch`."
+
+#: nettrackercore.core.results.JSONResult.get_os:4 of
+msgid ""
+"Al igual que con las direcciones, es posible que el escaneo detecte "
+"varios sistemas operativos en una misma máquina; estos, los muestra como "
+"una lista con su información. El escáner Nmap, al encontrar varios "
+"sistemas operativos, indica un porcentaje de veracidad; este porcentaje "
+"indica lo seguro que está de dicho escaneo. El primer valor siempre es el"
+" más elevado (el más confiable) por lo que, si el valor es una lista, "
+"siempre se escoge el primer valor de la lista."
+msgstr ""
+"Similarly to addresses, it's possible for the scan to detect multiple operating "
+"systems on a single machine; these are displayed as a list with their information. "
+"The Nmap scanner, upon finding multiple operating systems, indicates a percentage "
+"of accuracy; this percentage indicates how confident it is in that scan. The first "
+"value is always the highest (the most reliable), so if the value is a list, the "
+"first value in the list is always chosen."
+
+#: nettrackercore.core.results.JSONResult.get_os:10 of
+msgid ""
+"También es posible que el escáner no sea capaz de detectar un sistema "
+"operativo válido. En estos casos el valor de `osmatch` corresponde a "
+"`None` o `Null` en otros lenguajes. Si obtenemos un valor nulo y queremos"
+" trabajar con él se lanzará una excepción `TypeError "
+"<https://docs.python.org/3/library/exceptions.html#TypeError>`_ y, en ese"
+" caso, se retornará una cadena indicando que no se ha podido encontrar un"
+" sistema operativo válido."
+msgstr ""
+"It's also possible for the scanner not to be able to detect a valid "
+"operating system. In these cases, the value of osmatch corresponds to "
+"`None` or `Null` in other languages. If we obtain a null value and we want "
+"to work with it, a "
+"`TypeError <https://docs.python.org/3/library/exceptions.html#TypeError>_` "
+"exception will be raised, and in that case, a string indicating that a valid "
+"operating system could not be found will be returned."
+
+#: nettrackercore.core.results.JSONResult.get_os:17 of
+msgid "el valor que corresponde a `osmatch`."
+msgstr "the value corresponding to `osmatch`."
+
+#: nettrackercore.core.results.JSONResult.get_services:1 of
+msgid ""
+"Este método se encarga de obtener los valores correspondientes a los "
+"puertos abiertos y los servicios corriendo en ellos. Se retorna una lista"
+" de diccionarios donde la sintaxis de estos es la siguiente:"
+msgstr ""
+"This method is responsible for obtaining the values corresponding to the "
+"open ports and the services running on them. It returns a list of "
+"dictionaries where the syntax is as follows:"
+
+#: nettrackercore.core.results.JSONResult.get_services:4 of
+msgid "Sintaxis de estos puertos abiertos"
+msgstr "Syntax of these open ports"
+
+#: nettrackercore.core.results.JSONResult.get_services:11 of
+msgid ""
+"lista de diccionarios con los valores de los servicios correspondientes a"
+" los puertos abiertos."
+msgstr ""
+"List of dictionaries with the values of the services corresponding to the "
+"open ports."
+
+#: nettrackercore.core.results.JSONResult.get_values:1 of
+msgid "Obtiene todos los valores del objeto JSONResult."
+msgstr "It retrieves all values from the JSONResult object."
+
+#: nettrackercore.core.results.JSONResult.get_values:3 of
+msgid "lista con todos los valores del objeto."
+msgstr "List with all the values of the object"
+
+#: ../../source/api/nettrackercore.core.rst:32
+msgid "Módulo nettrackercore.core.scanner"
+msgstr "nettrackercore.core.scanner module"
+
+#: nettrackercore.core.scanner.Logger:1 of
+msgid ""
+"La clase **Logger** se encarga de escribir mensajes en los ficheros "
+"designados. Existen dos ficheros: uno de `log` y otro de errores. Estos "
+"ficheros se crean previamente."
+msgstr ""
+"The **Logger** class is responsible for writing messages to designated files. "
+"There are two files: one for regular logs and another for errors. These "
+"files are created beforehand."
+
+#: nettrackercore.core.scanner.Logger.error:1 of
+msgid ""
+"Este método se encarga de escribir los mensajes de error en un log. "
+"Cuando ha ocurrido un error o se ha lanzado una excepción, la traza de "
+"dicho error o la salida estándar de error de un proceso se guarda en el "
+"log. En este formato también se guarda la fecha."
+msgstr ""
+"This method is responsible for writing error messages to a log. When an "
+"error has occurred or an exception has been raised, the trace of that error "
+"or the standard error output of a process is saved in the log. The date is "
+"also stored in this format."
+
+#: nettrackercore.core.scanner.Logger.log:1 of
+msgid ""
+"Este método se encarga escribir un mensaje concreto en el log. Para "
+"añadir más información se escribe la fecha del día en el momento de la "
+"ejecución del programa."
+msgstr ""
+"This method is responsible for writing a specific message to the log. To "
+"add more information, the current date at the time of program execution is also written."
+
+#: nettrackercore.core.scanner.Logger.log:4 of
+msgid "Configuración del programa."
+msgstr "Program configuration"
+
+#: nettrackercore.core.scanner.Logger.log:5 of
+msgid "Mensaje a escribir dentro del log."
+msgstr "Message to be written inside the log."
+
+#: nettrackercore.core.scanner.Logger.log:6 of
+msgid "Comando lanzado por el subproceso"
+msgstr "Command launched by the subprocess."
+
+#: nettrackercore.core.scanner.Scanner:1 of
+msgid ""
+"Objeto que representa un escáner. Este escáner se encarga de usar el "
+"paquete de Nmap previamente instalado en la máquina. El usuario establece"
+" ciertos parámetros que posteriormente serán usados por el paquete Nmap. "
+"Dichos parámetros son:"
+msgstr ""
+"Object representing a scanner. This scanner is responsible for using the Nmap "
+"package previously installed on the machine. The user sets certain parameters "
+"that will later be used by the Nmap package. These parameters are:"
+
+#: nettrackercore.core.scanner.Scanner:5 of
+msgid ""
+"**targets**: puede ser una dirección de red en formato CIDR, una "
+"dirección o varias direcciones IP, etc."
+msgstr ""
+"**targets**: it can be a network address in CIDR format, an address, "
+"or multiple IP addresses, etc."
+
+#: nettrackercore.core.scanner.Scanner:7 of
+msgid ""
+"**ports**: es un parámetro que establece los puertos que se escanearán, "
+"si no se establece nada se escanean todos."
+msgstr ""
+"**ports**: it's a parameter that sets the ports to be scanned; if nothing "
+"is set, all ports are scanned."
+
+#: nettrackercore.core.scanner.Scanner:9 of
+msgid "El formato de los puertos es:"
+msgstr "The ports format is:"
+
+#: nettrackercore.core.scanner.Scanner:11 of
+msgid "`80` -> Solo se escanea el puerto 80"
+msgstr "`80` -> Only scans the port 80"
+
+#: nettrackercore.core.scanner.Scanner:12 of
+msgid "`80,443` -> Se escanean los puertos 80 y 443 únicamente"
+msgstr "`80,443` -> Only the 80 and 443 ports are scanned"
+
+#: nettrackercore.core.scanner.Scanner:13 of
+msgid "`1-1024` -> Solo se escanean los puertos comprendidos entre el 1 y el 1024"
+msgstr "`1-1024` -> Only ports between 1 and 1024 are scanned."
+
+#: nettrackercore.core.scanner.Scanner:15 of
+msgid "**params**: son otros parámetros permitidos por Nmap."
+msgstr "**params**: Other Nmap parameters"
+
+#: nettrackercore.core.scanner.Scanner.cleanup:1 of
+msgid ""
+"Este método se encarga de eliminar el fichero temporal necesario para la "
+"lógica del programa."
+msgstr ""
+"This method is responsible for deleting the temporary file necessary for "
+"the program's logic."
+
+#: nettrackercore.core.scanner.Scanner.execute_command:1 of
+msgid ""
+"Este método es el encargado de crear un subproceso y ejecutar el comando "
+"configurado por el usuario. La salida estándar y la salida de error se "
+"obtienen mediante un `pipe`; el código de retorno también se obtiene."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.execute_command:4 of
+msgid "El comando configurado por el usuario en forma de lista."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.execute_command:6 of
+msgid "La salida estándar, la salida de error y el código de retorno."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:1 of
+msgid ""
+"El método `scan` realiza el escaneo sobre los objetivos asignados usando "
+"el paquete Nmap. La salida estándar del comando se almacena de un fichero"
+" de log y el resultado del escaneo se encapsula en un objeto "
+":py:class:`~nettrackercore.core.results.JSONResult`"
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:5 of
+msgid ""
+"Es la dirección IP hacia donde se hará el escaneo. Puede ser una "
+"dirección de red o una dirección de equipo."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:8 of
+msgid ""
+"Son los puertos hacia donde se hará el escaneo. Los puertos deben estar "
+"comprendidos entre el 1 y el 65535, ambos incluidos."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:11 of
+msgid ""
+"Son parámetros opcionales introducidos por el usuario y aceptados por "
+"Nmap."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:13 of
+msgid "Ciertos parámetros necesitan permisos de superusuario para ejecutarse."
+msgstr ""
+
+#: nettrackercore.core.scanner.Scanner.scan:19 of
+msgid ""
+"El resultado del escaneo se encapsula en un objeto "
+":py:class:`~nettrackercore.core.results.JSONResult`."
+msgstr ""
+
+#: ../../source/api/nettrackercore.model.rst:2
+msgid "Paquete nettrackercore.model"
+msgstr ""
+
+#: ../../source/api/nettrackercore.model.rst:8
+msgid "Módulo nettrackercore.model.model"
+msgstr ""
+
+#: nettrackercore.model.model.Device:1 nettrackercore.model.model.Service:1 of
+msgid "Bases: :py:class:`~mongoengine.document.EmbeddedDocument`"
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Device.address:1
+#: nettrackercore.model.model.Device.device_id:1
+#: nettrackercore.model.model.Device.device_name:1
+#: nettrackercore.model.model.Device.os_type:1
+#: nettrackercore.model.model.Network.address:1
+#: nettrackercore.model.model.Network.id:1
+#: nettrackercore.model.model.Network.network_id:1
+#: nettrackercore.model.model.Network.network_name:1
+#: nettrackercore.model.model.Service.name:1
+#: nettrackercore.model.model.Service.protocol:1 of
+msgid "A unicode string field."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Device.services:1
+#: nettrackercore.model.model.Network.devices:1 of
+msgid ""
+"A list field that wraps a standard field, allowing multiple instances of "
+"the field to be used as a list in the database."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Device.services:4
+#: nettrackercore.model.model.Network.devices:4 of
+msgid "If using with ReferenceFields see: :ref:`many-to-many-with-listfields`"
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Device.services:7
+#: nettrackercore.model.model.Network.devices:7 of
+msgid "Required means it cannot be empty - as the default for ListFields is []"
+msgstr ""
+
+#: nettrackercore.model.model.Network:1 of
+msgid "Bases: :py:class:`~mongoengine.document.Document`"
+msgstr ""
+
+#: nettrackercore.model.model.DoesNotExist:1 of
+msgid "Bases: :py:class:`~mongoengine.errors.DoesNotExist`"
+msgstr ""
+
+#: nettrackercore.model.model.MultipleObjectsReturned:1 of
+msgid "Bases: :py:class:`~mongoengine.errors.MultipleObjectsReturned`"
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Network.gateway:1 of
+msgid ""
+"An embedded document field - with a declared document_type. Only valid "
+"values are subclasses of :class:`~mongoengine.EmbeddedDocument`."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Network.objects:1 of
+msgid "The default QuerySet Manager."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Network.objects:3 of
+msgid ""
+"Custom QuerySet Manager functions can extend this class and users can add"
+" extra queryset functionality.  Any custom manager methods must accept a "
+":class:`~mongoengine.Document` class as its first argument, and a "
+":class:`~mongoengine.queryset.QuerySet` as its second argument."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Network.objects:8 of
+msgid ""
+"The method function should return a "
+":class:`~mongoengine.queryset.QuerySet` , probably the same one that was "
+"passed in, but modified in some way."
+msgstr ""
+
+#: ../../docstring nettrackercore.model.model.Network.subnet_mask:1
+#: nettrackercore.model.model.Service.port:1 of
+msgid "32-bit integer field."
+msgstr ""
+
+#: ../../source/api/nettrackercore.shell.rst:2
+msgid "Paquete nettrackercore.shell"
+msgstr ""
+
+#: ../../source/api/nettrackercore.shell.rst:8
+msgid "Módulo nettrackercore.shell.helpers"
+msgstr ""
+
+#: ../../source/api/nettrackercore.shell.rst:16
+msgid "Módulo nettrackercore.shell.shell"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell:1 of
+msgid ""
+"La clase **Shell** representa la terminal de comandos por donde el "
+"usuario interacciona con el núcleo de la aplicación. Esta terminal está "
+"inspirada en la terminal de comandos ofrecida por `Kali Linux Metasploit "
+"Framework <https://www.kali.org/docs/tools/starting-metasploit-framework-"
+"in-kali/>`_."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell:6 of
+msgid ""
+"El usuario puede elegir varios objetos ofrecidos por el núcleo y debe de "
+"establecer los parámetros necesarios para ejecutar los comandos "
+"correspondientes. El diseño de la terminal está implementado con `rich "
+"<https://rich.readthedocs.io/en/stable/index.html>`_, un paquete escrito "
+"en Python que ayuda escribir y mostrar texto más complejo por la terminal"
+" de comandos de una forma más bonita."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell:11 of
+msgid ""
+"Rich is a Python library for writing rich text (with color and style) to "
+"the terminal, and for displaying advanced content such as tables, "
+"markdown, and syntax highlighted code."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell:14 of
+msgid ""
+"Use Rich to make your command line applications visually appealing and "
+"present data in a more readable way. Rich can also be a useful debugging "
+"aid by pretty printing and syntax highlighting data structures."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.build_params:1 of
+msgid ""
+"Existen ciertos parámetros que corresponden a *interrogantes booleanos* y"
+" en función de su valor se deben de añadir más o menos valores al comando"
+" final del escáner. Estos parámetros se encuentran dentro del diccionario"
+" con las opciones mapeadas."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.build_params:5 of
+msgid "es el diccionario con las opciones mapeadas"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.build_params:8 of
+msgid "el valor final del parámetro `OPTIONS`"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.get_options:1 of
+msgid ""
+"Este método se encarga de obtener los valores de las distintas opciones "
+"usadas por el objeto. Dichas opciones están mapeadas en un diccionario "
+"para mejorar el acceso a ellas. El usuario puede obtener el valor de una "
+"opción o de todas las opciones mapeadas con la opción `ALL`."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.get_options:5 of
+msgid "es el diccionario con las distintas opciones del objeto mapeadas"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.get_options:6 of
+msgid ""
+"es la opción de la cual se obtendrá el valor. Si se indica `ALL` o `all` "
+"se devuelven los valores de todas las opciones."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.handler:1 of
+msgid "Este método es necesario para capturar la señal de teclado `Ctrl+C`"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.main_menu:1 of
+msgid ""
+"Este método muestra el prompt principal del programa donde el usuario "
+"elige qué objeto quiere usar."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.save_scan:1 of
+msgid ""
+"Este método se encarga de guardar el resultado del escaneo en la base de "
+"datos. Ciertos parámetros corresponden a las opciones mapeadas del "
+"escáner."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.save_scan:4 of
+msgid ""
+"el resultado del escaneo en forma de objeto "
+":py:class:`~nettrackercore.core.results.JSONResult`"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.save_scan:6 of
+msgid "son las opciones mapeadas del escáner"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:1 of
+msgid ""
+"El método :py:func:`~nettrackercore.core.shell.scanner` establece la "
+"lógica de uso del objeto. Cuando el usuario decide usar el escáner este "
+"método se ejecuta. Primero se crea un objeto "
+":py:class:`~nettrackercore.core.scanner.Scanner` y posteriormente se crea"
+" un diccionario con las opciones permitidas por el escáner."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:6 of
+msgid "El usuario introduce una opción dentro de las posibles:"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:8 of
+msgid "**exit** Sale de la terminal"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:9 of
+msgid "**help** Muestra la ayuda del escáner"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:10 of
+msgid ""
+"**set <opcion> <valor>** establece el valor de una opción mapeada al "
+"introducido por el usuario"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:11 of
+msgid ""
+"**get <opcion> | ALL** devuelve el valor de la opción introducida por el "
+"usuario. Si se indica `ALL` o `all` se devuelven todos los valores"
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.scanner:12 of
+msgid ""
+"**scan** Empieza a escanear la red con los datos establecidos por el "
+"usuario y pregunta al usuario si quiere almacenar dicha información en la"
+" base de datos."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.set_options:1 of
+msgid ""
+"Método que se encarga de establecer un valor a la opción pasada por "
+"parámetro. Las diferentes opciones se establecen previamente en un "
+"diccionario."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.set_options:4 of
+msgid "es el diccionario con las diferentes opciones mapeadas."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.set_options:5 of
+msgid ""
+"es la **opción** dentro de las **opciones** mapeadas la cual se va a "
+"modificar."
+msgstr ""
+
+#: nettrackercore.shell.shell.Shell.set_options:6 of
+msgid "es el valor que se establecerá a la opción."
+msgstr ""
+

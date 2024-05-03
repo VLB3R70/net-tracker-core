@@ -5,12 +5,9 @@ from pathlib import Path
 
 import xmltodict
 
-from nettrackercore.__main__ import Configuration
 from nettrackercore.core.exceptions import ExecutionError
 from nettrackercore.core.parsers import NmapParser
 from nettrackercore.core.results import JSONResult
-
-config = Configuration()
 
 DATE = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
@@ -22,19 +19,21 @@ class Logger:
     """
 
     @staticmethod
-    def log(message, command):
+    def log(config, message, command):
         """
         Este método se encarga escribir un mensaje concreto en el log. Para añadir más información se escribe la fecha
         del día en el momento de la ejecución del programa.
 
+        :param config: Configuración del programa.
         :param message: Mensaje a escribir dentro del log.
+        :param command: Comando lanzado por el subproceso
         """
         log_file = Path(config.data['log_dir']).joinpath('scanner.log')
         with open(log_file, 'a') as log:
             log.write(f'[{DATE}]\n{command}\n{message}')
 
     @staticmethod
-    def error(message):
+    def error(config, message):
         """
         Este método se encarga de escribir los mensajes de error en un log. Cuando ha ocurrido un error o se ha lanzado
         una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este
@@ -65,8 +64,9 @@ class Scanner:
 
     """
 
-    def __init__(self):
-        self.temp_file = Path(config.data['temp_dir']).joinpath('scanner.xml')
+    def __init__(self, config):
+        self.config = config
+        self.temp_file = Path(self.config.data['temp_dir']).joinpath('scanner.xml')
         self.temp_file.touch()  # Creo el fichero temporal vacío
         self.parser = NmapParser()
 
@@ -96,9 +96,9 @@ class Scanner:
         command = self.parser.create_command(targets, ports, params, sudo, str(self.temp_file))
         output, err, code = self.execute_command(command)
         if err:
-            Logger.error(err)
+            Logger.error(self.config, err)
             raise ExecutionError(code=code)
-        Logger.log(output, command)
+        Logger.log(self.config, output, command)
 
         with open(self.temp_file, 'r') as file:
             json_data = xmltodict.parse(file.read())

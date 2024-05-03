@@ -3,17 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-¡Bienvenid@ a la documentación de net-tracker-core!
+¡Bienvenid@ a la documentación de Net-Tracker!
 ========================================================
 
-
-API
-====
-
-.. toctree::
-   :includehidden:
-
-   modules
+:doc:`api/nettrackercore`
 
 Índices y tablas
 ==================

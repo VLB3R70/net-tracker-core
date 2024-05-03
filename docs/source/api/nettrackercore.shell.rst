@@ -1,10 +1,10 @@
-nettrackercore.shell package
+Paquete nettrackercore.shell
 ============================
 
-Submodules
+Submódulos
 ----------
 
-nettrackercore.shell.helpers module
+Módulo nettrackercore.shell.helpers
 -----------------------------------
 
 .. automodule:: nettrackercore.shell.helpers
@@ -12,7 +12,7 @@ nettrackercore.shell.helpers module
    :undoc-members:
    :show-inheritance:
 
-nettrackercore.shell.shell module
+Módulo nettrackercore.shell.shell
 ---------------------------------
 
 .. automodule:: nettrackercore.shell.shell
@@ -20,8 +20,8 @@ nettrackercore.shell.shell module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Contenido de los módulos
+------------------------
 
 .. automodule:: nettrackercore.shell
    :members:

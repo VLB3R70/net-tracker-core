@@ -1,10 +1,10 @@
-nettrackercore.core package
+Paquete nettrackercore.core
 ===========================
 
-Submodules
+Submódulo
 ----------
 
-nettrackercore.core.exceptions module
+Módulo nettrackercore.core.exceptions
 -------------------------------------
 
 .. automodule:: nettrackercore.core.exceptions
@@ -12,7 +12,7 @@ nettrackercore.core.exceptions module
    :undoc-members:
    :show-inheritance:
 
-nettrackercore.core.parsers module
+Módulo nettrackercore.core.parsers
 ----------------------------------
 
 .. automodule:: nettrackercore.core.parsers
@@ -20,7 +20,7 @@ nettrackercore.core.parsers module
    :undoc-members:
    :show-inheritance:
 
-nettrackercore.core.results module
+Módulo nettrackercore.core.results
 ----------------------------------
 
 .. automodule:: nettrackercore.core.results
@@ -28,7 +28,7 @@ nettrackercore.core.results module
    :undoc-members:
    :show-inheritance:
 
-nettrackercore.core.scanner module
+Módulo nettrackercore.core.scanner
 ----------------------------------
 
 .. automodule:: nettrackercore.core.scanner
@@ -36,8 +36,8 @@ nettrackercore.core.scanner module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Contenido de los módulos
+------------------------
 
 .. automodule:: nettrackercore.core
    :members:

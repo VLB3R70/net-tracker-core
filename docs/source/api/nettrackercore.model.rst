@@ -1,10 +1,10 @@
-nettrackercore.model package
+Paquete nettrackercore.model
 ============================
 
-Submodules
+Submódulos
 ----------
 
-nettrackercore.model.model module
+Módulo nettrackercore.model.model
 ---------------------------------
 
 .. automodule:: nettrackercore.model.model
@@ -12,8 +12,8 @@ nettrackercore.model.model module
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
+Contenido de los módulos
+------------------------
 
 .. automodule:: nettrackercore.model
    :members:
