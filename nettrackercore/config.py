@@ -16,7 +16,7 @@ class Configuration:
     CONFIG_FILE = MAIN_DIR.joinpath('config.json')
 
     def __init__(self, lang='es'):
-        self.load_config(lang)
+        self.data = self.load_config(lang)
 
     def load_config(self, lang):
         """
@@ -39,13 +39,13 @@ class Configuration:
         self.create_directories()
         if self.CONFIG_FILE.exists():
             with open(self.CONFIG_FILE, 'r') as f:
-                self.data = json.load(f)
+                return json.load(f)
         else:
             self.CONFIG_FILE.touch()
             data = {'lang': lang, 'locales_dir': str(self.LOCALES_DIR), 'log_dir': str(self.MAIN_DIR.joinpath('logs')),
                     'temp_dir': str(self.MAIN_DIR.joinpath('temp'))}
             with open(self.CONFIG_FILE, 'w') as f:
-                json.dump(data, f)
+                return json.dump(data, f)
 
     def create_directories(self):
         """
@@ -65,9 +65,10 @@ class Translator:
     `gettext <https://docs.python.org/3/library/gettext.html#module-gettext>`_. Una vez instalado el idioma simplemente
     se debe de hacer una llamada al método :py:func:`~nettrackercore.translator.translate`.
     """
-    def __init__(self, config: Configuration = None):
+
+    def __init__(self, config: Configuration):
         self.config = config
-        self.translations = gettext.translation('messages', localedir=self.config.data['locales_dir'],
+        self.translations = gettext.translation('messages', localedir=self.config.data["locales_dir"],
                                                 languages=[self.config.data['lang']])
         self.translations.install()
 

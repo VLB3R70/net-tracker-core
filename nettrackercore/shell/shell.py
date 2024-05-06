@@ -1,9 +1,9 @@
 import signal
 
 from mongoengine.errors import NotUniqueError
+from rich import print
 from rich.console import Console
 from rich.prompt import Prompt
-from rich import print
 
 from nettrackercore.core.controller import NettrackerDAO
 from nettrackercore.core.exceptions import *
@@ -15,7 +15,7 @@ console = Console()
 
 PROMPT = "[underline]net-tracker[/underline]"
 SCANNER_PROMPT = PROMPT + "([bold red]scanner[/bold red])"
-TRACKER_PROMPT = PROMPT + "([bold red]tracker[/bold red])"
+DBA_PROMPT = PROMPT + "([bold red]dba[/bold red])"
 
 
 class Shell:
@@ -188,6 +188,18 @@ class Shell:
             else:
                 console.print(self.translator.translate("unknown_option"))
 
+    def dba(self):
+        dao = NettrackerDAO()
+        while True:
+            option = Prompt.ask(DBA_PROMPT)
+            if option == "get networks":
+                networks = dao.get_all_networks()
+                
+                for network in networks:
+                    print(network.address)
+            elif option == "get network":
+                network = Prompt.ask(DBA_PROMPT)
+
     def main_menu(self):
         """
         Este método muestra el prompt principal del programa donde el usuario elige qué objeto quiere usar.
@@ -199,5 +211,9 @@ class Shell:
                 Helper.print_main_help()
             elif option == "scanner":
                 self.scanner()
+            elif option == "dba":
+                self.dba()
             elif option == "exit":
                 exit(0)
+            else:
+                print("Opción inválida. Pruebe otra vez")

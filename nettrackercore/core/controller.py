@@ -16,7 +16,8 @@ class NettrackerDAO:
     Este objeto trabaja con el resultado obtenido del escaneo en forma del
     objeto :py:class:`~nettrackercore.core.results.JSONResult`.
     """
-    def __init__(self, json_data: JSONResult):
+
+    def __init__(self, json_data: JSONResult = None):
         self.data = json_data
         connect("nettracker-test")
 
@@ -173,7 +174,7 @@ class NettrackerDAO:
         :return: Se devuelve el resultado de la consulta realizada
         :rtype: mongoengine.queryset.queryset.QuerySet
         """
-        return Network.objects.only('network_name')
+        return Network.objects.all()
 
     @staticmethod
     def get_network_from_name(name):
@@ -216,4 +217,3 @@ class NettrackerDAO:
                 if device.address == address:
                     return device
         raise DoesNotExist
-

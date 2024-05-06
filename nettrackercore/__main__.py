@@ -5,7 +5,7 @@ from nettrackercore.shell.shell import Shell
 def main():
     config = Configuration()
     translator = Translator(config)
-    sh = Shell(translator)
+    sh = Shell(translator, config)
     sh.main_menu()
 
 
