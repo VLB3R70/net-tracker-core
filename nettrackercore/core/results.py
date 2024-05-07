@@ -136,7 +136,7 @@ class JSONResult(dict):
                     "protocol": port["@protocol"]
                 }
                 service_list.append(service)
-        except KeyError:
+        except (KeyError, TypeError):
             service_list.append(0)
 
         return service_list
