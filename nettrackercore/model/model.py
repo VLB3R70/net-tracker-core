@@ -1,3 +1,5 @@
+import json
+
 from mongoengine import Document, StringField, ListField, EmbeddedDocument, EmbeddedDocumentField, IntField
 
 
@@ -5,6 +7,9 @@ class Service(EmbeddedDocument):
     name = StringField(required=True)
     port = IntField(required=True)
     protocol = StringField(required=True)
+
+    def to_json(self):
+        return json.dumps(self.to_mongo(), indent=4)
 
 
 class Device(EmbeddedDocument):
@@ -14,6 +19,9 @@ class Device(EmbeddedDocument):
     services = ListField(EmbeddedDocumentField(Service))
     os_type = StringField(required=True)
 
+    def to_json(self):
+        return json.dumps(self.to_mongo(), indent=4)
+
 
 class Network(Document):
     network_id = StringField(primary_key=True)
@@ -22,3 +30,6 @@ class Network(Document):
     gateway = EmbeddedDocumentField(Device, required=True)
     subnet_mask = IntField(required=True)
     devices = ListField(EmbeddedDocumentField(Device), required=True)
+
+    def to_json(self):
+        return json.dumps(self.to_mongo(), indent=4)
