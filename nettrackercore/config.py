@@ -11,11 +11,22 @@ class Configuration:
     Se establecen tres constantes que determinan el directorio principal donde se almacena el fichero de configuración,
     el directorio de las traducciones y la ruta del propio fichero de configuración.
     """
+    _instance = None
+
     MAIN_DIR = Path.home().joinpath('.nettracker')
     LOCALES_DIR = Path(__file__).parent.joinpath('locales')
     CONFIG_FILE = MAIN_DIR.joinpath('config.json')
 
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+
     def __init__(self, lang='es'):
+        if self._initialized:
+            return
+        self._initialized = True
         self.data = self.load_config(lang)
 
     def load_config(self, lang):
@@ -65,8 +76,18 @@ class Translator:
     `gettext <https://docs.python.org/3/library/gettext.html#module-gettext>`_. Una vez instalado el idioma simplemente
     se debe de hacer una llamada al método :py:func:`~nettrackercore.translator.translate`.
     """
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
 
     def __init__(self, config: Configuration):
+        if self._initialized:
+            return
+        self._initialized = True
         self.config = config
         self.translations = gettext.translation('messages', localedir=self.config.data["locales_dir"],
                                                 languages=[self.config.data['lang']])
