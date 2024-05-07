@@ -28,7 +28,7 @@ msgstr "Por favor introduce un nombre para identificar a la red."
 
 #: shell/shell.py:133
 msgid "network_not_unique"
-msgstr "[red]La red {network_name}[/red] no es única. Por favor, elige otro nombre.."
+msgstr "[red]La red {network_name}[/red] no es única. Por favor, elige otro nombre"
 
 #: shell/shell.py:137
 msgid "network_detected"

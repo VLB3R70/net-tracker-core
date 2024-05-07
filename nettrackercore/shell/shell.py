@@ -130,7 +130,7 @@ class Shell:
                     dao.new_network(name=network_name, address=address, submask=netmask)
                     break  # Salir del bucle si se guarda correctamente
                 except NotUniqueError:
-                    console.print(self.translator.translate("network_not_unique").format(network_name))
+                    console.print(self.translator.translate("network_not_unique").format(network_name=network_name))
 
         if "/" in options["TARGET"]:
             console.print(self.translator.translate("network_detected"))
@@ -172,14 +172,14 @@ class Shell:
                 self.get_options(options, option[1])
             elif option == "scan":
                 try:
-                    with console.status(self.translator.translate("scanning"), spinner="aesthetic"):
-                        params = self.build_params(options)
-                        result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
-                                         sudo=options["SUDO"])
+                    # with console.status(self.translator.translate("scanning"), spinner="aesthetic"):
+                    params = self.build_params(options)
+                    result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
+                                     sudo=options["SUDO"])
 
                     console.print(self.translator.translate("successful_scan"))
                     save = Prompt.ask(self.translator.translate("save_scan"))
-                    if save.lower() == "y":
+                    if save.lower() == "y" or save.lower() == "s":
                         self.save_scan(result, options)
                 except (ExecutionError, InvalidArgumentsException, IllegalArgumentException, InvalidAddressException,
                         InvalidPortsException) as e:

@@ -68,11 +68,7 @@ class NettrackerDAO:
         if None in (name, port, protocol):
             return None  # Devuelve None si falta alguno de los campos requeridos
 
-        service = Service(
-            name=name,
-            port=port,
-            protocol=protocol
-        )
+        service = Service(name=name, port=port, protocol=protocol)
         return service
 
     def __build_devices(self):
@@ -113,13 +109,8 @@ class NettrackerDAO:
         os_type = self.data.get_os(host) if isinstance(self.data.get_os(host), str) else ''
         device_id = sha256(f"{device_name}_{address}".encode()).hexdigest()
 
-        device = Device(
-            device_name=device_name,
-            address=address,
-            os_type=os_type,
-            services=self.__build_services(host),
-            device_id=device_id
-        )
+        device = Device(device_name=device_name, address=address, os_type=os_type, services=self.__build_services(host),
+            device_id=device_id)
         return device
 
     def __build_gateway(self):
@@ -158,14 +149,11 @@ class NettrackerDAO:
         network_id = sha256(f'{name}_{address}_{submask}'.encode()).hexdigest()
         devices = self.__build_devices()
         gateway = self.__build_gateway()
-        Network(
-            network_id=network_id,
-            network_name=name,
-            address=address,
-            gateway=gateway,
-            subnet_mask=submask,
-            devices=devices
-        ).save(force_insert=True)  # se obliga a realizar una inserción
+        Network(network_id=network_id, network_name=name, address=address, gateway=gateway, subnet_mask=submask,
+            devices=devices).save(force_insert=True)  # se obliga a realizar una inserción
+
+    def update_network(self, network: Network):
+        Network.objects(network.network_name).modify(upsert=True, new=True)
 
     @staticmethod
     def get_all_networks():
