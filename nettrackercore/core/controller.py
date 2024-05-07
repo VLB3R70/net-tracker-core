@@ -183,7 +183,7 @@ class NettrackerDAO:
         :param name: El nombre de la red.
         :type name: str
         :return: Se devuelve el resultado de la consulta realizada
-        :rtype: mongoengine.queryset.queryset.QuerySet
+        :rtype: Network
         """
         return Network.objects(network_name=name).first()
 

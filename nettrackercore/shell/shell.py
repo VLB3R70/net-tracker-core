@@ -6,6 +6,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 
 from nettrackercore.core.controller import NettrackerDAO
+from nettrackercore.core.dba import DBA
 from nettrackercore.core.exceptions import *
 from nettrackercore.core.results import JSONResult
 from nettrackercore.core.scanner import Scanner
@@ -189,16 +190,17 @@ class Shell:
                 console.print(self.translator.translate("unknown_option"))
 
     def dba(self):
-        dao = NettrackerDAO()
+        dba = DBA()
         while True:
-            option = Prompt.ask(DBA_PROMPT)
-            if option == "get networks":
-                networks = dao.get_all_networks()
-                
-                for network in networks:
-                    print(network.address)
-            elif option == "get network":
-                network = Prompt.ask(DBA_PROMPT)
+            option = Prompt.ask(DBA_PROMPT).split()
+            if option[0] == "exit":
+                console.print(self.translator.translate("goodbye"))
+                exit(0)
+            elif option[0] == "get":
+                if option[1] == "networks":
+                    console.print(dba.get_networks())
+                elif option[1] == "network" and option[2]:
+                    console.print(dba.get_network(option[2]))
 
     def main_menu(self):
         """
