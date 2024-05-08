@@ -110,6 +110,19 @@ class Shell:
 
         return options["OTHER"]
 
+    def __create_network(self, dao, address, netmask):
+        while True:
+            network_name = Prompt.ask(self.translator.translate("provide_network_name"))
+            try:
+                dao.new_network(name=network_name, address=address, submask=netmask)
+                break  # Salir del bucle si se guarda correctamente
+            except NotUniqueError:
+                console.print(self.translator.translate("network_not_unique").format(network_name=network_name))
+                update = Prompt.ask("¿Quieres actualizar la red actual con dicho nombre?")
+                if update.lower() == "y" or update.lower() == "s":
+                    dao.update_network(name=network_name, address=address, submask=netmask)
+                    break
+
     def save_scan(self, scan_result: JSONResult, options):
         """
         Este método se encarga de guardar el resultado del escaneo en la base de datos. Ciertos parámetros corresponden
@@ -123,19 +136,10 @@ class Shell:
         """
         dao = NettrackerDAO(scan_result)
 
-        def create_network(address, netmask):
-            while True:
-                network_name = Prompt.ask(self.translator.translate("provide_network_name"))
-                try:
-                    dao.new_network(name=network_name, address=address, submask=netmask)
-                    break  # Salir del bucle si se guarda correctamente
-                except NotUniqueError:
-                    console.print(self.translator.translate("network_not_unique").format(network_name=network_name))
-
         if "/" in options["TARGET"]:
             console.print(self.translator.translate("network_detected"))
             address, netmask = options["TARGET"].split("/")
-            create_network(address, netmask)
+            self.__create_network(dao, address, netmask)
 
     def scanner(self):
         """
@@ -156,7 +160,7 @@ class Shell:
         sc = Scanner(self.config)
         # mapeo las posibles opciones y valores predeterminados
         options = {"TARGET": "localhost", "PORT": "", "OTHER": "", "SILENT": False, "TCP": False, "UDP": False,
-                   "OS": False, "SUDO": False}
+                   "OS": True, "SUDO": True}
 
         while True:
             option = Prompt.ask(SCANNER_PROMPT)
