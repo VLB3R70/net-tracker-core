@@ -144,7 +144,7 @@ class NmapParser:
         output_format = '-oX ' + temp_file
 
         if sudo:
-            nmap_command.split()
+            nmap_command = 'sudo ' + nmap_command
 
         if targets:
             parsed_targets = NmapParser.parse_targets(targets)

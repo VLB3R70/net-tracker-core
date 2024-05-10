@@ -179,7 +179,7 @@ class Shell:
                     # with console.status(self.translator.translate("scanning"), spinner="aesthetic"):
                     params = self.build_params(options)
                     result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
-                                     sudo=options["SUDO"])
+                                     sudo=bool(options["SUDO"]))
 
                     console.print(self.translator.translate("successful_scan"))
                     save = Prompt.ask(self.translator.translate("save_scan"))
