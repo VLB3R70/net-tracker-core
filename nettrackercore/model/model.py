@@ -1,6 +1,7 @@
 import json
 
-from mongoengine import Document, StringField, ListField, EmbeddedDocument, EmbeddedDocumentField, IntField
+from mongoengine import Document, EmbeddedDocument
+from mongoengine.fields import StringField, IntField, ListField, EmbeddedDocumentField
 
 
 class Service(EmbeddedDocument):

@@ -1,4 +1,6 @@
 import ipaddress
+import os
+import shlex
 
 from nettrackercore.core.exceptions import InvalidPortsException, InvalidAddressException, IllegalArgumentException
 
@@ -112,10 +114,10 @@ class NmapParser:
 
         if any(option in params for option in invalid_params):
             raise IllegalArgumentException("The extra parameter or parameters contains an output option.")
-        return params.split()
+        return params
 
     @staticmethod
-    def create_command(targets=None, ports=None, params=None, sudo=False, temp_file=None) -> list:
+    def create_command(targets=None, ports=None, params=None, sudo=False, temp_file=None) -> list | str:
         """
         El objeto `Popen <https://docs.python.org/3/library/subprocess.html#popen-objects>`_ necesita los argumentos que
         posteriormente ejecutará en un formato de lista.
@@ -138,24 +140,27 @@ class NmapParser:
         :return: La lista del comando completo que se ejecutará con :py:mod:`subprocess`
         :rtype: list[str]
         """
-        nmap_command = ['nmap']
-        output_format = ['-oX', temp_file]
+        nmap_command = 'nmap '
+        output_format = '-oX ' + temp_file
 
         if sudo:
-            nmap_command.insert(0, 'sudo')
+            nmap_command.split()
 
         if targets:
             parsed_targets = NmapParser.parse_targets(targets)
-            nmap_command.append(parsed_targets)
+            nmap_command += parsed_targets + ' '
 
         if ports:
             parsed_ports = NmapParser.parse_ports(ports)
-            nmap_command.extend(['-p', parsed_ports])
+            nmap_command = ' '.join(map(str, parsed_ports))
 
         if params:
             parsed_params = NmapParser.parse_params(params)
-            nmap_command.extend(parsed_params)
+            nmap_command += parsed_params
 
-        nmap_command.extend(output_format)
+        nmap_command += output_format
 
-        return nmap_command
+        if os.name == 'nt':  # Compruebo si el sistema es Windows
+            return nmap_command
+        else:
+            return shlex.split(nmap_command)

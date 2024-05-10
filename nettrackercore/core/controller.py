@@ -149,8 +149,9 @@ class NettrackerDAO:
         network_id = sha256(f'{name}_{address}_{submask}'.encode()).hexdigest()
         devices = self.__build_devices()
         gateway = self.__build_gateway()
-        Network(network_id=network_id, network_name=name, address=address, gateway=gateway, subnet_mask=submask,
-                devices=devices).save(force_insert=True)  # se obliga a realizar una inserción
+        network = (
+            Network(network_id=network_id, network_name=name, address=address, gateway=gateway, subnet_mask=submask, devices=devices))
+        network.save(force_insert=True)  # se obliga a realizar una inserción
 
     def update_network(self, name: str, address: str, submask: int):
         network_id = sha256(f'{name}_{address}_{submask}'.encode()).hexdigest()
@@ -158,6 +159,7 @@ class NettrackerDAO:
         gateway = self.__build_gateway()
         network = Network.objects.get(network_id=network_id)
         network.update(network_name=name, address=address, gateway=gateway, subnet_mask=submask, devices=devices)
+
     @staticmethod
     def get_all_networks():
         """
