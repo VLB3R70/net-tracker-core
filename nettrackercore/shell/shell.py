@@ -205,6 +205,14 @@ class Shell:
                     console.print(dba.get_networks())
                 elif option[1] == "network" and option[2]:
                     console.print(dba.get_network(option[2]))
+            elif option[0] == "list":
+                if option[1] == "devices":
+                    network = Prompt.ask("Nombre de la red")
+                    console.print(dba.get_devices(network))
+                elif option[1] == "services":
+                    network = Prompt.ask("Nombre de la red")
+                    device = Prompt.ask("Dirección IP del dispositivo")
+                    console.print(dba.get_services(network, device))
 
     def main_menu(self):
         """
