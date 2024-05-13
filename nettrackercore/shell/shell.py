@@ -58,7 +58,7 @@ class Shell:
         """
         Este método es necesario para capturar la señal de teclado `Ctrl+C`
         """
-        print(self.translator.translate("goodbye"))
+        print(self.translator._("[magenta][bold]¡Adiós! 👋"))
         exit(1)
 
     def set_options(self, options, option, value):
@@ -132,13 +132,14 @@ class Shell:
         :type netmask: int
         """
         while True:
-            network_name = Prompt.ask(self.translator.translate("provide_network_name"))
+            network_name = Prompt.ask(
+                self.translator._("Por favor introduce un nombre para identificar a la red"))
             try:
                 dao.new_network(name=network_name, address=address, submask=netmask)
                 break  # Salir del bucle si se guarda correctamente
             except NotUniqueError:
-                console.print(self.translator.translate("network_not_unique").format(network_name=network_name))
-                update = Prompt.ask("¿Quieres actualizar la red actual con dicho nombre?")
+                console.print(self.translator._("La red[red] {network_name}[/red] no es única").format(network_name=network_name))
+                update = Prompt.ask(self.translator._("¿Quieres actualizar la red actual con dicho nombre?"))
                 if update.lower() == "y" or update.lower() == "s":
                     dao.update_network(name=network_name, address=address, submask=netmask)
                     break
@@ -157,7 +158,7 @@ class Shell:
         dao = NettrackerDAO(scan_result)
 
         if "/" in options["TARGET"]:
-            console.print(self.translator.translate("network_detected"))
+            console.print(self.translator._("El programa ha detectado el objetivo como una red."))
             address, netmask = options["TARGET"].split("/")
             self.__create_network(dao, address, netmask)
 
@@ -185,7 +186,7 @@ class Shell:
         while True:
             option = Prompt.ask(SCANNER_PROMPT)
             if option == "exit":
-                console.print(self.translator.translate("goodbye"))
+                console.print(self.translator._("[magenta][bold]¡Adiós! 👋"))
                 exit(0)
             elif option.startswith("set"):
                 _, key, value = option.split()
@@ -201,8 +202,8 @@ class Shell:
                     result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
                                      sudo=bool(options["SUDO"]))
 
-                    console.print(self.translator.translate("successful_scan"))
-                    save = Prompt.ask(self.translator.translate("save_scan"))
+                    console.print(self.translator._("[green]Escaneo terminado correctamente[/green]"))
+                    save = Prompt.ask(self.translator._("[blue]Guardar escaneo [S/n][/blue]"))
                     if save.lower() == "y" or save.lower() == "s":
                         self.save_scan(result, options)
                 except (ExecutionError, InvalidArgumentsException, IllegalArgumentException, InvalidAddressException,
@@ -211,7 +212,7 @@ class Shell:
             elif option == "help":
                 Helper.print_scan_help()
             else:
-                console.print(self.translator.translate("unknown_option"))
+                console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
 
     def dba(self):
         """
@@ -227,7 +228,7 @@ class Shell:
         while True:
             option = Prompt.ask(DBA_PROMPT).split()
             if option[0] == "exit":
-                console.print(self.translator.translate("goodbye"))
+                console.print(self.translator._("[magenta][bold]¡Adiós! 👋"))
                 exit(0)
             elif option[0] == "get":
                 if option[1] == "networks":
@@ -236,11 +237,11 @@ class Shell:
                     console.print(dba.get_network(option[2]))
             elif option[0] == "list":
                 if option[1] == "devices":
-                    network = Prompt.ask("Nombre de la red")
+                    network = Prompt.ask(self.translator._("Nombre de la red"))
                     console.print(dba.get_devices(network))
                 elif option[1] == "services":
-                    network = Prompt.ask("Nombre de la red")
-                    device = Prompt.ask("Dirección IP del dispositivo")
+                    network = Prompt.ask(self.translator._("Nombre de la red"))
+                    device = Prompt.ask(self.translator._("Dirección IP del dispositivo"))
                     console.print(dba.get_services(network, device))
 
     def main_menu(self):
@@ -259,4 +260,4 @@ class Shell:
             elif option == "exit":
                 exit(0)
             else:
-                print("Opción inválida. Pruebe otra vez")
+                print(self.translator._("Opción inválida. Pruebe otra vez"))

@@ -99,7 +99,7 @@ class Translator:
                                                 languages=[self.config.data['lang']])
         self.translations.install()
 
-    def translate(self, string):
+    def _(self, string):
         """
         Este método devuelve la traducción del mensaje pasado como parámetro.
         :param string: Identificador del mensaje que debe ser traducido.
