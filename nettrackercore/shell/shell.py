@@ -215,6 +215,7 @@ class Shell:
                 except (ExecutionError, InvalidArgumentsException, IllegalArgumentException, InvalidAddressException,
                         InvalidPortsException) as e:
                     console.print(f"[red]{e}[/red]")
+                    console.print(f"[red]{e.message}[/red]")
             elif option == "help":
                 Helper.print_scan_help()
             elif option == "dba":
@@ -235,24 +236,33 @@ class Shell:
         dba = DBA()
         while True:
             option = Prompt.ask(DBA_PROMPT).split()
-            if option[0] == "exit":
+            command = option[0]
+            if command == "exit":
                 console.print(self.translator._("[magenta][bold]¡Adiós! 👋"))
                 exit(0)
-            elif option[0] == "get":
-                if option[1] == "networks":
+            elif command == "get":
+                if len(option) == 2 and option[1] == "networks":
                     console.print(dba.get_networks())
-                elif option[1] == "network" and option[2]:
+                elif len(option) == 3 and option[1] == "network":
                     console.print(dba.get_network(option[2]))
-            elif option[0] == "list":
-                if option[1] == "devices":
-                    network = Prompt.ask(self.translator._("Nombre de la red"))
-                    console.print(dba.get_devices(network))
-                elif option[1] == "services":
+                else:
+                    console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
+            elif command == "list":
+                if len(option) == 3:
+                    if option[1] == "devices":
+                        console.print(dba.get_devices(option[2]))
+                    else:
+                        console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
+                elif len(option) == 2 and option[1] == "services":
                     network = Prompt.ask(self.translator._("Nombre de la red"))
                     device = Prompt.ask(self.translator._("Dirección IP del dispositivo"))
                     console.print(dba.get_services(network, device))
-            elif option == "scanner":
+                else:
+                    console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
+            elif command == "scanner":
                 self.scanner()
+            elif command == "help":
+                Helper.print_dba_help()
             else:
                 console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
 
