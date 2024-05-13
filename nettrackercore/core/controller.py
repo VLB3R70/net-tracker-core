@@ -154,6 +154,11 @@ class NettrackerDAO:
         network.save(force_insert=True)  # se obliga a realizar una inserción
 
     def update_network(self, name: str, address: str, submask: int):
+        """
+        Este método se encarga de actualizar los valores de la base de datos a los últimos obtenidos en el escaneo. La
+        operación de actualización es atómica por lo que se actualizará todo el documento y sus valores.  De esta forma
+        siempre nos aseguramos de tener la información más actualizada posible.
+        """
         network_id = sha256(f'{name}_{address}_{submask}'.encode()).hexdigest()
         devices = self.__build_devices()
         gateway = self.__build_gateway()
@@ -165,7 +170,7 @@ class NettrackerDAO:
         """
         Este método realiza una consulta a la base de datos para obtener el id y el nombre de todas las redes.
         :return: Se devuelve el resultado de la consulta realizada
-        :rtype: mongoengine.queryset.queryset.QuerySet
+        :rtype: :py:class:`~mongoengine.queryset.queryset.QuerySet`
         """
         return Network.objects.all()
 
@@ -187,7 +192,7 @@ class NettrackerDAO:
         :param network_name: El nombre de la red.
         :type network_name: str
         :return: Se devuelve el resultado de la consulta realizada. Si no existen disopsitivos se devuelve una lista vacía
-        :rtype: mongoengine.base.datastructures.BaseList | list
+        :rtype: :py:class:`~mongoengine.base.datastructures.BaseList` | list
         """
         network = Network.objects(network_name=network_name).first()
         return network.devices if network else []

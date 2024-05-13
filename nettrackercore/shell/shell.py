@@ -36,6 +36,11 @@ class Shell:
 
         Use Rich to make your command line applications visually appealing and present data in a more readable way. Rich can
         also be a useful debugging aid by pretty printing and syntax highlighting data structures.
+
+    Los objetos que pueden usarse son un escáner(scanner) y un administrador de base de datos(dba). Con el escáner se
+    pueden realizar escaneos de la red o equipos concretos para posteriormente almacenarlos en la base de datos.
+    El objeto dba es el encargado de realizar consultas a la base de datos y mostrar al usuario los resultados de forma
+    comprensible.
     """
 
     LOGO = """[magenta] _  _  ___  _____        _____  ___  ___   ___  _  __ ___  ___ 
@@ -111,6 +116,21 @@ class Shell:
         return options["OTHER"]
 
     def __create_network(self, dao, address, netmask):
+        """
+        Este método es uno complementario que solo se usa durante la creación de una nueva red. Si el usuario decide
+        almacenar los resultados en la base de datos se hace una llamada a esta función.
+
+        Primero se pregunta al usuario por un nombre para la red escaneada y posteriormente se llama al objeto DAO para
+        que realize la inserción. Si la red existe en la base de datos se pregunta al usuario si quiere actualizar el
+        registro.
+
+        :param dao: es el Objeto de Acceso a Datos
+        :param address: es la dirección IP de la red a crear
+        :param netmask: es la dirección de la submáscara de red en formato CIDR
+        :type dao: :py:class:`nettrackercore.core.controller.NettrackerDAO`
+        :type address: str
+        :type netmask: int
+        """
         while True:
             network_name = Prompt.ask(self.translator.translate("provide_network_name"))
             try:
@@ -194,6 +214,15 @@ class Shell:
                 console.print(self.translator.translate("unknown_option"))
 
     def dba(self):
+        """
+        Este método hace uso del objeto `~nettrackercore.core.dba.DBA` para realizar consultas a la base de datos y
+        devolver el resultado al usuario en forma de tabla. Los comandos que se deben lanzar tienen una sintaxis propia,
+        ya que no se puede usar el lenguaje SQL para realizar consultas a la base de datos.
+
+        Desde la `shell` solo podemos realizar dos acciones: **obtener** y **listar**. Solo es posible obtener o todas
+        las redes de la base de datos o solo una red en función de su nombre. Se pueden listar solo los dispositivos
+        dentro de una red por su nombre y los servicios de un dispositivo dentro de una red.
+        """
         dba = DBA()
         while True:
             option = Prompt.ask(DBA_PROMPT).split()

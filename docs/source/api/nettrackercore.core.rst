@@ -1,8 +1,24 @@
 Paquete nettrackercore.core
 ===========================
 
-Submódulo
+Submódulos
 ----------
+
+Módulo nettrackercore.core.controller
+-------------------------------------
+
+.. automodule:: nettrackercore.core.controller
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Módulo nettrackercore.core.dba
+------------------------------
+
+.. automodule:: nettrackercore.core.dba
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 Módulo nettrackercore.core.exceptions
 -------------------------------------

@@ -10,6 +10,9 @@ class Configuration:
 
     Se establecen tres constantes que determinan el directorio principal donde se almacena el fichero de configuración,
     el directorio de las traducciones y la ruta del propio fichero de configuración.
+
+    Se ha creado el objeto mediante el patrón de diseño Singleton para así tener instanciado solo un objeto durante toda
+    la vida del programa.
     """
     _instance = None
 
@@ -75,6 +78,9 @@ class Translator:
     idioma en el contexto de la aplicación usando el módulo
     `gettext <https://docs.python.org/3/library/gettext.html#module-gettext>`_. Una vez instalado el idioma simplemente
     se debe de hacer una llamada al método :py:func:`~nettrackercore.translator.translate`.
+
+    Este objeto se crea mediante el patrón de diseño Singleton para así asegurar que solo existe un objeto durante toda
+    la vida del programa.
     """
     _instance = None
 

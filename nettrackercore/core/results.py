@@ -47,6 +47,15 @@ class JSONResult(dict):
         return self.get('host')
 
     def get_hostname(self, host):
+        """
+        Este método obtiene el nombre del host
+
+        :param host: el valor que corresponde a `host`.
+        :type host: dict
+
+        :return: el valor que corresponde a `hostname`.
+        :rtype: str
+        """
         try:
             hostname = host['hostnames']['hostname']
             return hostname['@name']

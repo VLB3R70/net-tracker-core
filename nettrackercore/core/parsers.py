@@ -126,6 +126,10 @@ class NmapParser:
         usuario. Además, el resultado de la ejecución se debe de almacenar en un fichero XML por lo que de forma
         predeterminada se establece el parámetro `-oX`.
 
+        Es posible que el programa se use desde un sistema operativo Windows, en ese caso, el comando que devolverá será
+        una cadena de caracteres completa. Si el programa se ejecuta desde un sistema UNIX/Linux el comando se convertirá
+        en una lista con los argumentos necesarios.
+
         :param targets: Direcciones IP introducidas por el usuario.
         :type targets: str
         :param ports: Son los puertos introducidos por el usuario.
@@ -137,7 +141,7 @@ class NmapParser:
         :param temp_file: Ruta absoluta del fichero temporal donde se almacenará el resultado en formato XML.
         :type temp_file: str
 
-        :return: La lista del comando completo que se ejecutará con :py:mod:`subprocess`
+        :return: La lista del comando completo que se ejecutará con :py:mod:`subprocess` o una cadena de caracteres
         :rtype: list[str]
         """
         nmap_command = 'nmap '
