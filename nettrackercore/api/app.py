@@ -4,7 +4,10 @@ from mongoengine import DoesNotExist
 
 from nettrackercore.core.controller import NettrackerDAO
 
+db = MongoEngine()
 app = Flask(__name__)
+app.config['MONGODB_SETTINGS'] = {'db': 'nettracker-test', 'host': 'localhost', 'port': 27017, }
+db.init_app(app)
 
 
 @app.route('/')
@@ -49,6 +52,4 @@ def get_device_from_address(network_name, address):
 
 
 if __name__ == '__main__':
-    app.config['MONGODB_SETTINGS'] = {'db': 'nettracker-test', 'host': 'localhost', 'port': 27017, }
-    db = MongoEngine(app)
-    app.run(host='0.0.0.0', debug=False)
+    app.run()
