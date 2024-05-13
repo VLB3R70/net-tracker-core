@@ -57,9 +57,11 @@ class Configuration:
         else:
             self.CONFIG_FILE.touch()
             data = {'lang': lang, 'locales_dir': str(self.LOCALES_DIR), 'log_dir': str(self.MAIN_DIR.joinpath('logs')),
-                    'temp_dir': str(self.MAIN_DIR.joinpath('temp'))}
+                    'temp_dir': str(self.MAIN_DIR.joinpath('temp')), 'db': 'nettracker', 'db_host': 'localhost',
+                    'db_port': 27017}
             with open(self.CONFIG_FILE, 'w') as f:
-                return json.dump(data, f)
+                json.dump(data, f, indent=4)
+            return data
 
     def create_directories(self):
         """
@@ -90,11 +92,11 @@ class Translator:
             cls._instance._initialized = False
         return cls._instance
 
-    def __init__(self, config: Configuration):
+    def __init__(self):
         if self._initialized:
             return
         self._initialized = True
-        self.config = config
+        self.config = Configuration()
         self.translations = gettext.translation('messages', localedir=self.config.data["locales_dir"],
                                                 languages=[self.config.data['lang']])
         self.translations.install()

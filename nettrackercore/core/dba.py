@@ -4,7 +4,7 @@ from nettrackercore.config import Translator, Configuration
 from nettrackercore.core.controller import NettrackerDAO
 
 config = Configuration()
-translator = Translator(config)
+translator = Translator()
 
 
 class DBA:

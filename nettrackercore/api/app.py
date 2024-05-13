@@ -2,11 +2,14 @@ from flask import Flask, jsonify, redirect
 from flask_mongoengine import MongoEngine
 from mongoengine import DoesNotExist
 
+from nettrackercore.config import Configuration
 from nettrackercore.core.controller import NettrackerDAO
+
+config = Configuration()
 
 db = MongoEngine()
 app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {'db': 'nettracker-test', 'host': 'localhost', 'port': 27017, }
+app.config['MONGODB_SETTINGS'] = {'db': config.data['db'], 'host': config.data['db_host'], 'port': config.data['db_port'], }
 db.init_app(app)
 
 

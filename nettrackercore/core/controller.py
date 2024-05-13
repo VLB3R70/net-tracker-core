@@ -2,8 +2,11 @@ from hashlib import sha256
 
 from mongoengine import connect, DoesNotExist
 
+from nettrackercore.config import Configuration
 from nettrackercore.core.results import JSONResult
 from nettrackercore.model.model import Device, Service, Network
+
+config = Configuration()
 
 
 class NettrackerDAO:
@@ -19,7 +22,7 @@ class NettrackerDAO:
 
     def __init__(self, json_data: JSONResult = None):
         self.data = json_data
-        connect("nettracker-test")
+        connect(config.data['db'])
 
     def __build_services(self, host):
         """
@@ -129,6 +132,8 @@ class NettrackerDAO:
         for device in devices:
             if 'gateway' in device.device_name:
                 return device
+            elif device.address == '192.168.1.1':
+                return device
         return ''
 
     def new_network(self, name: str, address: str, submask: int):
@@ -150,7 +155,8 @@ class NettrackerDAO:
         devices = self.__build_devices()
         gateway = self.__build_gateway()
         network = (
-            Network(network_id=network_id, network_name=name, address=address, gateway=gateway, subnet_mask=submask, devices=devices))
+            Network(network_id=network_id, network_name=name, address=address, gateway=gateway, subnet_mask=submask,
+                    devices=devices))
         network.save(force_insert=True)  # se obliga a realizar una inserción
 
     def update_network(self, name: str, address: str, submask: int):

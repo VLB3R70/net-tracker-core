@@ -4,7 +4,7 @@ from rich.markdown import Markdown
 from nettrackercore.config import Translator, Configuration
 
 config = Configuration()
-translator = Translator(config)
+translator = Translator()
 
 class Helper:
     @staticmethod

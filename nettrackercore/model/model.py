@@ -1,7 +1,6 @@
 import json
 
-from mongoengine import Document, EmbeddedDocument
-from mongoengine.fields import StringField, IntField, ListField, EmbeddedDocumentField
+from mongoengine import Document, EmbeddedDocument, StringField, IntField, ListField, EmbeddedDocumentField
 
 
 class Service(EmbeddedDocument):
@@ -30,7 +29,7 @@ class Network(Document):
     address = StringField(required=True)
     gateway = EmbeddedDocumentField(Device, required=True)
     subnet_mask = IntField(required=True)
-    devices = ListField(EmbeddedDocumentField(Device), required=True)
+    devices = ListField(EmbeddedDocumentField(Device))
 
     def to_json(self):
         return json.dumps(self.to_mongo(), indent=4)
