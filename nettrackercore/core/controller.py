@@ -165,6 +165,12 @@ class NettrackerDAO:
         network = Network.objects.get(network_id=network_id)
         network.update(network_name=name, address=address, gateway=gateway, subnet_mask=submask, devices=devices)
 
+    def insert_device(self, network_name):
+        new_device = self.__build_device_from_host(self.data.get_host())
+        network = Network.objects(network_name=network_name).first()
+        network.devices.append(new_device)
+        network.save()
+
     @staticmethod
     def get_all_networks():
         """

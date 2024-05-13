@@ -51,4 +51,4 @@ def get_device_from_address(network_name, address):
 if __name__ == '__main__':
     app.config['MONGODB_SETTINGS'] = {'db': 'nettracker-test', 'host': 'localhost', 'port': 27017, }
     db = MongoEngine(app)
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=False)

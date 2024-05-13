@@ -132,13 +132,13 @@ class Shell:
         :type netmask: int
         """
         while True:
-            network_name = Prompt.ask(
-                self.translator._("Por favor introduce un nombre para identificar a la red"))
+            network_name = Prompt.ask(self.translator._("Por favor introduce un nombre para identificar a la red"))
             try:
                 dao.new_network(name=network_name, address=address, submask=netmask)
                 break  # Salir del bucle si se guarda correctamente
             except NotUniqueError:
-                console.print(self.translator._("La red[red] {network_name}[/red] no es única").format(network_name=network_name))
+                console.print(
+                    self.translator._("La red[red] {network_name}[/red] no es única").format(network_name=network_name))
                 update = Prompt.ask(self.translator._("¿Quieres actualizar la red actual con dicho nombre?"))
                 if update.lower() == "y" or update.lower() == "s":
                     dao.update_network(name=network_name, address=address, submask=netmask)
@@ -161,6 +161,10 @@ class Shell:
             console.print(self.translator._("El programa ha detectado el objetivo como una red."))
             address, netmask = options["TARGET"].split("/")
             self.__create_network(dao, address, netmask)
+        else:
+            console.print(self.translator._("El dispositivo o dispositivos deben perteneceer a una red."))
+            network = Prompt.ask(self.translator._("Introduce el nombre de una red conocida"))
+            dao.insert_device(network_name=network)
 
     def scanner(self):
         """
@@ -189,15 +193,17 @@ class Shell:
                 console.print(self.translator._("[magenta][bold]¡Adiós! 👋"))
                 exit(0)
             elif option.startswith("set"):
-                _, key, value = option.split()
-                if key.upper() in options.keys():
-                    self.set_options(options, key.upper(), value)
+                typed = option.split()
+                option_name = typed[1].upper()
+
+                if option_name in options:
+                    values = ' '.join(typed[2:])
+                    self.set_options(options, option_name, values)
             elif option.startswith("get"):
                 option = option.split()
                 self.get_options(options, option[1])
             elif option == "scan":
                 try:
-                    # with console.status(self.translator.translate("scanning"), spinner="aesthetic"):
                     params = self.build_params(options)
                     result = sc.scan(targets=options["TARGET"], ports=options["PORT"], params=params,
                                      sudo=bool(options["SUDO"]))
@@ -211,6 +217,8 @@ class Shell:
                     console.print(f"[red]{e}[/red]")
             elif option == "help":
                 Helper.print_scan_help()
+            elif option == "dba":
+                self.dba()
             else:
                 console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
 
@@ -243,6 +251,10 @@ class Shell:
                     network = Prompt.ask(self.translator._("Nombre de la red"))
                     device = Prompt.ask(self.translator._("Dirección IP del dispositivo"))
                     console.print(dba.get_services(network, device))
+            elif option == "scanner":
+                self.scanner()
+            else:
+                console.print(self.translator._("[yellow]Opción desconocida[/yellow]"))
 
     def main_menu(self):
         """

@@ -22,7 +22,9 @@ class NmapParser:
         :rtype: bool
         """
         try:
-            ipaddress.ip_address(address)
+            addresses = address.split()
+            for address in addresses:
+                ipaddress.ip_address(address)
             return True
         except ValueError:  # Si no es una dirección IP válida se lanza el error
             try:
