@@ -7,8 +7,18 @@ config = Configuration()
 translator = Translator()
 
 class Helper:
+    """
+    La clase **Helper** se encarga de añadir funciones para mostrar las ayudas de los comandos disponibles en la
+    terminal. Usando :py:class:`rich.markdown.Markdown` se pueden mostrar las ayudas en formato
+    `Markdown <https://www.markdownguide.org/getting-started/>`_ para que las ayudas sean más legibles.
+    """
     @staticmethod
     def print_main_help():
+        """
+        Este método muestra la ayuda principal del programa en formato Markdown. A esta ayuda se accede en el principio
+        del programa. Esta ayuda muestra los 3 comandos principales: **scanner** para acceder al escáner, **dba** para
+        acceder al administrador de base de datos y **help** para mostrar el propio mensaje de ayuda.
+        """
         prompt = translator._("""
 # Comandos de uso
         
@@ -21,6 +31,12 @@ class Helper:
 
     @staticmethod
     def print_scan_help():
+        """
+        Este método muestra la ayuda sobre el escáner en formato Markdown. A esta ayuda se accede desde el escáner y
+        muestra los comandos posibles. Los comandos posibles son: **set** para establecer el valor de una opción, **get**
+        para obtener los valores de una opción, **scan** para realizar el escaneo con las opciones asignadas y **help**
+        para mostrar el mensaje de ayuda.
+        """
         prompt = translator._("""
 # Comandos de uso
 - **help** - Muestra este mensaje de ayuda
@@ -54,6 +70,10 @@ dos dispositivos
 
     @staticmethod
     def print_dba_help():
+        """
+        Este método muestra la ayuda sobre el DBA en formato Markdown. A esta ayuda se accede desde el objeto **DBA** y
+        muestra los comandos posibles del objeto.
+        """
         prompt = translator._(
             """
 ## Comandos de uso

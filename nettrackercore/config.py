@@ -11,8 +11,8 @@ class Configuration:
     Se establecen tres constantes que determinan el directorio principal donde se almacena el fichero de configuración,
     el directorio de las traducciones y la ruta del propio fichero de configuración.
 
-    Se ha creado el objeto mediante el patrón de diseño Singleton para así tener instanciado solo un objeto durante toda
-    la vida del programa.
+    Se ha creado el objeto mediante el patrón de diseño Singleton para así tener una sola instancia del objeto durante
+    toda la vida del programa.
     """
     _instance = None
 

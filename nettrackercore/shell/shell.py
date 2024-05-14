@@ -29,7 +29,7 @@ class Shell:
     El usuario puede elegir varios objetos ofrecidos por el núcleo y debe de establecer los parámetros necesarios para
     ejecutar los comandos correspondientes. El diseño de la terminal está implementado con
     `rich <https://rich.readthedocs.io/en/stable/index.html>`_, un paquete escrito en Python que ayuda escribir y mostrar
-    texto más complejo por la terminal de comandos de una forma más bonita.
+    texto más complejo por la terminal de comandos de una forma más bonita.::
 
         Rich is a Python library for writing rich text (with color and style) to the terminal, and for displaying advanced
         content such as tables, markdown, and syntax highlighted code.

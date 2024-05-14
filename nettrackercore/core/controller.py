@@ -203,7 +203,7 @@ class NettrackerDAO:
         Este método obtiene todos los dispositivos dentro de una red específica.
         :param network_name: El nombre de la red.
         :type network_name: str
-        :return: Se devuelve el resultado de la consulta realizada. Si no existen disopsitivos se devuelve una lista vacía
+        :return: Se devuelve el resultado de la consulta realizada. Si no existen dispositivos se devuelve una lista vacía
         :rtype: :py:class:`~mongoengine.base.datastructures.BaseList` | list
         """
         network = Network.objects(network_name=network_name).first()

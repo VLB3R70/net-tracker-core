@@ -3,6 +3,7 @@ import os
 import subprocess
 from pathlib import Path
 
+import rich
 import xmltodict
 
 from nettrackercore.core.exceptions import ExecutionError
