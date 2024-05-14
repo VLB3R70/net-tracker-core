@@ -149,7 +149,7 @@ class NmapParser:
         nmap_command = 'nmap '
         output_format = '-oX ' + temp_file
 
-        if sudo:
+        if sudo and not os.name == 'nt':
             nmap_command = 'sudo ' + nmap_command
 
         if targets:
