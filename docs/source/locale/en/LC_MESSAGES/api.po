@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: net-tracker-core \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 09:35+0200\n"
+"POT-Creation-Date: 2024-05-23 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -19,11 +19,6 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
-
-#: ../../source/api/modules.rst:2
-#, fuzzy
-msgid "nettrackercore"
-msgstr "nettrackercore.api package"
 
 #: ../../source/api/nettrackercore.rst:2
 #, fuzzy
@@ -1371,4 +1366,7 @@ msgstr "It is the value that will be set to the option."
 #~ "debugging aid by pretty printing and "
 #~ "syntax highlighting data structures."
 #~ msgstr ""
+
+#~ msgid "nettrackercore"
+#~ msgstr "nettrackercore.api package"
 

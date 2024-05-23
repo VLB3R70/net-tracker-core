@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: net-tracker-core \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-23 11:55+0200\n"
+"POT-Creation-Date: 2024-05-23 13:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -82,7 +82,8 @@ msgid ""
 "<https://github.com/microsoft/terminal/releases>`_."
 msgstr ""
 "The application works on both Linux and Windows. For Windows, it is "
-"recommended to use the new `Windows Terminal <https://github.com/microsoft/terminal/releases>`_."
+"recommended to use the new `Windows Terminal "
+"<https://github.com/microsoft/terminal/releases>`_."
 
 #: ../../source/introduction.rst:25
 msgid ""
@@ -90,35 +91,50 @@ msgid ""
 "funcionado correctamente se pueden experimentar fallos en la conexión con"
 " la base de datos o a la hora de desplegar la API REST."
 msgstr ""
-"Although tests have been conducted in Windows environments and the application "
-"has worked correctly, issues may be experienced with the database connection "
-"or when deploying the REST API."
+"Although tests have been conducted in Windows environments and the "
+"application has worked correctly, issues may be experienced with the "
+"database connection or when deploying the REST API."
 
 #: ../../source/introduction.rst:29
+msgid "Contribuciones"
+msgstr "Contributions"
+
+#: ../../source/introduction.rst:31
+msgid ""
+"Debido a que la aplicación está en construcción y todavía no es estable "
+"ni contiene todas las funcionalidades pensadas, todas las contribuciones "
+"y ayuda posible será bienvenida. El código fuente está disponible en "
+"`Github <https://github.com/VLB3R70/net-tracker-core>`_."
+msgstr ""
+"Since the application is under construction and is not yet stable or fully "
+"functional, all contributions and assistance are welcome. The source code is "
+"available on `GitHub <https://github.com/VLB3R70/net-tracker-core>`_."
+
+#: ../../source/introduction.rst:35
 msgid "Enlaces de interés"
 msgstr "Interesting links"
 
-#: ../../source/introduction.rst:32
+#: ../../source/introduction.rst:37
 msgid ":doc:`installation`"
 msgstr ""
 
-#: ../../source/introduction.rst:32
+#: ../../source/introduction.rst:38
 msgid "Manual sobre la instalación de la aplicación."
 msgstr "Manual on application installation"
 
-#: ../../source/introduction.rst:35
+#: ../../source/introduction.rst:40
 msgid ":doc:`guide`"
 msgstr ""
 
-#: ../../source/introduction.rst:35
+#: ../../source/introduction.rst:41
 msgid "Manual de usuario para aprender el funcionamiento básico de la aplicación."
 msgstr "User Manual to learn the basic functionality of the application."
 
-#: ../../source/introduction.rst:37
+#: ../../source/introduction.rst:43
 msgid ":doc:`api/nettrackercore`"
 msgstr ""
 
-#: ../../source/introduction.rst:38
+#: ../../source/introduction.rst:44
 #, fuzzy
 msgid ""
 "Documentación técnica sobre la aplicación en profundidad. Explicación de "

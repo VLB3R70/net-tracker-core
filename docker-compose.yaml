@@ -1,5 +1,14 @@
 services:
+  nettracker-db:
+    container_name: net-tracker-db
+    image: mongo
+    ports:
+      - "27017:27017"
+    network_mode: host
+    profiles: [db]
+
   nettracker-api:
+    container_name: net-tracker-api
     build: .
     ports:
       - "5000:5000"
