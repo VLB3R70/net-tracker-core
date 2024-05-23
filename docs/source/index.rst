@@ -6,7 +6,14 @@
 ¡Bienvenid@ a la documentación de Net-Tracker!
 ========================================================
 
-:doc:`api/nettrackercore`
+.. toctree::
+   :maxdepth: 2
+   :caption: Contenido:
+
+   introduction.rst
+   installation.rst
+   guide.rst
+   api/nettrackercore.rst
 
 Índices y tablas
 ==================

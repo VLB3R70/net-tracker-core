@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-23 11:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: ../../source/introduction.rst:2
+msgid "Introducción"
+msgstr "Introduction"
+
+#: ../../source/introduction.rst:4
+msgid ""
+"**Net-Tracker** es una aplicación que busca ayudar a los administradores "
+"de sistemas informáticos monitorizar redes haciendo uso de distintas "
+"herramientas existentes. La herramienta principal que se usa para esta "
+"monitorización es `Nmap <https://nmap.org/>`_. Con **Nmap** se realizan "
+"escaneos sobre una red con los valores que el usuario introduzca y estos "
+"valores deben ser aceptados por **Nmap**."
+msgstr ""
+"**Net-Tracker** is an application that aims to help IT administrators "
+"monitor networks by using various existing tools. The main tool used for "
+"this monitoring is `Nmap <https://nmap.org/>`_. With **Nmap**, scans are "
+"performed on a network with the values that the user inputs, and these "
+"values must be accepted by Nmap."
+
+#: ../../source/introduction.rst:9
+msgid ""
+"Posteriormente, la información obtenida se manipula y almacena en una "
+"base de datos `MongoDB <https://www.mongodb.com>`_ a la que el usuario "
+"puede consultar si es necesario."
+msgstr ""
+"Subsequently, the obtained information is processed and stored in a "
+"`MongoDB <https://www.mongodb.com>`_ database, which the user can query "
+"if needed."
+
+#: ../../source/introduction.rst:12
+msgid ""
+"Todo esto junto a una **API REST** desarrollada con `Flask "
+"<https://flask.palletsprojects.com/en/3.0.x/>`_ hace posible que la "
+"aplicación sea accesible desde un terminal móvil. Para ver más sobre ese "
+"proyecto basta con visitar su página en GitHub (`Net-Tracker-App "
+"<https://github.com/VLB3R70/net-tracker-app>`_)."
+msgstr ""
+"All this, along with a **REST API** developed with `Flask "
+"<https://flask.palletsprojects.com/en/3.0.x/>`_, makes it possible for "
+"the application to be accessible from a mobile device. For more "
+"information about this project, simply visit its GitHub page (`Net-"
+"Tracker-App <https://github.com/VLB3R70/net-tracker-app>`_)."
+
+#: ../../source/introduction.rst:17
+msgid "Requisitos"
+msgstr "Requirements"
+
+#: ../../source/introduction.rst:19
+msgid "Python 3.7 o superior (Última versión recomendada)"
+msgstr "Python 3.7 or above (Last version recommended)"
+
+#: ../../source/introduction.rst:20
+msgid "MongoDB 7.0 o superior"
+msgstr "MongoDB 7.0 or above"
+
+#: ../../source/introduction.rst:22
+msgid ""
+"La aplicación funciona tanto en Linux como en Windows. Para Windows se "
+"recomienda el uso de la nueva terminal `Windows Terminal "
+"<https://github.com/microsoft/terminal/releases>`_."
+msgstr ""
+"The application works on both Linux and Windows. For Windows, it is "
+"recommended to use the new `Windows Terminal <https://github.com/microsoft/terminal/releases>`_."
+
+#: ../../source/introduction.rst:25
+msgid ""
+"Aunque se han realizado pruebas en entornos Windows y la aplicación ha "
+"funcionado correctamente se pueden experimentar fallos en la conexión con"
+" la base de datos o a la hora de desplegar la API REST."
+msgstr ""
+"Although tests have been conducted in Windows environments and the application "
+"has worked correctly, issues may be experienced with the database connection "
+"or when deploying the REST API."
+
+#: ../../source/introduction.rst:29
+msgid "Enlaces de interés"
+msgstr "Interesting links"
+
+#: ../../source/introduction.rst:32
+msgid ":doc:`installation`"
+msgstr ""
+
+#: ../../source/introduction.rst:32
+msgid "Manual sobre la instalación de la aplicación."
+msgstr "Manual on application installation"
+
+#: ../../source/introduction.rst:35
+msgid ":doc:`guide`"
+msgstr ""
+
+#: ../../source/introduction.rst:35
+msgid "Manual de usuario para aprender el funcionamiento básico de la aplicación."
+msgstr "User Manual to learn the basic functionality of the application."
+
+#: ../../source/introduction.rst:37
+msgid ":doc:`api/nettrackercore`"
+msgstr ""
+
+#: ../../source/introduction.rst:38
+#, fuzzy
+msgid ""
+"Documentación técnica sobre la aplicación en profundidad. Explicación de "
+"clases, objetos y herramientas utilizadas."
+msgstr ""
+"Technical documentation about the application in depth. Explanation of "
+"classes, objects, and tools used."
+
+#~ msgid "Python 3.7 o superior"
+#~ msgstr "Python 3.7 or above"
+

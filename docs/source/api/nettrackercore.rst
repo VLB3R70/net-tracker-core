@@ -1,4 +1,4 @@
-Documentación de la API
+Referencia de la API
 =======================
 
 Paquetes

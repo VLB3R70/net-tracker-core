@@ -20,30 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/index.rst:9
-msgid "Contenido:"
-msgstr "Content:"
-
-#: ../../source/index.rst:7
-msgid "¡Bienvenid@ a la documentación de Net-Tracker!"
-msgstr "Welcome to the Net-Tracker documentation!"
-
-#: ../../source/index.rst:19
-msgid "Índices y tablas"
-msgstr "Tables and indexes"
-
-#: ../../source/index.rst:21
-msgid ":ref:`genindex`"
-msgstr ""
-
-#: ../../source/index.rst:22
-msgid ":ref:`modindex`"
-msgstr ""
-
-#: ../../source/index.rst:23
-msgid ":ref:`search`"
-msgstr ""
-
-#~ msgid ":doc:`api/nettrackercore`"
-#~ msgstr ""
+#: ../../source/guide.rst:2
+msgid "Guía de usuario"
+msgstr "User guide"
 
