@@ -1,5 +1,7 @@
 import gettext
 import json
+import os
+import subprocess
 from pathlib import Path
 
 
@@ -97,9 +99,19 @@ class Translator:
             return
         self._initialized = True
         self.config = Configuration()
-        self.translations = gettext.translation('messages', localedir=self.config.data["locales_dir"],
+        self.install_translations()
+        self.translations = gettext.translation('messages', localedir=self.config.LOCALES_DIR,
                                                 languages=[self.config.data['lang']])
         self.translations.install()
+
+    def install_translations(self):
+        locales_dir = self.config.LOCALES_DIR
+        lang = self.config.data["lang"]
+        command = f"msgfmt {locales_dir}/{lang}/LC_MESSAGES/messages.po --output-file {locales_dir}/{lang}/LC_MESSAGES/messages.mo"
+        if os.name == 'nt':
+            subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        else:
+            subprocess.Popen(command.split(' '), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def _(self, string):
         """
