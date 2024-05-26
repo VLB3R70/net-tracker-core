@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Paquete nettrackercore.shell &#8212; documentación de net-tracker-core - </title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/translations.js?v=efdbd0b9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/nettrackercore.shell';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Paquete nettrackercore.api" href="nettrackercore.api.html" />
+    <link rel="prev" title="Paquete nettrackercore.model" href="nettrackercore.model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">documentación de net-tracker-core - </p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide.html">Guía de usuario</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="nettrackercore.html">Referencia de la API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.core.html">Paquete nettrackercore.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.model.html">Paquete nettrackercore.model</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Paquete nettrackercore.shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.api.html">Paquete nettrackercore.api</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/nettrackercore.shell.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Paquete nettrackercore.shell</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodulos">Submódulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell.helpers">Módulo nettrackercore.shell.helpers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper"><code class="docutils literal notranslate"><span class="pre">Helper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_dba_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_dba_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_main_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_main_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_scan_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_scan_help()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell.shell">Módulo nettrackercore.shell.shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell"><code class="docutils literal notranslate"><span class="pre">Shell</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.LOGO"><code class="docutils literal notranslate"><span class="pre">Shell.LOGO</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.build_params"><code class="docutils literal notranslate"><span class="pre">Shell.build_params()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.dba"><code class="docutils literal notranslate"><span class="pre">Shell.dba()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.get_options"><code class="docutils literal notranslate"><span class="pre">Shell.get_options()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.handler"><code class="docutils literal notranslate"><span class="pre">Shell.handler()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.main_menu"><code class="docutils literal notranslate"><span class="pre">Shell.main_menu()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.save_scan"><code class="docutils literal notranslate"><span class="pre">Shell.save_scan()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.scanner"><code class="docutils literal notranslate"><span class="pre">Shell.scanner()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.set_options"><code class="docutils literal notranslate"><span class="pre">Shell.set_options()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell">Contenido de los módulos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="paquete-nettrackercore-shell">
+<h1>Paquete nettrackercore.shell<a class="headerlink" href="#paquete-nettrackercore-shell" title="Link to this heading"><span>#</span></a></h1>
+<section id="submodulos">
+<h2>Submódulos<a class="headerlink" href="#submodulos" title="Link to this heading"><span>#</span></a></h2>
+</section>
+<section id="module-nettrackercore.shell.helpers">
+<span id="modulo-nettrackercore-shell-helpers"></span><h2>Módulo nettrackercore.shell.helpers<a class="headerlink" href="#module-nettrackercore.shell.helpers" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.shell.helpers.Helper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.shell.helpers.</span></span><span class="sig-name descname"><span class="pre">Helper</span></span><a class="reference internal" href="../_modules/nettrackercore/shell/helpers.html#Helper"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.helpers.Helper" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>La clase <strong>Helper</strong> se encarga de añadir funciones para mostrar las ayudas de los comandos disponibles en la
+terminal. Usando <code class="xref py py-class docutils literal notranslate"><span class="pre">rich.markdown.Markdown</span></code> se pueden mostrar las ayudas en formato
+<a class="reference external" href="https://www.markdownguide.org/getting-started/">Markdown</a> para que las ayudas sean más legibles.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.helpers.Helper.print_dba_help">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_dba_help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/helpers.html#Helper.print_dba_help"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.helpers.Helper.print_dba_help" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método muestra la ayuda sobre el DBA en formato Markdown. A esta ayuda se accede desde el objeto <strong>DBA</strong> y
+muestra los comandos posibles del objeto.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.helpers.Helper.print_main_help">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_main_help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/helpers.html#Helper.print_main_help"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.helpers.Helper.print_main_help" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método muestra la ayuda principal del programa en formato Markdown. A esta ayuda se accede en el principio
+del programa. Esta ayuda muestra los 3 comandos principales: <strong>scanner</strong> para acceder al escáner, <strong>dba</strong> para
+acceder al administrador de base de datos y <strong>help</strong> para mostrar el propio mensaje de ayuda.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.helpers.Helper.print_scan_help">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_scan_help</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/helpers.html#Helper.print_scan_help"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.helpers.Helper.print_scan_help" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método muestra la ayuda sobre el escáner en formato Markdown. A esta ayuda se accede desde el escáner y
+muestra los comandos posibles. Los comandos posibles son: <strong>set</strong> para establecer el valor de una opción, <strong>get</strong>
+para obtener los valores de una opción, <strong>scan</strong> para realizar el escaneo con las opciones asignadas y <strong>help</strong>
+para mostrar el mensaje de ayuda.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.shell.shell">
+<span id="modulo-nettrackercore-shell-shell"></span><h2>Módulo nettrackercore.shell.shell<a class="headerlink" href="#module-nettrackercore.shell.shell" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.shell.shell.</span></span><span class="sig-name descname"><span class="pre">Shell</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">translator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>La clase <strong>Shell</strong> representa la terminal de comandos por donde el usuario interacciona con el núcleo de la
+aplicación.
+Esta terminal está inspirada en la terminal de comandos ofrecida por
+<a class="reference external" href="https://www.kali.org/docs/tools/starting-metasploit-framework-in-kali/">Kali Linux Metasploit Framework</a>.</p>
+<p>El usuario puede elegir varios objetos ofrecidos por el núcleo y debe de establecer los parámetros necesarios para
+ejecutar los comandos correspondientes. El diseño de la terminal está implementado con
+<a class="reference external" href="https://rich.readthedocs.io/en/stable/index.html">rich</a>, un paquete escrito en Python que ayuda escribir y mostrar
+texto más complejo por la terminal de comandos de una forma más bonita.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Rich</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">library</span> <span class="k">for</span> <span class="n">writing</span> <span class="n">rich</span> <span class="n">text</span> <span class="p">(</span><span class="k">with</span> <span class="n">color</span> <span class="ow">and</span> <span class="n">style</span><span class="p">)</span> <span class="n">to</span> <span class="n">the</span> <span class="n">terminal</span><span class="p">,</span> <span class="ow">and</span> <span class="k">for</span> <span class="n">displaying</span> <span class="n">advanced</span>
+<span class="n">content</span> <span class="n">such</span> <span class="k">as</span> <span class="n">tables</span><span class="p">,</span> <span class="n">markdown</span><span class="p">,</span> <span class="ow">and</span> <span class="n">syntax</span> <span class="n">highlighted</span> <span class="n">code</span><span class="o">.</span>
+
+<span class="n">Use</span> <span class="n">Rich</span> <span class="n">to</span> <span class="n">make</span> <span class="n">your</span> <span class="n">command</span> <span class="n">line</span> <span class="n">applications</span> <span class="n">visually</span> <span class="n">appealing</span> <span class="ow">and</span> <span class="n">present</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">more</span> <span class="n">readable</span> <span class="n">way</span><span class="o">.</span> <span class="n">Rich</span> <span class="n">can</span>
+<span class="n">also</span> <span class="n">be</span> <span class="n">a</span> <span class="n">useful</span> <span class="n">debugging</span> <span class="n">aid</span> <span class="n">by</span> <span class="n">pretty</span> <span class="n">printing</span> <span class="ow">and</span> <span class="n">syntax</span> <span class="n">highlighting</span> <span class="n">data</span> <span class="n">structures</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Los objetos que pueden usarse son un escáner(scanner) y un administrador de base de datos(dba). Con el escáner se
+pueden realizar escaneos de la red o equipos concretos para posteriormente almacenarlos en la base de datos.
+El objeto dba es el encargado de realizar consultas a la base de datos y mostrar al usuario los resultados de forma
+comprensible.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.LOGO">
+<span class="sig-name descname"><span class="pre">LOGO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'[magenta]</span> <span class="pre">_</span>&#160; <span class="pre">_</span>&#160; <span class="pre">___</span>&#160; <span class="pre">_____</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">_____</span>&#160; <span class="pre">___</span>&#160; <span class="pre">___</span>&#160;&#160; <span class="pre">___</span>&#160; <span class="pre">_</span>&#160; <span class="pre">__</span> <span class="pre">___</span>&#160; <span class="pre">___</span> <span class="pre">\n|</span> <span class="pre">\\|</span> <span class="pre">||</span> <span class="pre">__||_</span>&#160;&#160; <span class="pre">_|</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">|_</span>&#160;&#160; <span class="pre">_||</span> <span class="pre">_</span> <span class="pre">\\/</span>&#160;&#160; <span class="pre">\\</span> <span class="pre">/</span> <span class="pre">__||</span> <span class="pre">|/</span> <span class="pre">/|</span> <span class="pre">__||</span> <span class="pre">_</span> <span class="pre">\\\n|</span> <span class="pre">.</span>&#160; <span class="pre">||</span> <span class="pre">_|</span>&#160;&#160; <span class="pre">|</span> <span class="pre">|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|</span> <span class="pre">|</span>&#160; <span class="pre">|</span>&#160;&#160; <span class="pre">/|</span> <span class="pre">-</span> <span class="pre">||</span> <span class="pre">(__</span> <span class="pre">|</span>&#160;&#160; <span class="pre">&lt;</span> <span class="pre">|</span> <span class="pre">_|</span> <span class="pre">|</span>&#160;&#160; <span class="pre">/\n|_|\\_||___|</span>&#160; <span class="pre">|_|</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">|_|</span>&#160; <span class="pre">|_|_\\|_|_|</span> <span class="pre">\\___||_|\\_\\|___||_|_\\\n'</span></em><a class="headerlink" href="#nettrackercore.shell.shell.Shell.LOGO" title="Link to this definition"><span>#</span></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.build_params">
+<span class="sig-name descname"><span class="pre">build_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.build_params"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.build_params" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Existen ciertos parámetros que corresponden a <em>interrogantes booleanos</em> y en función de su valor se deben de
+añadir más o menos valores al comando final del escáner. Estos parámetros se encuentran dentro del diccionario
+con las opciones mapeadas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>options</strong> (<em>dict</em>) – es el diccionario con las opciones mapeadas</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>el valor final del parámetro <cite>OPTIONS</cite></p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.dba">
+<span class="sig-name descname"><span class="pre">dba</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.dba"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.dba" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método hace uso del objeto <cite>~nettrackercore.core.dba.DBA</cite> para realizar consultas a la base de datos y
+devolver el resultado al usuario en forma de tabla. Los comandos que se deben lanzar tienen una sintaxis propia,
+ya que no se puede usar el lenguaje SQL para realizar consultas a la base de datos.</p>
+<p>Desde la <cite>shell</cite> solo podemos realizar dos acciones: <strong>obtener</strong> y <strong>listar</strong>. Solo es posible obtener o todas
+las redes de la base de datos o solo una red en función de su nombre. Se pueden listar solo los dispositivos
+dentro de una red por su nombre y los servicios de un dispositivo dentro de una red.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.get_options">
+<span class="sig-name descname"><span class="pre">get_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.get_options"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.get_options" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de obtener los valores de las distintas opciones usadas por el objeto. Dichas opciones
+están mapeadas en un diccionario para mejorar el acceso a ellas. El usuario puede obtener el valor de una opción
+o de todas las opciones mapeadas con la opción <cite>ALL</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> – es el diccionario con las distintas opciones del objeto mapeadas</p></li>
+<li><p><strong>option</strong> – es la opción de la cual se obtendrá el valor. Si se indica <cite>ALL</cite> o <cite>all</cite> se devuelven los valores
+de todas las opciones.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.handler">
+<span class="sig-name descname"><span class="pre">handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.handler"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.handler" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método es necesario para capturar la señal de teclado <cite>Ctrl+C</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.main_menu">
+<span class="sig-name descname"><span class="pre">main_menu</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.main_menu"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.main_menu" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método muestra el prompt principal del programa donde el usuario elige qué objeto quiere usar.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.save_scan">
+<span class="sig-name descname"><span class="pre">save_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scan_result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="nettrackercore.core.html#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><span class="pre">JSONResult</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.save_scan"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.save_scan" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de guardar el resultado del escaneo en la base de datos. Ciertos parámetros corresponden
+a las opciones mapeadas del escáner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scan_result</strong> (<a class="reference internal" href="nettrackercore.core.html#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><em>JSONResult</em></a>) – el resultado del escaneo en forma de objeto <a class="reference internal" href="nettrackercore.core.html#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONResult</span></code></a></p></li>
+<li><p><strong>options</strong> (<em>dict</em>) – son las opciones mapeadas del escáner</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.scanner">
+<span class="sig-name descname"><span class="pre">scanner</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.scanner"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.scanner" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>El método <code class="xref py py-func docutils literal notranslate"><span class="pre">scanner()</span></code> establece la lógica de uso del objeto. Cuando el usuario
+decide usar el escáner este método se ejecuta. Primero se crea un objeto
+<a class="reference internal" href="nettrackercore.core.html#nettrackercore.core.scanner.Scanner" title="nettrackercore.core.scanner.Scanner"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scanner</span></code></a> y posteriormente se crea un diccionario con las opciones
+permitidas por el escáner.</p>
+<p>El usuario introduce una opción dentro de las posibles:</p>
+<ul class="simple">
+<li><p><strong>exit</strong> Sale de la terminal</p></li>
+<li><p><strong>help</strong> Muestra la ayuda del escáner</p></li>
+<li><p><strong>set &lt;opcion&gt; &lt;valor&gt;</strong> establece el valor de una opción mapeada al introducido por el usuario</p></li>
+<li><p><strong>get &lt;opcion&gt; | ALL</strong> devuelve el valor de la opción introducida por el usuario. Si se indica <cite>ALL</cite> o <cite>all</cite> se devuelven todos los valores</p></li>
+<li><p><strong>scan</strong> Empieza a escanear la red con los datos establecidos por el usuario y pregunta al usuario si quiere almacenar dicha información en la base de datos.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.shell.shell.Shell.set_options">
+<span class="sig-name descname"><span class="pre">set_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/shell/shell.html#Shell.set_options"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.shell.shell.Shell.set_options" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Método que se encarga de establecer un valor a la opción pasada por parámetro. Las diferentes opciones se
+establecen previamente en un diccionario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> (<em>dict</em>) – es el diccionario con las diferentes opciones mapeadas.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – es la <strong>opción</strong> dentro de las <strong>opciones</strong> mapeadas la cual se va a modificar.</p></li>
+<li><p><strong>value</strong> (<em>str</em>) – es el valor que se establecerá a la opción.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.shell">
+<span id="contenido-de-los-modulos"></span><h2>Contenido de los módulos<a class="headerlink" href="#module-nettrackercore.shell" title="Link to this heading"><span>#</span></a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="nettrackercore.model.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Paquete nettrackercore.model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nettrackercore.api.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Paquete nettrackercore.api</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodulos">Submódulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell.helpers">Módulo nettrackercore.shell.helpers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper"><code class="docutils literal notranslate"><span class="pre">Helper</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_dba_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_dba_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_main_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_main_help()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.helpers.Helper.print_scan_help"><code class="docutils literal notranslate"><span class="pre">Helper.print_scan_help()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell.shell">Módulo nettrackercore.shell.shell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell"><code class="docutils literal notranslate"><span class="pre">Shell</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.LOGO"><code class="docutils literal notranslate"><span class="pre">Shell.LOGO</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.build_params"><code class="docutils literal notranslate"><span class="pre">Shell.build_params()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.dba"><code class="docutils literal notranslate"><span class="pre">Shell.dba()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.get_options"><code class="docutils literal notranslate"><span class="pre">Shell.get_options()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.handler"><code class="docutils literal notranslate"><span class="pre">Shell.handler()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.main_menu"><code class="docutils literal notranslate"><span class="pre">Shell.main_menu()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.save_scan"><code class="docutils literal notranslate"><span class="pre">Shell.save_scan()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.scanner"><code class="docutils literal notranslate"><span class="pre">Shell.scanner()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.shell.shell.Shell.set_options"><code class="docutils literal notranslate"><span class="pre">Shell.set_options()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.shell">Contenido de los módulos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Alberto Jiménez Huertas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Alberto Jiménez Huertas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

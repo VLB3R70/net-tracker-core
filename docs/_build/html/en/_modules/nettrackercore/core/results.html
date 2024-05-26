@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nettrackercore.core.results &mdash; net-tracker-core  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            net-tracker-core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide.html">User guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/nettrackercore.html">Referencia de la API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">net-tracker-core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">nettrackercore.core.results</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for nettrackercore.core.results</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="JSONResult">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult">[docs]</a>
+<span></span><span class="k">class</span> <span class="nc">JSONResult</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Este objeto encapsula el resultado de la ejecución del escaneo. Este objeto hereda el objeto</span>
+<span class="sd">    `dict &lt;https://docs.python.org/3/library/stdtypes.html#dict&gt;`_ y obtiene un diccionario mediante el constructor que</span>
+<span class="sd">    actualiza su valor. Este diccionario se obtiene en la lectura del fichero XML con el resultado del escaneo.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;nmaprun&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;nmaprun&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JSONResult.get_values">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_values">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene todos los valores del objeto JSONResult.</span>
+
+<span class="sd">        :return: lista con todos los valores del objeto.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_keys">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_keys">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene todas las claves del objeto JSONResult.</span>
+
+<span class="sd">        :return: lista con todas las claves del objeto.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_items">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_items">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene todos los pares clave-valor del objeto JSONResult.</span>
+
+<span class="sd">        :return: lista con todos los pares clave-valor del objeto.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_host">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_host">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_host</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene el valor cuya clave corresponde a `host`.</span>
+
+<span class="sd">        :return: el valor que corresponde a `host`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;host&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_hostname">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_hostname">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene el nombre del host</span>
+
+<span class="sd">        :param host: el valor que corresponde a `host`.</span>
+<span class="sd">        :type host: dict</span>
+
+<span class="sd">        :return: el valor que corresponde a `hostname`.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">hostname</span> <span class="o">=</span> <span class="n">host</span><span class="p">[</span><span class="s1">&#39;hostnames&#39;</span><span class="p">][</span><span class="s1">&#39;hostname&#39;</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">hostname</span><span class="p">[</span><span class="s1">&#39;@name&#39;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;None&quot;</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_address">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_address">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Obtiene el valor cuya clave corresponde a `address`. Este método además tiene en cuenta que el escaneo detecta</span>
+<span class="sd">        la dirección MAC del equipo. Dicho valor se añade a la clave `address` y corresponde a una lista.</span>
+
+<span class="sd">        .. code-block::</span>
+<span class="sd">            :caption: Ejemplo</span>
+
+<span class="sd">                {</span>
+<span class="sd">                ...,</span>
+<span class="sd">                &#39;address&#39;: [{&#39;@addr&#39;: &lt;IP&gt;, &#39;@addrtype&#39;: &#39;ipv4&#39;}, {&#39;@addr&#39;: &lt;MAC&gt;, &#39;@addrtype&#39;: &#39;mac&#39;, &#39;@vendor&#39;: vendor}],</span>
+<span class="sd">                ...</span>
+<span class="sd">                }</span>
+
+<span class="sd">        :param host: el valor que corresponde a `host`.</span>
+<span class="sd">        :type host: dict</span>
+<span class="sd">        :return: el valor que corresponde a `address`.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">address</span> <span class="o">=</span> <span class="n">host</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">address</span><span class="p">[</span><span class="s1">&#39;@addr&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">address</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">address</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;@addr&#39;</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_os">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_os">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_os</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene el valor de la calve que corresponde a `os` dentro de `host`. Este valor a su vez contiene</span>
+<span class="sd">        más información que para la lógica del programa no es relevante por lo que el dato final corresponde a `osmatch`.</span>
+
+<span class="sd">        Al igual que con las direcciones, es posible que el escaneo detecte varios sistemas operativos en una misma</span>
+<span class="sd">        máquina; estos, los muestra como una lista con su información. El escáner Nmap, al encontrar varios sistemas</span>
+<span class="sd">        operativos, indica un porcentaje de veracidad; este porcentaje indica lo seguro que está de dicho escaneo. El</span>
+<span class="sd">        primer valor siempre es el más elevado (el más confiable) por lo que, si el valor es una lista, siempre se</span>
+<span class="sd">        escoge el primer valor de la lista.</span>
+
+<span class="sd">        También es posible que el escáner no sea capaz de detectar un sistema operativo válido. En estos casos el valor</span>
+<span class="sd">        de `osmatch` corresponde a `None` o `Null` en otros lenguajes. Si obtenemos un valor nulo y queremos trabajar</span>
+<span class="sd">        con él se lanzará una excepción `TypeError &lt;https://docs.python.org/3/library/exceptions.html#TypeError&gt;`_ y, en</span>
+<span class="sd">        ese caso, se retornará una cadena indicando que no se ha podido encontrar un sistema operativo válido.</span>
+
+<span class="sd">        :param host: el valor que corresponde a `host`.</span>
+<span class="sd">        :type host: dict</span>
+<span class="sd">        :return: el valor que corresponde a `osmatch`.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">os</span> <span class="o">=</span> <span class="n">host</span><span class="p">[</span><span class="s1">&#39;os&#39;</span><span class="p">][</span><span class="s1">&#39;osmatch&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">os</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">os</span><span class="p">[</span><span class="s1">&#39;@name&#39;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">os</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">os</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;@name&#39;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;OS not found.&quot;</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="JSONResult.get_services">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.results.JSONResult.get_services">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_services</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de obtener los valores correspondientes a los puertos abiertos y los servicios corriendo</span>
+<span class="sd">        en ellos. Se retorna una lista de diccionarios donde la sintaxis de estos es la siguiente:</span>
+
+<span class="sd">        .. code-block::</span>
+<span class="sd">            :caption: Sintaxis de estos puertos abiertos</span>
+
+<span class="sd">                {&quot;name&quot;: nombre, &quot;port&quot;:puerto, &quot;protocol&quot;: protocolo}</span>
+
+<span class="sd">        :param host: el valor que corresponde a `host`.</span>
+<span class="sd">        :type host: dict</span>
+<span class="sd">        :return: lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">service_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ports</span> <span class="o">=</span> <span class="n">host</span><span class="p">[</span><span class="s1">&#39;ports&#39;</span><span class="p">][</span><span class="s1">&#39;port&#39;</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">ports</span><span class="p">:</span>
+                <span class="n">service</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">[</span><span class="s1">&#39;service&#39;</span><span class="p">][</span><span class="s1">&#39;@name&#39;</span><span class="p">],</span>
+                    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">[</span><span class="s1">&#39;@portid&#39;</span><span class="p">],</span>
+                    <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">port</span><span class="p">[</span><span class="s2">&quot;@protocol&quot;</span><span class="p">]</span>
+                <span class="p">}</span>
+                <span class="n">service_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="n">service_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">service_list</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Alberto Jiménez Huertas.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

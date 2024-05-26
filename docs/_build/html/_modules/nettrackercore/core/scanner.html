@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nettrackercore.core.scanner &mdash; documentación de net-tracker-core - </title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=efdbd0b9"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            net-tracker-core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide.html">Guía de usuario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/nettrackercore.html">Referencia de la API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">net-tracker-core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">nettrackercore.core.scanner</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para nettrackercore.core.scanner</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">xmltodict</span>
+
+<span class="kn">from</span> <span class="nn">nettrackercore.core.exceptions</span> <span class="kn">import</span> <span class="n">ExecutionError</span>
+<span class="kn">from</span> <span class="nn">nettrackercore.core.parsers</span> <span class="kn">import</span> <span class="n">NmapParser</span>
+<span class="kn">from</span> <span class="nn">nettrackercore.core.results</span> <span class="kn">import</span> <span class="n">JSONResult</span>
+
+<span class="n">DATE</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">-%m-%Y %H:%M:%S&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Logger">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Logger">[documentos]</a>
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    La clase **Logger** se encarga de escribir mensajes en los ficheros designados. Existen dos ficheros: uno de `log` y</span>
+<span class="sd">    otro de errores. Estos ficheros se crean previamente.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Logger.log">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Logger.log">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga escribir un mensaje concreto en el log. Para añadir más información se escribe la fecha</span>
+<span class="sd">        del día en el momento de la ejecución del programa.</span>
+
+<span class="sd">        :param config: Configuración del programa.</span>
+<span class="sd">        :param message: Mensaje a escribir dentro del log.</span>
+<span class="sd">        :param command: Comando lanzado por el subproceso</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">log_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;log_dir&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;scanner.log&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">DATE</span><span class="si">}</span><span class="s1">]</span><span class="se">\n</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Logger.error">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Logger.error">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de escribir los mensajes de error en un log. Cuando ha ocurrido un error o se ha lanzado</span>
+<span class="sd">        una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este</span>
+<span class="sd">        formato también se guarda la fecha.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">error_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;log_dir&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;err.log&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">error_file</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">log</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[</span><span class="si">{</span><span class="n">DATE</span><span class="si">}</span><span class="s1">]</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">message</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Scanner">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Scanner">[documentos]</a>
+<span class="k">class</span> <span class="nc">Scanner</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Objeto que representa un escáner. Este escáner se encarga de usar el paquete de Nmap previamente instalado en la</span>
+<span class="sd">    máquina. El usuario establece ciertos parámetros que posteriormente serán usados por el paquete Nmap. Dichos</span>
+<span class="sd">    parámetros son:</span>
+
+<span class="sd">    - **targets**: puede ser una dirección de red en formato CIDR, una dirección o varias direcciones IP, etc.</span>
+
+<span class="sd">    - **ports**: es un parámetro que establece los puertos que se escanearán, si no se establece nada se escanean todos.</span>
+
+<span class="sd">    El formato de los puertos es:</span>
+
+<span class="sd">        - `80` -&gt; Solo se escanea el puerto 80</span>
+<span class="sd">        - `80,443` -&gt; Se escanean los puertos 80 y 443 únicamente</span>
+<span class="sd">        - `1-1024` -&gt; Solo se escanean los puertos comprendidos entre el 1 y el 1024</span>
+
+<span class="sd">    - **params**: son otros parámetros permitidos por Nmap.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temp_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;temp_dir&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;scanner.xml&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temp_file</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>  <span class="c1"># Creo el fichero temporal vacío</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">NmapParser</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Scanner.scan">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Scanner.scan">[documentos]</a>
+    <span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ports</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sudo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        El método `scan` realiza el escaneo sobre los objetivos asignados usando el paquete Nmap. La salida estándar del</span>
+<span class="sd">        comando se almacena de un fichero de log y el resultado del escaneo se encapsula en un objeto</span>
+<span class="sd">        :py:class:`~nettrackercore.core.results.JSONResult`</span>
+
+<span class="sd">        :param targets: Es la dirección IP hacia donde se hará el escaneo. Puede ser una dirección de red o una</span>
+<span class="sd">            dirección de equipo.</span>
+
+<span class="sd">        :param ports: Son los puertos hacia donde se hará el escaneo. Los puertos deben estar comprendidos entre el 1 y</span>
+<span class="sd">            el 65535, ambos incluidos.</span>
+
+<span class="sd">        :param params: Son parámetros opcionales introducidos por el usuario y aceptados por Nmap.</span>
+
+<span class="sd">        :param sudo: Ciertos parámetros necesitan permisos de superusuario para ejecutarse.</span>
+
+<span class="sd">        :type targets: str</span>
+<span class="sd">        :type ports: str</span>
+<span class="sd">        :type params: str</span>
+<span class="sd">        :type sudo: bool</span>
+<span class="sd">        :return: El resultado del escaneo se encapsula en un objeto :py:class:`~nettrackercore.core.results.JSONResult`.</span>
+<span class="sd">        :rtype: JSONResult</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">create_command</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">ports</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">sudo</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_file</span><span class="p">))</span>
+        <span class="n">output</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute_command</span><span class="p">(</span><span class="n">command</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">err</span><span class="p">:</span>
+            <span class="n">Logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">ExecutionError</span><span class="p">(</span><span class="n">code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">Logger</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">command</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">json_data</span> <span class="o">=</span> <span class="n">xmltodict</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">JSONResult</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="Scanner.execute_command">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Scanner.execute_command">[documentos]</a>
+    <span class="k">def</span> <span class="nf">execute_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método es el encargado de crear un subproceso y ejecutar el comando configurado por el usuario. La salida</span>
+<span class="sd">        estándar y la salida de error se obtienen mediante un `pipe`; el código de retorno también se obtiene.</span>
+
+<span class="sd">        :param command: El comando configurado por el usuario en forma de lista.</span>
+<span class="sd">        :type command: list</span>
+<span class="sd">        :return: La salida estándar, la salida de error y el código de retorno.</span>
+<span class="sd">        :rtype: tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+            <span class="n">code</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">returncode</span>
+            <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">code</span></div>
+
+
+<div class="viewcode-block" id="Scanner.cleanup">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.scanner.Scanner.cleanup">[documentos]</a>
+    <span class="k">def</span> <span class="nf">cleanup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de eliminar el fichero temporal necesario para la lógica del programa.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temp_file</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Alberto Jiménez Huertas.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

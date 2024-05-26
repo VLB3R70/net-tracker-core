@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nettrackercore.core.controller &mdash; documentación de net-tracker-core - </title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=efdbd0b9"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            net-tracker-core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide.html">Guía de usuario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/nettrackercore.html">Referencia de la API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">net-tracker-core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">nettrackercore.core.controller</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para nettrackercore.core.controller</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">hashlib</span> <span class="kn">import</span> <span class="n">sha256</span>
+
+<span class="kn">from</span> <span class="nn">mongoengine</span> <span class="kn">import</span> <span class="n">connect</span><span class="p">,</span> <span class="n">DoesNotExist</span>
+
+<span class="kn">from</span> <span class="nn">nettrackercore.config</span> <span class="kn">import</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">nettrackercore.core.results</span> <span class="kn">import</span> <span class="n">JSONResult</span>
+<span class="kn">from</span> <span class="nn">nettrackercore.model.model</span> <span class="kn">import</span> <span class="n">Device</span><span class="p">,</span> <span class="n">Service</span><span class="p">,</span> <span class="n">Network</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+
+<div class="viewcode-block" id="NettrackerDAO">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO">[documentos]</a>
+<span class="k">class</span> <span class="nc">NettrackerDAO</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    El objeto **NettrackerDAO** corresponde al objeto de acceso a datos, más conocido como DAO(Data Access Object). Este</span>
+<span class="sd">    objeto es el encargado de realizar las llamadas a la base de datos mediante el módulo</span>
+<span class="sd">    `mongoengine &lt;https://docs.mongoengine.org/index.html&gt;`_, el cual es un ODM (Object-Document Mapper) y nos permite</span>
+<span class="sd">    operar con la base de datos de forma más sencilla.</span>
+
+<span class="sd">    Este objeto trabaja con el resultado obtenido del escaneo en forma del</span>
+<span class="sd">    objeto :py:class:`~nettrackercore.core.results.JSONResult`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_data</span><span class="p">:</span> <span class="n">JSONResult</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">json_data</span>
+        <span class="n">connect</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">__build_services</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método es el encargado de obtener la lista de servicios del host designado y devuelve una lista de objetos</span>
+<span class="sd">        :py:class:`~nettrackercore.model.model.Service`. Si el host con el que se está trabajando no tiene servicios</span>
+<span class="sd">        abiertos o el escáner no ha encontrado ninguno la lista se devuelve vacía. El valor obtenido del objeto `JSONResult`</span>
+<span class="sd">        corresponde a una lista diccionarios con los datos de los servicios. Dicha lista se recorre y se desgrana la</span>
+<span class="sd">        información de cada servicio para crear nuevos objetos.</span>
+<span class="sd">        Para mejorar la legibilidad del método se hace una llamada a un método complementario que devuelve los servicios</span>
+<span class="sd">        en forma de objetos.</span>
+
+<span class="sd">        :param host: Es el valor correspondiente al host dentro del objeto :py:class:`~nettrackercore.core.results.JSONResult`.</span>
+<span class="sd">        :type host: dict</span>
+<span class="sd">        :return: Lista de objetos :py:class:`~nettrackercore.model.model.Service`</span>
+<span class="sd">        :rtype: list[Service | None]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">services</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_services</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+        <span class="n">service_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">services</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">service_list</span>  <span class="c1"># Devuelve una lista vacía si los servicios no son válidos</span>
+
+        <span class="k">for</span> <span class="n">service_data</span> <span class="ow">in</span> <span class="n">services</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">service_data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">continue</span>  <span class="c1"># Salta los datos de servicio no válidos</span>
+
+            <span class="n">service</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_service_from_data</span><span class="p">(</span><span class="n">service_data</span><span class="p">)</span>
+            <span class="n">service_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">service_list</span>
+
+    <span class="k">def</span> <span class="nf">__build_service_from_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene la información de los servicios dentro de un host y devuelve un objeto</span>
+<span class="sd">        :py:class:`~nettrackercore.model.model.Service`.</span>
+
+<span class="sd">        :param service_data: Corresponde a un diccionario con los datos de los servicios.</span>
+<span class="sd">        :type service_data: dict</span>
+<span class="sd">        :return: Un objeto :py:class:`~nettrackercore.model.model.Service`</span>
+<span class="sd">        :rtype: Service | None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">service_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
+        <span class="n">port</span> <span class="o">=</span> <span class="n">service_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;port&#39;</span><span class="p">)</span>
+        <span class="n">protocol</span> <span class="o">=</span> <span class="n">service_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;protocol&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="kc">None</span> <span class="ow">in</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">protocol</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># Devuelve None si falta alguno de los campos requeridos</span>
+
+        <span class="n">service</span> <span class="o">=</span> <span class="n">Service</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">service</span>
+
+    <span class="k">def</span> <span class="nf">__build_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de obtener la lista completa con los dispositivos y toda su información. Primero se</span>
+<span class="sd">        obtienen los `hosts` dentro del objeto :py:class:`~nettrackercore.core.results.JSONResult`, lo cual</span>
+<span class="sd">        corresponde a una lista y posteriormente se obtiene el objeto :py:class:`~nettrackercore.model.model.Device`</span>
+<span class="sd">        después de hacer una llamada al método complementario</span>
+<span class="sd">        :py:func:`~nettrackercore.core.controller.NettrackerDAO.__build_device_from_host`.</span>
+
+<span class="sd">        :return: Lista de objetos :py:class:`~nettrackercore.model.model.Device`</span>
+<span class="sd">        :rtype: list[Device]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">hosts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_host</span><span class="p">()</span>
+        <span class="n">device_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hosts</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">device_list</span>  <span class="c1"># Devuelve una lista vacía si no hay hosts</span>
+
+        <span class="k">for</span> <span class="n">host</span> <span class="ow">in</span> <span class="n">hosts</span><span class="p">:</span>
+            <span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_device_from_host</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+            <span class="n">device_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">device_list</span>
+
+    <span class="k">def</span> <span class="nf">__build_device_from_host</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método es uno complementario que se encarga de devolover un objeto :py:class:`~nettrackercore.model.model.Device`.</span>
+<span class="sd">        Los datos del objeto se obtienen desde :py:class:`~nettrackercore.core.results.JSONResult`.</span>
+
+<span class="sd">        :param host: Es el valor del host obtenido del objeto :py:class:`~nettrackercore.core.results.JSONResult`</span>
+<span class="sd">        :type host: dict</span>
+<span class="sd">        :return: Un objeto :py:class:`~nettrackercore.model.model.Device`</span>
+<span class="sd">        :rtype: Device</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">device_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_hostname</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+        <span class="n">address</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_address</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+        <span class="n">os_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_os</span><span class="p">(</span><span class="n">host</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_os</span><span class="p">(</span><span class="n">host</span><span class="p">),</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">device_id</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">device_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+        <span class="n">device</span> <span class="o">=</span> <span class="n">Device</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="n">device_name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">,</span> <span class="n">os_type</span><span class="o">=</span><span class="n">os_type</span><span class="p">,</span> <span class="n">services</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__build_services</span><span class="p">(</span><span class="n">host</span><span class="p">),</span>
+                        <span class="n">device_id</span><span class="o">=</span><span class="n">device_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">device</span>
+
+    <span class="k">def</span> <span class="nf">__build_gateway</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dentro de la lógica de la base de datos la puerta de enlace de la red corresponde a un</span>
+<span class="sd">        objeto :py:class:`~nettrackercore.model.model.Device`. Generalmente las puertas de enlace tienen un nombre como:</span>
+<span class="sd">        `gateway` o parecido.</span>
+<span class="sd">        El método recorre todos los dispositivos ya definidos en el método</span>
+<span class="sd">        :py:func:`~nettrackercore.core.controller.NettrackerDAO.__build_devices` y comprueba su nombre, si es como el</span>
+<span class="sd">        indicado anteriormente devuelve dicho objeto.</span>
+
+<span class="sd">        :return: Un objeto :py:class:`~nettrackercore.model.model.Device`</span>
+<span class="sd">        :rtype: Device | None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">devices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_devices</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;gateway&#39;</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">device_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">device</span>
+            <span class="k">elif</span> <span class="n">device</span><span class="o">.</span><span class="n">address</span> <span class="o">==</span> <span class="s1">&#39;192.168.1.1&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">device</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+
+<div class="viewcode-block" id="NettrackerDAO.new_network">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.new_network">[documentos]</a>
+    <span class="k">def</span> <span class="nf">new_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">submask</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método realiza una operación CRUD de creación de un nuevo registro en la base de datos. Los datos obtenidos</span>
+<span class="sd">        por parámetros son definidos por el usuario durante la ejecución del programa, el resto deben ser obtenidos con</span>
+<span class="sd">        los métodos pseudo-privados complementarios.</span>
+<span class="sd">        La operación fuerza la inserción en la base de datos ya que `mongoengine` permite la operación `upsert`. Si la</span>
+<span class="sd">        operación sufre algún error será posteriormente capturada en el programa.</span>
+
+<span class="sd">        :param name: El nombre de la red. Debe ser único.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param address: La dirección de red a guardar.</span>
+<span class="sd">        :type address: str</span>
+<span class="sd">        :param submask: La dirección de la máscara de red en forma numérica.</span>
+<span class="sd">        :type submask: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">network_id</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">submask</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+        <span class="n">devices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_devices</span><span class="p">()</span>
+        <span class="n">gateway</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_gateway</span><span class="p">()</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Network</span><span class="p">(</span><span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">,</span> <span class="n">network_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">,</span> <span class="n">gateway</span><span class="o">=</span><span class="n">gateway</span><span class="p">,</span> <span class="n">subnet_mask</span><span class="o">=</span><span class="n">submask</span><span class="p">,</span>
+                    <span class="n">devices</span><span class="o">=</span><span class="n">devices</span><span class="p">))</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">force_insert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># se obliga a realizar una inserción</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.update_network">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.update_network">[documentos]</a>
+    <span class="k">def</span> <span class="nf">update_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">submask</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de actualizar los valores de la base de datos a los últimos obtenidos en el escaneo. La</span>
+<span class="sd">        operación de actualización es atómica por lo que se actualizará todo el documento y sus valores.  De esta forma</span>
+<span class="sd">        siempre nos aseguramos de tener la información más actualizada posible.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">network_id</span> <span class="o">=</span> <span class="n">sha256</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">submask</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+        <span class="n">devices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_devices</span><span class="p">()</span>
+        <span class="n">gateway</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_gateway</span><span class="p">()</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">network_id</span><span class="o">=</span><span class="n">network_id</span><span class="p">)</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">,</span> <span class="n">gateway</span><span class="o">=</span><span class="n">gateway</span><span class="p">,</span> <span class="n">subnet_mask</span><span class="o">=</span><span class="n">submask</span><span class="p">,</span> <span class="n">devices</span><span class="o">=</span><span class="n">devices</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.insert_device">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.insert_device">[documentos]</a>
+    <span class="k">def</span> <span class="nf">insert_device</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_name</span><span class="p">):</span>
+        <span class="n">new_device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__build_device_from_host</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get_host</span><span class="p">())</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_device</span><span class="p">)</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.get_all_networks">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.get_all_networks">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_all_networks</span><span class="p">():</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método realiza una consulta a la base de datos para obtener el id y el nombre de todas las redes.</span>
+<span class="sd">        :return: Se devuelve el resultado de la consulta realizada</span>
+<span class="sd">        :rtype: :py:class:`~mongoengine.queryset.queryset.QuerySet`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.get_network_from_name">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.get_network_from_name">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_network_from_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene la información de una red específica por su nombre.</span>
+<span class="sd">        :param name: El nombre de la red.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :return: Se devuelve el resultado de la consulta realizada</span>
+<span class="sd">        :rtype: Network</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.get_devices_from_network">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.get_devices_from_network">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_devices_from_network</span><span class="p">(</span><span class="n">network_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene todos los dispositivos dentro de una red específica.</span>
+<span class="sd">        :param network_name: El nombre de la red.</span>
+<span class="sd">        :type network_name: str</span>
+<span class="sd">        :return: Se devuelve el resultado de la consulta realizada. Si no existen dispositivos se devuelve una lista vacía</span>
+<span class="sd">        :rtype: :py:class:`~mongoengine.base.datastructures.BaseList` | list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">network</span><span class="o">.</span><span class="n">devices</span> <span class="k">if</span> <span class="n">network</span> <span class="k">else</span> <span class="p">[]</span></div>
+
+
+<div class="viewcode-block" id="NettrackerDAO.get_device_from_address">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.controller.NettrackerDAO.get_device_from_address">[documentos]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_device_from_address</span><span class="p">(</span><span class="n">network_name</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método obtiene la información de un dispositivo específico dentro de una red también específica.</span>
+<span class="sd">        :param network_name: El nombre de la red.</span>
+<span class="sd">        :type network_name: str</span>
+<span class="sd">        :param address: La dirección de red del dispositivo.</span>
+<span class="sd">        :type address: str</span>
+
+<span class="sd">        :return: La información del dispositivo específico.</span>
+<span class="sd">        :rtype: nettrackercore.model.model.Device</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">objects</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">network</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">network</span><span class="o">.</span><span class="n">devices</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">address</span> <span class="o">==</span> <span class="n">address</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">device</span>
+        <span class="k">raise</span> <span class="n">DoesNotExist</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Alberto Jiménez Huertas.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nettrackercore.core.dba &mdash; documentación de net-tracker-core - </title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=e2bb6099"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../../_static/translations.js?v=efdbd0b9"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            net-tracker-core
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Instalación</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guide.html">Guía de usuario</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/nettrackercore.html">Referencia de la API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">net-tracker-core</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">nettrackercore.core.dba</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para nettrackercore.core.dba</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rich.table</span> <span class="kn">import</span> <span class="n">Table</span>
+
+<span class="kn">from</span> <span class="nn">nettrackercore.config</span> <span class="kn">import</span> <span class="n">Translator</span><span class="p">,</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">nettrackercore.core.controller</span> <span class="kn">import</span> <span class="n">NettrackerDAO</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="n">Translator</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DBA">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.dba.DBA">[documentos]</a>
+<span class="k">class</span> <span class="nc">DBA</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    El objeto **DBA** se encarga de realizar consultas a la base de datos mediante</span>
+<span class="sd">    :py:class:`~nettrackercore.core.controller.NettrackerDAO` y mostrar los resultados en forma de tabla para el</span>
+<span class="sd">    usuario. Como la base de datos no es relacional, los datos que se muestran en las tablas son simples. Para datos más</span>
+<span class="sd">    complejos como las listas u objetos dentro del modelo se usan comandos específicos.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dao</span> <span class="o">=</span> <span class="n">NettrackerDAO</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DBA.get_networks">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.dba.DBA.get_networks">[documentos]</a>
+    <span class="k">def</span> <span class="nf">get_networks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método devuelve una tabla con el resultado de obtener todas las redes de la base de datos. Los datos que se</span>
+<span class="sd">        muestran son: el identificador, el nombre dado y la dirección de red. Esta información es necesaria para poder</span>
+<span class="sd">        realizar otras consultas.</span>
+
+<span class="sd">        :return: Una tabla con las redes de la base de datos.</span>
+<span class="sd">        :rtype: :py:class:`~rich.table.Table`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">networks_table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Redes&quot;</span><span class="p">))</span>
+        <span class="n">networks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">get_all_networks</span><span class="p">()</span>
+        <span class="n">networks_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">networks_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Nombre&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">networks_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Dirección de red&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">network</span> <span class="ow">in</span> <span class="n">networks</span><span class="p">:</span>
+            <span class="n">networks_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">network_id</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">network_name</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">networks_table</span></div>
+
+
+<div class="viewcode-block" id="DBA.get_network">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.dba.DBA.get_network">[documentos]</a>
+    <span class="k">def</span> <span class="nf">get_network</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de obtener el resultado completo de una red específica y muestra en forma de tabla el</span>
+<span class="sd">        mismo. Dentro del modelo de datos la puerta de enlace dentro de una red corresponde a un objeto, este valor es</span>
+<span class="sd">        demasiado complejo para `~rich.table.Table` por lo que solo se muestra la dirección de IP del dispositivo. En el</span>
+<span class="sd">        caso de la lista de dispositivos ocurre lo mismo por lo que solo se muestra el número total de valores de la</span>
+<span class="sd">        lista. Se necesita un nombre de red para realizar la consulta.</span>
+
+<span class="sd">        :param network_name: es el nombre de la red</span>
+<span class="sd">        :type network_name: str</span>
+<span class="sd">        :return: Una tabla con la información completa de una red.</span>
+<span class="sd">        :rtype: :py:class:`~rich.table.Table`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">network_table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Red </span><span class="si">{network_name}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">))</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">get_network_from_name</span><span class="p">(</span><span class="n">network_name</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Nombre&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Dirección de red&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Puerta de enlace&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Máscara de subred&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Dispositivos&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+        <span class="n">network_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">network_id</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">network_name</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">gateway</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
+                              <span class="nb">str</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">subnet_mask</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">devices</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">network_table</span></div>
+
+
+<div class="viewcode-block" id="DBA.get_devices">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.dba.DBA.get_devices">[documentos]</a>
+    <span class="k">def</span> <span class="nf">get_devices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de obtener la lista de dispositivos de una red determinada y los devuelve en forma de</span>
+<span class="sd">        tabla. En este caso, se muestra el número total de servicios activos, ya que dentro del modelo de datos los</span>
+<span class="sd">        servicios objetos y esto es un valor demasiado complejo para `~rich.table.Table`.</span>
+
+<span class="sd">        :param network_name: es el nombre de la red</span>
+<span class="sd">        :type network_name: str</span>
+<span class="sd">        :return: Una tabla con la información de los dispositivos</span>
+<span class="sd">        :rtype: :py:class:`~rich.table.Table`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">devices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">get_devices_from_network</span><span class="p">(</span><span class="n">network_name</span><span class="p">)</span>
+        <span class="n">devices_table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Disposistivos de </span><span class="si">{network_name}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">))</span>
+        <span class="n">devices_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;ID&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">devices_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Nombre&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">devices_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Dirección IP&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">devices_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Sistema operativo&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">devices_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Servicios activos&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+            <span class="n">devices_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">device_id</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">address</span><span class="p">,</span> <span class="n">device</span><span class="o">.</span><span class="n">os_type</span><span class="p">,</span>
+                                  <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">services</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">devices_table</span></div>
+
+
+<div class="viewcode-block" id="DBA.get_services">
+<a class="viewcode-back" href="../../../api/nettrackercore.core.html#nettrackercore.core.dba.DBA.get_services">[documentos]</a>
+    <span class="k">def</span> <span class="nf">get_services</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_name</span><span class="p">,</span> <span class="n">device_address</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Este método se encarga de obtener los servicios activos de un dispositivo determinado en una red determinada y</span>
+<span class="sd">        los muestra en forma de tabla. Se muestra el nombre del servicio, el número del puerto y el protocolo en el que</span>
+<span class="sd">        está trabajando.</span>
+
+<span class="sd">        :param network_name: es el nombre de la red</span>
+<span class="sd">        :param device_address: es la dirección IP del dispositivo</span>
+<span class="sd">        :type network_name: str</span>
+<span class="sd">        :type device_address: str</span>
+
+<span class="sd">        :return: Una tabla con la información de los servicios</span>
+<span class="sd">        :rtype: :py:class:`~rich.table.Table`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">device</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dao</span><span class="o">.</span><span class="n">get_device_from_address</span><span class="p">(</span><span class="n">network_name</span><span class="p">,</span> <span class="n">device_address</span><span class="p">)</span>
+        <span class="n">services_table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Servicios activos del dispositivo </span><span class="si">{device_address}</span><span class="s2"> dentro de </span><span class="si">{network_name}</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">device_address</span><span class="o">=</span><span class="n">device_address</span><span class="p">,</span> <span class="n">network_name</span><span class="o">=</span><span class="n">network_name</span><span class="p">))</span>
+        <span class="n">services_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Nombre&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">services_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Puerto&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+        <span class="n">services_table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s2">&quot;Protocolo&quot;</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;cyan&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">services</span><span class="p">:</span>
+            <span class="n">services_table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="n">service</span><span class="o">.</span><span class="n">protocol</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">services_table</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Alberto Jiménez Huertas.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
