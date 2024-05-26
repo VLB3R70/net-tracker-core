@@ -21,16 +21,14 @@ class Configuration:
     CONFIG_FILE = MAIN_DIR.joinpath('config.json')
 
     def __new__(cls, *args, **kwargs):
-        if not cls._instance:
+        if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance._initialized = False
         return cls._instance
 
     def __init__(self, lang='es'):
-        if self._initialized:
-            return
-        self._initialized = True
-        self.data = self.load_config(lang)
+        if not hasattr(self, '_initialized'):
+            self._initialized = True
+            self.data = self.load_config(lang)
 
     def load_config(self, lang):
         """
@@ -56,9 +54,15 @@ class Configuration:
                 return json.load(f)
         else:
             self.CONFIG_FILE.touch()
-            data = {'lang': lang, 'locales_dir': str(self.LOCALES_DIR), 'log_dir': str(self.MAIN_DIR.joinpath('logs')),
-                    'temp_dir': str(self.MAIN_DIR.joinpath('temp')), 'db': 'nettracker', 'db_host': 'localhost',
-                    'db_port': 27017}
+            data = {
+                'lang': lang,
+                'locales_dir': str(self.LOCALES_DIR),
+                'log_dir': str(self.MAIN_DIR.joinpath('logs')),
+                'temp_dir': str(self.MAIN_DIR.joinpath('temp')),
+                'db': 'nettracker',
+                'db_host': 'localhost',
+                'db_port': 27017
+            }
             with open(self.CONFIG_FILE, 'w') as f:
                 json.dump(data, f, indent=4)
             return data
@@ -68,10 +72,8 @@ class Configuration:
         Este método se encarga de crear los directorios necesarios para el programa si no existen.
         """
         self.MAIN_DIR.mkdir(exist_ok=True)
-        log_dir = Path(self.MAIN_DIR.joinpath('logs'))
-        temp_dir = Path(self.MAIN_DIR.joinpath('temp'))
-        log_dir.mkdir(exist_ok=True)
-        temp_dir.mkdir(exist_ok=True)
+        self.MAIN_DIR.joinpath('logs').mkdir(exist_ok=True)
+        self.MAIN_DIR.joinpath('temp').mkdir(exist_ok=True)
 
 
 class Translator:
@@ -87,21 +89,20 @@ class Translator:
     _instance = None
 
     def __new__(cls, *args, **kwargs):
-        if not cls._instance:
+        if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance._initialized = False
         return cls._instance
 
     def __init__(self):
-        if self._initialized:
-            return
-        self._initialized = True
-        self.config = Configuration()
-        self.translations = gettext.translation('messages', localedir=self.config.LOCALES_DIR,
-                                                languages=self.config.data["lang"])
-        self.translations.install()
+        if not hasattr(self, '_initialized'):
+            self._initialized = True
+            self.config = Configuration()
+            locale_dir = self.config.LOCALES_DIR
+            self.translations = gettext.translation('messages', localedir=locale_dir,
+                                                    languages=[self.config.data["lang"]])
+            self.translations.install()
 
-    def _(self, string):
+    def translate(self, string):
         """
         Este método devuelve la traducción del mensaje pasado como parámetro.
         :param string: Identificador del mensaje que debe ser traducido.
@@ -110,3 +111,5 @@ class Translator:
         :rtype: str
         """
         return self.translations.gettext(string)
+
+    _ = translate
