@@ -12,7 +12,6 @@
 
    introduction.rst
    installation.rst
-   guide.rst
    api/nettrackercore.rst
 
 Índices y tablas

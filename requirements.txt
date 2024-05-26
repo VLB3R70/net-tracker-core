@@ -6,3 +6,6 @@ flask-mongoengine-3
 build
 setuptools
 Babel
+sphinx
+sphinx-intl
+sphinx-book-theme

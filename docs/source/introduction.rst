@@ -18,6 +18,7 @@ Requisitos
 
 - Python 3.7 o superior (Última versión recomendada)
 - MongoDB 7.0 o superior
+- Docker 26 o superior
 
 La aplicación funciona tanto en Linux como en Windows. Para Windows se recomienda el uso de la nueva terminal `Windows Terminal <https://github.com/microsoft/terminal/releases>`_.
 
@@ -36,9 +37,6 @@ Enlaces de interés
 
 :doc:`installation`
     Manual sobre la instalación de la aplicación.
-
-:doc:`guide`
-    Manual de usuario para aprender el funcionamiento básico de la aplicación.
 
 :doc:`api/nettrackercore`
    Documentación técnica sobre la aplicación en profundidad. Explicación de clases, objetos y herramientas utilizadas.
