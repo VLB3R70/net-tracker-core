@@ -116,7 +116,12 @@ class Translator:
         if config_lang in self.langs:
             for lang in self.langs:
                 po_file = project_locales_dir / lang / "LC_MESSAGES" / "messages.po"
-                mo_file = main_locales_dir / lang / "LC_MESSAGES" / "messages.mo"
+                mo_file_dir = main_locales_dir / lang / "LC_MESSAGES"
+
+                # Crear directorios si no existen
+                mo_file_dir.mkdir(parents=True, exist_ok=True)
+
+                mo_file = mo_file_dir / "messages.mo"
                 command = f"msgfmt {po_file} --output-file {mo_file}"
 
                 args = command if os.name == 'nt' else command.split()
