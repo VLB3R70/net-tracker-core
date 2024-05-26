@@ -1,7 +1,5 @@
 import gettext
 import json
-import os
-import subprocess
 from pathlib import Path
 
 
@@ -19,9 +17,7 @@ class Configuration:
     _instance = None
 
     MAIN_DIR = Path.home().joinpath('.nettracker')
-
-    MAIN_LOCALES_DIR = MAIN_DIR.joinpath('locales')
-    PROJECT_LOCALES_DIR = Path(__file__).parent.joinpath('locales')
+    LOCALES_DIR = Path(__file__).parent.joinpath('locales')
     CONFIG_FILE = MAIN_DIR.joinpath('config.json')
 
     def __new__(cls, *args, **kwargs):
@@ -60,9 +56,9 @@ class Configuration:
                 return json.load(f)
         else:
             self.CONFIG_FILE.touch()
-            data = {'lang': lang, 'locales_dir': str(self.MAIN_LOCALES_DIR),
-                    'log_dir': str(self.MAIN_DIR.joinpath('logs')), 'temp_dir': str(self.MAIN_DIR.joinpath('temp')),
-                    'db': 'nettracker', 'db_host': 'localhost', 'db_port': 27017}
+            data = {'lang': lang, 'locales_dir': str(self.LOCALES_DIR), 'log_dir': str(self.MAIN_DIR.joinpath('logs')),
+                    'temp_dir': str(self.MAIN_DIR.joinpath('temp')), 'db': 'nettracker', 'db_host': 'localhost',
+                    'db_port': 27017}
             with open(self.CONFIG_FILE, 'w') as f:
                 json.dump(data, f, indent=4)
             return data
@@ -76,7 +72,6 @@ class Configuration:
         temp_dir = Path(self.MAIN_DIR.joinpath('temp'))
         log_dir.mkdir(exist_ok=True)
         temp_dir.mkdir(exist_ok=True)
-        self.MAIN_LOCALES_DIR.mkdir(exist_ok=True)
 
 
 class Translator:
@@ -90,7 +85,6 @@ class Translator:
     la vida del programa.
     """
     _instance = None
-    langs = ['es', 'en']
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
@@ -103,29 +97,9 @@ class Translator:
             return
         self._initialized = True
         self.config = Configuration()
-        self.install_translations()
-        self.translations = gettext.translation('messages', localedir=self.config.MAIN_LOCALES_DIR,
-                                                languages=self.langs)
+        self.translations = gettext.translation('messages', localedir=self.config.LOCALES_DIR,
+                                                languages=self.config.data["lang"])
         self.translations.install()
-
-    def install_translations(self):
-        project_locales_dir = Path(self.config.PROJECT_LOCALES_DIR)
-        main_locales_dir = Path(self.config.MAIN_LOCALES_DIR)
-        config_lang = self.config.data["lang"]
-
-        if config_lang in self.langs:
-            for lang in self.langs:
-                po_file = project_locales_dir / lang / "LC_MESSAGES" / "messages.po"
-                mo_file_dir = main_locales_dir / lang / "LC_MESSAGES"
-
-                # Crear directorios si no existen
-                mo_file_dir.mkdir(parents=True, exist_ok=True)
-
-                mo_file = mo_file_dir / "messages.mo"
-                command = f"msgfmt {po_file} --output-file {mo_file}"
-
-                args = command if os.name == 'nt' else command.split()
-                subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     def _(self, string):
         """

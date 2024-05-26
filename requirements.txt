@@ -5,4 +5,4 @@ Flask
 flask-mongoengine-3
 build
 setuptools
-pybabel
+Babel
