@@ -1,10 +1,8 @@
 from rich import print
 from rich.markdown import Markdown
 
-from nettrackercore.config import Translator, Configuration
+from nettrackercore.config import Translator
 
-config = Configuration()
-translator = Translator()
 
 class Helper:
     """
@@ -12,14 +10,17 @@ class Helper:
     terminal. Usando :py:class:`rich.markdown.Markdown` se pueden mostrar las ayudas en formato
     `Markdown <https://www.markdownguide.org/getting-started/>`_ para que las ayudas sean más legibles.
     """
-    @staticmethod
-    def print_main_help():
+
+    def __init__(self):
+        self.translator = Translator()
+
+    def print_main_help(self):
         """
         Este método muestra la ayuda principal del programa en formato Markdown. A esta ayuda se accede en el principio
         del programa. Esta ayuda muestra los 3 comandos principales: **scanner** para acceder al escáner, **dba** para
         acceder al administrador de base de datos y **help** para mostrar el propio mensaje de ayuda.
         """
-        prompt = translator._("""
+        prompt = self.translator._("""
 # Comandos de uso
         
 - **help** - Muestra este menú de ayuda
@@ -29,19 +30,18 @@ class Helper:
 """)
         print(Markdown(prompt))
 
-    @staticmethod
-    def print_scan_help():
+    def print_scan_help(self):
         """
         Este método muestra la ayuda sobre el escáner en formato Markdown. A esta ayuda se accede desde el escáner y
         muestra los comandos posibles. Los comandos posibles son: **set** para establecer el valor de una opción, **get**
         para obtener los valores de una opción, **scan** para realizar el escaneo con las opciones asignadas y **help**
         para mostrar el mensaje de ayuda.
         """
-        prompt = translator._("""
+        prompt = self.translator._("""
 # Comandos de uso
 - **help** - Muestra este mensaje de ayuda
-- **set \<opción\> \<valor\>**- Establece los parámetros de la red y/o dispositivos que se escanearán con el valor introducido
-- **get \<opción\> | ALL** - Obtiene el valor del parámetro solicitado o de todos (ALL) 
+- **set <opción> <valor>**- Establece los parámetros de la red y/o dispositivos que se escanearán con el valor introducido
+- **get <opción> | ALL** - Obtiene el valor del parámetro solicitado o de todos (ALL) 
 - **scan** - Realiza el escaneo de la red y/o dispositivos establecidos.
 
 ## Opciones válidas
@@ -68,20 +68,17 @@ dos dispositivos
 
         print(Markdown(prompt))
 
-    @staticmethod
-    def print_dba_help():
+    def print_dba_help(self):
         """
         Este método muestra la ayuda sobre el DBA en formato Markdown. A esta ayuda se accede desde el objeto **DBA** y
         muestra los comandos posibles del objeto.
         """
-        prompt = translator._(
-            """
+        prompt = self.translator._("""
 ## Comandos de uso
 - **help** - Muestra este mensaje de ayuda
 - **get networks** - Muestra todas las redes de la base de datos en forma de tabla.
-- **get network \<nombre\>** - Muestra la información de una red determinada en forma de tabla.
-- **list devices \<nombre\>** - Muestra los dispositivos de una red concreta en forma de tabla
+- **get network <nombre>** - Muestra la información de una red determinada en forma de tabla.
+- **list devices <nombre>** - Muestra los dispositivos de una red concreta en forma de tabla
 - **list services** - Muestra los servicios de un dispositivo en una red concreta en forma de tabla. 
-    La dirección y nombre de la red se piden al usuario."""
-        )
+    La dirección y nombre de la red se piden al usuario.""")
         print(Markdown(prompt))
