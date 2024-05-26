@@ -3,6 +3,8 @@ from rich.table import Table
 from nettrackercore.config import Translator, Configuration
 from nettrackercore.core.controller import NettrackerDAO
 
+config = Configuration()
+translator = Translator()
 
 class DBA:
     """
@@ -14,8 +16,6 @@ class DBA:
 
     def __init__(self):
         self.dao = NettrackerDAO()
-        self.config = Configuration()
-        self.translator = Translator()
 
     def get_networks(self):
         """
@@ -26,11 +26,11 @@ class DBA:
         :return: Una tabla con las redes de la base de datos.
         :rtype: :py:class:`~rich.table.Table`
         """
-        networks_table = Table(title=self.translator.translate("Redes"))
+        networks_table = Table(title=translator.translate("Redes"))
         networks = self.dao.get_all_networks()
-        networks_table.add_column(self.translator.translate("ID"), style="cyan")
-        networks_table.add_column(self.translator.translate("Nombre"), style="cyan")
-        networks_table.add_column(self.translator.translate("Dirección de red"), style="cyan")
+        networks_table.add_column(translator.translate("ID"), style="cyan")
+        networks_table.add_column(translator.translate("Nombre"), style="cyan")
+        networks_table.add_column(translator.translate("Dirección de red"), style="cyan")
 
         for network in networks:
             networks_table.add_row(network.network_id, network.network_name, network.address)
@@ -49,14 +49,14 @@ class DBA:
         :return: Una tabla con la información completa de una red.
         :rtype: :py:class:`~rich.table.Table`
         """
-        network_table = Table(title=self.translator.translate("Red {network_name}").format(network_name=network_name))
+        network_table = Table(title=translator.translate("Red {network_name}").format(network_name=network_name))
         network = self.dao.get_network_from_name(network_name)
-        network_table.add_column(self.translator.translate("ID"), style="cyan")
-        network_table.add_column(self.translator.translate("Nombre"), style="cyan")
-        network_table.add_column(self.translator.translate("Dirección de red"), style="cyan")
-        network_table.add_column(self.translator.translate("Puerta de enlace"), style="cyan")
-        network_table.add_column(self.translator.translate("Máscara de subred"), style="cyan")
-        network_table.add_column(self.translator.translate("Dispositivos"), style="cyan")
+        network_table.add_column(translator.translate("ID"), style="cyan")
+        network_table.add_column(translator.translate("Nombre"), style="cyan")
+        network_table.add_column(translator.translate("Dirección de red"), style="cyan")
+        network_table.add_column(translator.translate("Puerta de enlace"), style="cyan")
+        network_table.add_column(translator.translate("Máscara de subred"), style="cyan")
+        network_table.add_column(translator.translate("Dispositivos"), style="cyan")
 
         network_table.add_row(network.network_id, network.network_name, network.address, network.gateway.address,
                               str(network.subnet_mask), str(len(network.devices)))
@@ -74,12 +74,12 @@ class DBA:
         :rtype: :py:class:`~rich.table.Table`
         """
         devices = self.dao.get_devices_from_network(network_name)
-        devices_table = Table(title=self.translator.translate("Disposistivos de {network_name}").format(network_name=network_name))
-        devices_table.add_column(self.translator.translate("ID"), style="cyan")
-        devices_table.add_column(self.translator.translate("Nombre"), style="cyan")
-        devices_table.add_column(self.translator.translate("Dirección IP"), style="cyan")
-        devices_table.add_column(self.translator.translate("Sistema operativo"), style="cyan")
-        devices_table.add_column(self.translator.translate("Servicios activos"), style="cyan")
+        devices_table = Table(title=translator.translate("Disposistivos de {network_name}").format(network_name=network_name))
+        devices_table.add_column(translator.translate("ID"), style="cyan")
+        devices_table.add_column(translator.translate("Nombre"), style="cyan")
+        devices_table.add_column(translator.translate("Dirección IP"), style="cyan")
+        devices_table.add_column(translator.translate("Sistema operativo"), style="cyan")
+        devices_table.add_column(translator.translate("Servicios activos"), style="cyan")
 
         for device in devices:
             devices_table.add_row(device.device_id, device.device_name, device.address, device.os_type,
@@ -102,11 +102,11 @@ class DBA:
         """
         device = self.dao.get_device_from_address(network_name, device_address)
         services_table = Table(
-            title=self.translator.translate("Servicios activos del dispositivo {device_address} dentro de {network_name}").format(
+            title=translator.translate("Servicios activos del dispositivo {device_address} dentro de {network_name}").format(
                 device_address=device_address, network_name=network_name))
-        services_table.add_column(self.translator.translate("Nombre"), style="cyan")
-        services_table.add_column(self.translator.translate("Puerto"), style="cyan")
-        services_table.add_column(self.translator.translate("Protocolo"), style="cyan")
+        services_table.add_column(translator.translate("Nombre"), style="cyan")
+        services_table.add_column(translator.translate("Puerto"), style="cyan")
+        services_table.add_column(translator.translate("Protocolo"), style="cyan")
 
         for service in device.services:
             services_table.add_row(service.name, str(service.port), service.protocol)

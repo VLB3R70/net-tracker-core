@@ -6,6 +6,7 @@ from nettrackercore.config import Configuration
 from nettrackercore.core.results import JSONResult
 from nettrackercore.model.model import Device, Service, Network
 
+config = Configuration()
 
 class NettrackerDAO:
     """
@@ -20,8 +21,7 @@ class NettrackerDAO:
 
     def __init__(self, json_data: JSONResult = None):
         self.data = json_data
-        self.config = Configuration()
-        connect(self.config.data['db'])
+        connect(config.data['db'])
 
     def __build_services(self, host):
         """

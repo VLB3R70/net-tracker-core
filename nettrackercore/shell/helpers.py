@@ -3,6 +3,7 @@ from rich.markdown import Markdown
 
 from nettrackercore.config import Translator
 
+translator = Translator()
 
 class Helper:
     """
@@ -11,16 +12,14 @@ class Helper:
     `Markdown <https://www.markdownguide.org/getting-started/>`_ para que las ayudas sean más legibles.
     """
 
-    def __init__(self):
-        self.translator = Translator()
-
-    def print_main_help(self):
+    @staticmethod
+    def print_main_help():
         """
         Este método muestra la ayuda principal del programa en formato Markdown. A esta ayuda se accede en el principio
         del programa. Esta ayuda muestra los 3 comandos principales: **scanner** para acceder al escáner, **dba** para
         acceder al administrador de base de datos y **help** para mostrar el propio mensaje de ayuda.
         """
-        prompt = self.translator.translate("""
+        prompt = translator.translate("""
 # Comandos de uso
         
 - **help** - Muestra este menú de ayuda
@@ -30,14 +29,15 @@ class Helper:
 """)
         print(Markdown(prompt))
 
-    def print_scan_help(self):
+    @staticmethod
+    def print_scan_help():
         """
         Este método muestra la ayuda sobre el escáner en formato Markdown. A esta ayuda se accede desde el escáner y
         muestra los comandos posibles. Los comandos posibles son: **set** para establecer el valor de una opción, **get**
         para obtener los valores de una opción, **scan** para realizar el escaneo con las opciones asignadas y **help**
         para mostrar el mensaje de ayuda.
         """
-        prompt = self.translator.translate("""
+        prompt = translator.translate("""
 # Comandos de uso
 - **help** - Muestra este mensaje de ayuda
 - **set <opción> <valor>**- Establece los parámetros de la red y/o dispositivos que se escanearán con el valor introducido
@@ -68,12 +68,13 @@ dos dispositivos
 
         print(Markdown(prompt))
 
-    def print_dba_help(self):
+    @staticmethod
+    def print_dba_help():
         """
         Este método muestra la ayuda sobre el DBA en formato Markdown. A esta ayuda se accede desde el objeto **DBA** y
         muestra los comandos posibles del objeto.
         """
-        prompt = self.translator.translate("""
+        prompt = translator.translate("""
 ## Comandos de uso
 - **help** - Muestra este mensaje de ayuda
 - **get networks** - Muestra todas las redes de la base de datos en forma de tabla.
