@@ -1,7 +1,0 @@
-nettrackercore
-==============
-
-.. toctree::
-   :maxdepth: 5
-
-   nettrackercore

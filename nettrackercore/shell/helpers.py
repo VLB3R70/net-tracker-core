@@ -19,7 +19,7 @@ class Helper:
         del programa. Esta ayuda muestra los 3 comandos principales: **scanner** para acceder al escáner, **dba** para
         acceder al administrador de base de datos y **help** para mostrar el propio mensaje de ayuda.
         """
-        prompt = translator.translate("""
+        prompt = translator._("""
 # Comandos de uso
         
 - **help** - Muestra este menú de ayuda
@@ -37,7 +37,7 @@ class Helper:
         para obtener los valores de una opción, **scan** para realizar el escaneo con las opciones asignadas y **help**
         para mostrar el mensaje de ayuda.
         """
-        prompt = translator.translate("""
+        prompt = translator._("""
 # Comandos de uso
 - **help** - Muestra este mensaje de ayuda
 - **set <opción> <valor>**- Establece los parámetros de la red y/o dispositivos que se escanearán con el valor introducido
@@ -74,7 +74,7 @@ dos dispositivos
         Este método muestra la ayuda sobre el DBA en formato Markdown. A esta ayuda se accede desde el objeto **DBA** y
         muestra los comandos posibles del objeto.
         """
-        prompt = translator.translate("""
+        prompt = translator._("""
 ## Comandos de uso
 - **help** - Muestra este mensaje de ayuda
 - **get networks** - Muestra todas las redes de la base de datos en forma de tabla.
