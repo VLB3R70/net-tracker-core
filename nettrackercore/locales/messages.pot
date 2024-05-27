@@ -1,0 +1,203 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-05-27 11:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: shell/helpers.py:22
+msgid ""
+"\n"
+"# Comandos de uso\n"
+"        \n"
+"- **help** - Muestra este menú de ayuda\n"
+"- **scanner** - Crea un nuevo objeto Scanner. Es necesario para escanear "
+"la red y/o dispositivos\n"
+"- **dba** - Crea un nuevo objeto DBA. Es necesario para consultar la base"
+" de datos\n"
+"        \n"
+msgstr ""
+
+#: shell/helpers.py:40
+msgid ""
+"\n"
+"# Comandos de uso\n"
+"- **help** - Muestra este mensaje de ayuda\n"
+"- **set <opción> <valor>**- Establece los parámetros de la red y/o "
+"dispositivos que se escanearán con el valor introducido\n"
+"- **get <opción> | ALL** - Obtiene el valor del parámetro solicitado o de"
+" todos (ALL) \n"
+"- **scan** - Realiza el escaneo de la red y/o dispositivos establecidos.\n"
+"\n"
+"## Opciones válidas\n"
+"\n"
+"- **TARGET** - Objetivo de la red y/o dispositivos que corresponde a una "
+"dirección IP válida.\n"
+"- **PORT** - Puertos que se escanearán en todos los dispositivos "
+"asignados.\n"
+"- **OTHER** - Otros parámetros aceptados por Nmap.\n"
+"- **SILENT** - Parámetro que establece si el escaneo es silencioso o no.\n"
+"- **TCP** - Establece el protocolo de escaneo en TCP.\n"
+"- **UDP** - Establece el protocolo de escaneo en UDP.\n"
+"- **OS** - Parámetro que permite la obtención del sistema operativo del "
+"dispositivo escaneado.\n"
+"- **SUDO** - Válido solo para UNIX/Linux. Ciertos parámetros necesitan "
+"permisos de superusuario para poder ejecutarse\n"
+"\n"
+"## Ejemplos de uso\n"
+"\n"
+"`set TARGET 192.168.1.0/24` Para escanear una red completa o `set TARGET "
+"192.168.1.1 192.168.1.100` para escanear solo \n"
+"dos dispositivos\n"
+"\n"
+"`set OS True` Las opciones SILENT, TCP, UDP, OS y SUDO son valores "
+"booleanos.\n"
+"\n"
+"`get target` Obtiene solo el objetivo del escaneo.\n"
+"\n"
+"`get all` Obtiene todos los parámetros."
+msgstr ""
+
+#: shell/helpers.py:77
+msgid ""
+"\n"
+"## Comandos de uso\n"
+"- **help** - Muestra este mensaje de ayuda\n"
+"- **get networks** - Muestra todas las redes de la base de datos en forma"
+" de tabla.\n"
+"- **get network <nombre>** - Muestra la información de una red "
+"determinada en forma de tabla.\n"
+"- **list devices <nombre>** - Muestra los dispositivos de una red "
+"concreta en forma de tabla\n"
+"- **list services** - Muestra los servicios de un dispositivo en una red "
+"concreta en forma de tabla. \n"
+"    La dirección y nombre de la red se piden al usuario."
+msgstr ""
+
+#: shell/shell.py:61 shell/shell.py:193 shell/shell.py:241
+msgid "[magenta][bold]¡Adiós! 👋"
+msgstr ""
+
+#: shell/shell.py:135
+msgid "Por favor introduce un nombre para identificar a la red"
+msgstr ""
+
+#: shell/shell.py:141
+msgid "La red[red] {network_name}[/red] no es única"
+msgstr ""
+
+#: shell/shell.py:142
+msgid "¿Quieres actualizar la red actual con dicho nombre?[S/n]"
+msgstr ""
+
+#: shell/shell.py:161
+msgid "El programa ha detectado el objetivo como una red."
+msgstr ""
+
+#: shell/shell.py:165
+msgid "El dispositivo o dispositivos deben pertenecer a una red."
+msgstr ""
+
+#: shell/shell.py:166
+msgid "Introduce el nombre de una red conocida"
+msgstr ""
+
+#: shell/shell.py:211
+msgid "[green]Escaneo terminado correctamente[/green]"
+msgstr ""
+
+#: shell/shell.py:212
+msgid "[blue]Guardar escaneo [S/n][/blue]"
+msgstr ""
+
+#: shell/shell.py:224 shell/shell.py:249 shell/shell.py:255 shell/shell.py:261
+#: shell/shell.py:267
+msgid "[yellow]Opción desconocida[/yellow]"
+msgstr ""
+
+#: shell/shell.py:257
+msgid "Nombre de la red"
+msgstr ""
+
+#: shell/shell.py:258
+msgid "Dirección IP del dispositivo"
+msgstr ""
+
+#: shell/shell.py:285
+msgid "Opción inválida. Pruebe otra vez"
+msgstr ""
+
+#: core/dba.py:29
+msgid "Redes"
+msgstr ""
+
+#: core/dba.py:31 core/dba.py:54 core/dba.py:78
+msgid "ID"
+msgstr ""
+
+#: core/dba.py:32 core/dba.py:55 core/dba.py:79 core/dba.py:107
+msgid "Nombre"
+msgstr ""
+
+#: core/dba.py:33 core/dba.py:56
+msgid "Dirección de red"
+msgstr ""
+
+#: core/dba.py:52
+msgid "Red {network_name}"
+msgstr ""
+
+#: core/dba.py:57
+msgid "Puerta de enlace"
+msgstr ""
+
+#: core/dba.py:58
+msgid "Máscara de subred"
+msgstr ""
+
+#: core/dba.py:59
+msgid "Dispositivos"
+msgstr ""
+
+#: core/dba.py:77
+msgid "Disposistivos de {network_name}"
+msgstr ""
+
+#: core/dba.py:80
+msgid "Dirección IP"
+msgstr ""
+
+#: core/dba.py:81
+msgid "Sistema operativo"
+msgstr ""
+
+#: core/dba.py:82
+msgid "Servicios activos"
+msgstr ""
+
+#: core/dba.py:105
+msgid ""
+"Servicios activos del dispositivo {device_address} dentro de "
+"{network_name}"
+msgstr ""
+
+#: core/dba.py:108
+msgid "Puerto"
+msgstr ""
+
+#: core/dba.py:109
+msgid "Protocolo"
+msgstr ""
+
