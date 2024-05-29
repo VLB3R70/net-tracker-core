@@ -1,0 +1,1227 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Paquete nettrackercore.core &#8212; documentación de net-tracker-core - </title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=78d55cf8"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../_static/translations.js?v=efdbd0b9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/nettrackercore.core';</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Paquete nettrackercore.model" href="nettrackercore.model.html" />
+    <link rel="prev" title="Referencia de la API" href="nettrackercore.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Saltar al contenido principal</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Volver arriba</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">documentación de net-tracker-core - </p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Búsqueda</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contenido:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introducción</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Instalación</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="nettrackercore.html">Referencia de la API</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Paquete nettrackercore.core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.model.html">Paquete nettrackercore.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.shell.html">Paquete nettrackercore.shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nettrackercore.api.html">Paquete nettrackercore.api</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/nettrackercore.core.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Paquete nettrackercore.core</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodulos">Submódulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.controller">Módulo nettrackercore.core.controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_all_networks"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_all_networks()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_device_from_address"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_device_from_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_devices_from_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_devices_from_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_network_from_name"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_network_from_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.insert_device"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.insert_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.new_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.new_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.update_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.update_network()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.dba">Módulo nettrackercore.core.dba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA"><code class="docutils literal notranslate"><span class="pre">DBA</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_devices"><code class="docutils literal notranslate"><span class="pre">DBA.get_devices()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_network"><code class="docutils literal notranslate"><span class="pre">DBA.get_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_networks"><code class="docutils literal notranslate"><span class="pre">DBA.get_networks()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_services"><code class="docutils literal notranslate"><span class="pre">DBA.get_services()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.exceptions">Módulo nettrackercore.core.exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.ExecutionError"><code class="docutils literal notranslate"><span class="pre">ExecutionError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.IllegalArgumentException"><code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidAddressException"><code class="docutils literal notranslate"><span class="pre">InvalidAddressException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidArgumentsException"><code class="docutils literal notranslate"><span class="pre">InvalidArgumentsException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidPortsException"><code class="docutils literal notranslate"><span class="pre">InvalidPortsException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.NettrackerException"><code class="docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.parsers">Módulo nettrackercore.core.parsers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser"><code class="docutils literal notranslate"><span class="pre">NmapParser</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.create_command"><code class="docutils literal notranslate"><span class="pre">NmapParser.create_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_params"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_params()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_ports"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_ports()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_targets"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_targets()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.ports_to_list"><code class="docutils literal notranslate"><span class="pre">NmapParser.ports_to_list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.validate_address"><code class="docutils literal notranslate"><span class="pre">NmapParser.validate_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.validate_ports"><code class="docutils literal notranslate"><span class="pre">NmapParser.validate_ports()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.results">Módulo nettrackercore.core.results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult"><code class="docutils literal notranslate"><span class="pre">JSONResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_address"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_host"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_host()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_hostname"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_hostname()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_items"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_items()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_keys"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_keys()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_os"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_os()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_services"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_services()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_values"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_values()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.scanner">Módulo nettrackercore.core.scanner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger.error"><code class="docutils literal notranslate"><span class="pre">Logger.error()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner"><code class="docutils literal notranslate"><span class="pre">Scanner</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.cleanup"><code class="docutils literal notranslate"><span class="pre">Scanner.cleanup()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.execute_command"><code class="docutils literal notranslate"><span class="pre">Scanner.execute_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.scan"><code class="docutils literal notranslate"><span class="pre">Scanner.scan()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core">Contenido de los módulos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="paquete-nettrackercore-core">
+<h1>Paquete nettrackercore.core<a class="headerlink" href="#paquete-nettrackercore-core" title="Link to this heading"><span>#</span></a></h1>
+<section id="submodulos">
+<h2>Submódulos<a class="headerlink" href="#submodulos" title="Link to this heading"><span>#</span></a></h2>
+</section>
+<section id="module-nettrackercore.core.controller">
+<span id="modulo-nettrackercore-core-controller"></span><h2>Módulo nettrackercore.core.controller<a class="headerlink" href="#module-nettrackercore.core.controller" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.controller.</span></span><span class="sig-name descname"><span class="pre">NettrackerDAO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><span class="pre">JSONResult</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>El objeto <strong>NettrackerDAO</strong> corresponde al objeto de acceso a datos, más conocido como DAO(Data Access Object). Este
+objeto es el encargado de realizar las llamadas a la base de datos mediante el módulo
+<a class="reference external" href="https://docs.mongoengine.org/index.html">mongoengine</a>, el cual es un ODM (Object-Document Mapper) y nos permite
+operar con la base de datos de forma más sencilla.</p>
+<p>Este objeto trabaja con el resultado obtenido del escaneo en forma del
+objeto <a class="reference internal" href="#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONResult</span></code></a>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.get_all_networks">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_all_networks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.get_all_networks"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.get_all_networks" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método realiza una consulta a la base de datos para obtener el id y el nombre de todas las redes.
+:return: Se devuelve el resultado de la consulta realizada
+:rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">QuerySet</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.get_device_from_address">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_device_from_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.get_device_from_address"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.get_device_from_address" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método obtiene la información de un dispositivo específico dentro de una red también específica.
+:param network_name: El nombre de la red.
+:type network_name: str
+:param address: La dirección de red del dispositivo.
+:type address: str</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>La información del dispositivo específico.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="nettrackercore.model.html#nettrackercore.model.model.Device" title="nettrackercore.model.model.Device">nettrackercore.model.model.Device</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.get_devices_from_network">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_devices_from_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.get_devices_from_network"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.get_devices_from_network" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método obtiene todos los dispositivos dentro de una red específica.
+:param network_name: El nombre de la red.
+:type network_name: str
+:return: Se devuelve el resultado de la consulta realizada. Si no existen dispositivos se devuelve una lista vacía
+:rtype: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseList</span></code> | list</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.get_network_from_name">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_network_from_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.get_network_from_name"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.get_network_from_name" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método obtiene la información de una red específica por su nombre.
+:param name: El nombre de la red.
+:type name: str
+:return: Se devuelve el resultado de la consulta realizada
+:rtype: Network</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.insert_device">
+<span class="sig-name descname"><span class="pre">insert_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.insert_device"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.insert_device" title="Link to this definition"><span>#</span></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.new_network">
+<span class="sig-name descname"><span class="pre">new_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.new_network"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.new_network" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método realiza una operación CRUD de creación de un nuevo registro en la base de datos. Los datos obtenidos
+por parámetros son definidos por el usuario durante la ejecución del programa, el resto deben ser obtenidos con
+los métodos pseudo-privados complementarios.
+La operación fuerza la inserción en la base de datos ya que <cite>mongoengine</cite> permite la operación <cite>upsert</cite>. Si la
+operación sufre algún error será posteriormente capturada en el programa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – El nombre de la red. Debe ser único.</p></li>
+<li><p><strong>address</strong> (<em>str</em>) – La dirección de red a guardar.</p></li>
+<li><p><strong>submask</strong> (<em>int</em>) – La dirección de la máscara de red en forma numérica.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.controller.NettrackerDAO.update_network">
+<span class="sig-name descname"><span class="pre">update_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/controller.html#NettrackerDAO.update_network"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.controller.NettrackerDAO.update_network" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de actualizar los valores de la base de datos a los últimos obtenidos en el escaneo. La
+operación de actualización es atómica por lo que se actualizará todo el documento y sus valores.  De esta forma
+siempre nos aseguramos de tener la información más actualizada posible.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core.dba">
+<span id="modulo-nettrackercore-core-dba"></span><h2>Módulo nettrackercore.core.dba<a class="headerlink" href="#module-nettrackercore.core.dba" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.dba.DBA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.dba.</span></span><span class="sig-name descname"><span class="pre">DBA</span></span><a class="reference internal" href="../_modules/nettrackercore/core/dba.html#DBA"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.dba.DBA" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>El objeto <strong>DBA</strong> se encarga de realizar consultas a la base de datos mediante
+<a class="reference internal" href="#nettrackercore.core.controller.NettrackerDAO" title="nettrackercore.core.controller.NettrackerDAO"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerDAO</span></code></a> y mostrar los resultados en forma de tabla para el
+usuario. Como la base de datos no es relacional, los datos que se muestran en las tablas son simples. Para datos más
+complejos como las listas u objetos dentro del modelo se usan comandos específicos.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.dba.DBA.get_devices">
+<span class="sig-name descname"><span class="pre">get_devices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/dba.html#DBA.get_devices"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.dba.DBA.get_devices" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de obtener la lista de dispositivos de una red determinada y los devuelve en forma de
+tabla. En este caso, se muestra el número total de servicios activos, ya que dentro del modelo de datos los
+servicios objetos y esto es un valor demasiado complejo para <cite>~rich.table.Table</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>network_name</strong> (<em>str</em>) – es el nombre de la red</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Una tabla con la información de los dispositivos</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.dba.DBA.get_network">
+<span class="sig-name descname"><span class="pre">get_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/dba.html#DBA.get_network"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.dba.DBA.get_network" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de obtener el resultado completo de una red específica y muestra en forma de tabla el
+mismo. Dentro del modelo de datos la puerta de enlace dentro de una red corresponde a un objeto, este valor es
+demasiado complejo para <cite>~rich.table.Table</cite> por lo que solo se muestra la dirección de IP del dispositivo. En el
+caso de la lista de dispositivos ocurre lo mismo por lo que solo se muestra el número total de valores de la
+lista. Se necesita un nombre de red para realizar la consulta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>network_name</strong> (<em>str</em>) – es el nombre de la red</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Una tabla con la información completa de una red.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.dba.DBA.get_networks">
+<span class="sig-name descname"><span class="pre">get_networks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/dba.html#DBA.get_networks"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.dba.DBA.get_networks" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método devuelve una tabla con el resultado de obtener todas las redes de la base de datos. Los datos que se
+muestran son: el identificador, el nombre dado y la dirección de red. Esta información es necesaria para poder
+realizar otras consultas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Una tabla con las redes de la base de datos.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.dba.DBA.get_services">
+<span class="sig-name descname"><span class="pre">get_services</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device_address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/dba.html#DBA.get_services"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.dba.DBA.get_services" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de obtener los servicios activos de un dispositivo determinado en una red determinada y
+los muestra en forma de tabla. Se muestra el nombre del servicio, el número del puerto y el protocolo en el que
+está trabajando.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>network_name</strong> (<em>str</em>) – es el nombre de la red</p></li>
+<li><p><strong>device_address</strong> (<em>str</em>) – es la dirección IP del dispositivo</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Una tabla con la información de los servicios</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core.exceptions">
+<span id="modulo-nettrackercore-core-exceptions"></span><h2>Módulo nettrackercore.core.exceptions<a class="headerlink" href="#module-nettrackercore.core.exceptions" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.ExecutionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">ExecutionError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'An</span> <span class="pre">error</span> <span class="pre">occurred</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">execution</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">program.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#ExecutionError"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.ExecutionError" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nettrackercore.core.exceptions.NettrackerException" title="nettrackercore.core.exceptions.NettrackerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></p>
+<p>Esta excepción se lanza cuando ocurre un error durante la ejecución del programa.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.IllegalArgumentException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">IllegalArgumentException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'One</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">arguments</span> <span class="pre">are</span> <span class="pre">illegal.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#IllegalArgumentException"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.IllegalArgumentException" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nettrackercore.core.exceptions.NettrackerException" title="nettrackercore.core.exceptions.NettrackerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></p>
+<p>Esta excepción se lanza cuando el usuario ha introducido un argumento que no debería introducir.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.InvalidAddressException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidAddressException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'The</span> <span class="pre">address</span> <span class="pre">or</span> <span class="pre">addresses</span> <span class="pre">introduced</span> <span class="pre">are</span> <span class="pre">invalid.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#InvalidAddressException"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.InvalidAddressException" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nettrackercore.core.exceptions.NettrackerException" title="nettrackercore.core.exceptions.NettrackerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></p>
+<p>Esta excepción se lanza cuando la dirección IP introducida por el usuario no es válida.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.InvalidArgumentsException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidArgumentsException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'One</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">arguments</span> <span class="pre">are</span> <span class="pre">invalid.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#InvalidArgumentsException"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.InvalidArgumentsException" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nettrackercore.core.exceptions.NettrackerException" title="nettrackercore.core.exceptions.NettrackerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></p>
+<p>Esta excepción se lanza cuando un argumento introducido por el usuario no es válido.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.InvalidPortsException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidPortsException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'The</span> <span class="pre">ports</span> <span class="pre">introduced</span> <span class="pre">are</span> <span class="pre">invalid.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#InvalidPortsException"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.InvalidPortsException" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nettrackercore.core.exceptions.NettrackerException" title="nettrackercore.core.exceptions.NettrackerException"><code class="xref py py-class docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></p>
+<p>Esta excepción se lanza cuando los puertos introducidos por el usuario no son válidos.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="nettrackercore.core.exceptions.NettrackerException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.exceptions.</span></span><span class="sig-name descname"><span class="pre">NettrackerException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'System</span> <span class="pre">exception'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/exceptions.html#NettrackerException"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.exceptions.NettrackerException" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Excepción base para todas las excepciones del programa.</p>
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core.parsers">
+<span id="modulo-nettrackercore-core-parsers"></span><h2>Módulo nettrackercore.core.parsers<a class="headerlink" href="#module-nettrackercore.core.parsers" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.parsers.</span></span><span class="sig-name descname"><span class="pre">NmapParser</span></span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>NmapParser se encarga de formatear los parámetros introducidos por el usuario y los devuelve como una lista.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.create_command">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sudo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.create_command"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.create_command" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>El objeto <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#popen-objects">Popen</a> necesita los argumentos que
+posteriormente ejecutará en un formato de lista.</p>
+<p>Este método es el encargado de crear dicha lista después de validar todos los parámetros introducidos por el
+usuario. Además, el resultado de la ejecución se debe de almacenar en un fichero XML por lo que de forma
+predeterminada se establece el parámetro <cite>-oX</cite>.</p>
+<p>Es posible que el programa se use desde un sistema operativo Windows, en ese caso, el comando que devolverá será
+una cadena de caracteres completa. Si el programa se ejecuta desde un sistema UNIX/Linux el comando se convertirá
+en una lista con los argumentos necesarios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targets</strong> (<em>str</em>) – Direcciones IP introducidas por el usuario.</p></li>
+<li><p><strong>ports</strong> (<em>str</em>) – Son los puertos introducidos por el usuario.</p></li>
+<li><p><strong>params</strong> (<em>str</em>) – Son los parámetros opcionales introducidos por el usuario.</p></li>
+<li><p><strong>sudo</strong> (<em>bool</em>) – Opción elegida por el usuario para ejecutar el comando con privilegios o no.</p></li>
+<li><p><strong>temp_file</strong> (<em>str</em>) – Ruta absoluta del fichero temporal donde se almacenará el resultado en formato XML.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La lista del comando completo que se ejecutará con <code class="xref py py-mod docutils literal notranslate"><span class="pre">subprocess</span></code> o una cadena de caracteres</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.parse_params">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.parse_params"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.parse_params" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de devolver los parámetros opcionales introducidos por el usuario formateados como una
+lista.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>params</strong> (<em>str</em>) – Parámetros opcionales introducidos por el usuario.</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#nettrackercore.core.exceptions.IllegalArgumentException" title="nettrackercore.core.exceptions.IllegalArgumentException"><strong>IllegalArgumentException</strong></a> – </p>
+</dd>
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Lista de parámetros opcionales introducidos por el usuario.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.parse_ports">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.parse_ports"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.parse_ports" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de formatear y validar los puertos introducidos por el usuario.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>str</em>) – Son los puertos a validar</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Puertos validados</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.parse_targets">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_targets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.parse_targets"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.parse_targets" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de devolver las direcciones correctamente validadas. Si no son válidas se lanza una excepción.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>targets</strong> (<em>str</em>) – Dirección IP introducida por el usuario.</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#nettrackercore.core.exceptions.InvalidAddressException" title="nettrackercore.core.exceptions.InvalidAddressException"><strong>InvalidAddressException</strong></a> – </p>
+</dd>
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Direcciones IP validadas</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.ports_to_list">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ports_to_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.ports_to_list"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.ports_to_list" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Por cómo funciona Nmap, es posible establecer los puertos con comas (,) o guiones (-) para establecer rangos o
+puertos concretos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ports</strong> (<em>str</em>) – Son los puertos a validar.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Puertos introducidos en formato de lista.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.validate_address">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.validate_address"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.validate_address" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de validar las direcciones IP ya sean de red o no con el módulo
+<a class="reference external" href="https://docs.python.org/3/library/ipaddress.html#module-ipaddress">ipaddress</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>address</strong> (<em>str</em>) – Es la dirección IP a validar</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Verdadero o falso en función de la dirección IP</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.parsers.NmapParser.validate_ports">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/parsers.html#NmapParser.validate_ports"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.parsers.NmapParser.validate_ports" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de validar los puertos introducidos por el usuario dentro de una lista. Si existe algún
+puerto inválido se lanza una excepción.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>port_list</strong> (<em>list</em>) – Es la lista de puertos a validar</p>
+</dd>
+<dt class="field-even">Muestra<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#nettrackercore.core.exceptions.InvalidPortsException" title="nettrackercore.core.exceptions.InvalidPortsException"><strong>exceptions.InvalidPortsException</strong></a> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core.results">
+<span id="modulo-nettrackercore-core-results"></span><h2>Módulo nettrackercore.core.results<a class="headerlink" href="#module-nettrackercore.core.results" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.results.</span></span><span class="sig-name descname"><span class="pre">JSONResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+<p>Este objeto encapsula el resultado de la ejecución del escaneo. Este objeto hereda el objeto
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> y obtiene un diccionario mediante el constructor que
+actualiza su valor. Este diccionario se obtiene en la lectura del fichero XML con el resultado del escaneo.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_address">
+<span class="sig-name descname"><span class="pre">get_address</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_address"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_address" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Obtiene el valor cuya clave corresponde a <cite>address</cite>. Este método además tiene en cuenta que el escaneo detecta
+la dirección MAC del equipo. Dicho valor se añade a la clave <cite>address</cite> y corresponde a una lista.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Ejemplo</span><a class="headerlink" href="#id1" title="Link to this code"><span>#</span></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span>
+    <span class="o">...</span><span class="p">,</span>
+    <span class="s1">&#39;address&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;@addr&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">IP</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;@addrtype&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;@addr&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">MAC</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;@addrtype&#39;</span><span class="p">:</span> <span class="s1">&#39;mac&#39;</span><span class="p">,</span> <span class="s1">&#39;@vendor&#39;</span><span class="p">:</span> <span class="n">vendor</span><span class="p">}],</span>
+    <span class="o">...</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>host</strong> (<em>dict</em>) – el valor que corresponde a <cite>host</cite>.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>el valor que corresponde a <cite>address</cite>.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_host">
+<span class="sig-name descname"><span class="pre">get_host</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_host"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_host" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Obtiene el valor cuya clave corresponde a <cite>host</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>el valor que corresponde a <cite>host</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_hostname">
+<span class="sig-name descname"><span class="pre">get_hostname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_hostname"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_hostname" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método obtiene el nombre del host</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>host</strong> (<em>dict</em>) – el valor que corresponde a <cite>host</cite>.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>el valor que corresponde a <cite>hostname</cite>.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_items">
+<span class="sig-name descname"><span class="pre">get_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_items"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_items" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Obtiene todos los pares clave-valor del objeto JSONResult.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lista con todos los pares clave-valor del objeto.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_keys">
+<span class="sig-name descname"><span class="pre">get_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_keys"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_keys" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Obtiene todas las claves del objeto JSONResult.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lista con todas las claves del objeto.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_os">
+<span class="sig-name descname"><span class="pre">get_os</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_os"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_os" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método obtiene el valor de la calve que corresponde a <cite>os</cite> dentro de <cite>host</cite>. Este valor a su vez contiene
+más información que para la lógica del programa no es relevante por lo que el dato final corresponde a <cite>osmatch</cite>.</p>
+<p>Al igual que con las direcciones, es posible que el escaneo detecte varios sistemas operativos en una misma
+máquina; estos, los muestra como una lista con su información. El escáner Nmap, al encontrar varios sistemas
+operativos, indica un porcentaje de veracidad; este porcentaje indica lo seguro que está de dicho escaneo. El
+primer valor siempre es el más elevado (el más confiable) por lo que, si el valor es una lista, siempre se
+escoge el primer valor de la lista.</p>
+<p>También es posible que el escáner no sea capaz de detectar un sistema operativo válido. En estos casos el valor
+de <cite>osmatch</cite> corresponde a <cite>None</cite> o <cite>Null</cite> en otros lenguajes. Si obtenemos un valor nulo y queremos trabajar
+con él se lanzará una excepción <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#TypeError">TypeError</a> y, en
+ese caso, se retornará una cadena indicando que no se ha podido encontrar un sistema operativo válido.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>host</strong> (<em>dict</em>) – el valor que corresponde a <cite>host</cite>.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>el valor que corresponde a <cite>osmatch</cite>.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_services">
+<span class="sig-name descname"><span class="pre">get_services</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_services"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_services" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de obtener los valores correspondientes a los puertos abiertos y los servicios corriendo
+en ellos. Se retorna una lista de diccionarios donde la sintaxis de estos es la siguiente:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Sintaxis de estos puertos abiertos</span><a class="headerlink" href="#id2" title="Link to this code"><span>#</span></a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">nombre</span><span class="p">,</span> <span class="s2">&quot;port&quot;</span><span class="p">:</span><span class="n">puerto</span><span class="p">,</span> <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">protocolo</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>host</strong> (<em>dict</em>) – el valor que corresponde a <cite>host</cite>.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.results.JSONResult.get_values">
+<span class="sig-name descname"><span class="pre">get_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/results.html#JSONResult.get_values"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.results.JSONResult.get_values" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Obtiene todos los valores del objeto JSONResult.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>lista con todos los valores del objeto.</p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core.scanner">
+<span id="modulo-nettrackercore-core-scanner"></span><h2>Módulo nettrackercore.core.scanner<a class="headerlink" href="#module-nettrackercore.core.scanner" title="Link to this heading"><span>#</span></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Logger">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.scanner.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Logger"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Logger" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>La clase <strong>Logger</strong> se encarga de escribir mensajes en los ficheros designados. Existen dos ficheros: uno de <cite>log</cite> y
+otro de errores. Estos ficheros se crean previamente.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Logger.error">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Logger.error"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Logger.error" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de escribir los mensajes de error en un log. Cuando ha ocurrido un error o se ha lanzado
+una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este
+formato también se guarda la fecha.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Logger.log">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Logger.log"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Logger.log" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga escribir un mensaje concreto en el log. Para añadir más información se escribe la fecha
+del día en el momento de la ejecución del programa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> – Configuración del programa.</p></li>
+<li><p><strong>message</strong> – Mensaje a escribir dentro del log.</p></li>
+<li><p><strong>command</strong> – Comando lanzado por el subproceso</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Scanner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">nettrackercore.core.scanner.</span></span><span class="sig-name descname"><span class="pre">Scanner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Scanner"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Scanner" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Objeto que representa un escáner. Este escáner se encarga de usar el paquete de Nmap previamente instalado en la
+máquina. El usuario establece ciertos parámetros que posteriormente serán usados por el paquete Nmap. Dichos
+parámetros son:</p>
+<ul class="simple">
+<li><p><strong>targets</strong>: puede ser una dirección de red en formato CIDR, una dirección o varias direcciones IP, etc.</p></li>
+<li><p><strong>ports</strong>: es un parámetro que establece los puertos que se escanearán, si no se establece nada se escanean todos.</p></li>
+</ul>
+<p>El formato de los puertos es:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><cite>80</cite> -&gt; Solo se escanea el puerto 80</p></li>
+<li><p><cite>80,443</cite> -&gt; Se escanean los puertos 80 y 443 únicamente</p></li>
+<li><p><cite>1-1024</cite> -&gt; Solo se escanean los puertos comprendidos entre el 1 y el 1024</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>params</strong>: son otros parámetros permitidos por Nmap.</p></li>
+</ul>
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Scanner.cleanup">
+<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Scanner.cleanup"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Scanner.cleanup" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método se encarga de eliminar el fichero temporal necesario para la lógica del programa.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Scanner.execute_command">
+<span class="sig-name descname"><span class="pre">execute_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Scanner.execute_command"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Scanner.execute_command" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>Este método es el encargado de crear un subproceso y ejecutar el comando configurado por el usuario. La salida
+estándar y la salida de error se obtienen mediante un <cite>pipe</cite>; el código de retorno también se obtiene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>command</strong> (<em>list</em>) – El comando configurado por el usuario en forma de lista.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>La salida estándar, la salida de error y el código de retorno.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="nettrackercore.core.scanner.Scanner.scan">
+<span class="sig-name descname"><span class="pre">scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">targets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sudo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/nettrackercore/core/scanner.html#Scanner.scan"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#nettrackercore.core.scanner.Scanner.scan" title="Link to this definition"><span>#</span></a></dt>
+<dd><p>El método <cite>scan</cite> realiza el escaneo sobre los objetivos asignados usando el paquete Nmap. La salida estándar del
+comando se almacena de un fichero de log y el resultado del escaneo se encapsula en un objeto
+<a class="reference internal" href="#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONResult</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targets</strong> (<em>str</em>) – Es la dirección IP hacia donde se hará el escaneo. Puede ser una dirección de red o una
+dirección de equipo.</p></li>
+<li><p><strong>ports</strong> (<em>str</em>) – Son los puertos hacia donde se hará el escaneo. Los puertos deben estar comprendidos entre el 1 y
+el 65535, ambos incluidos.</p></li>
+<li><p><strong>params</strong> (<em>str</em>) – Son parámetros opcionales introducidos por el usuario y aceptados por Nmap.</p></li>
+<li><p><strong>sudo</strong> (<em>bool</em>) – Ciertos parámetros necesitan permisos de superusuario para ejecutarse.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>El resultado del escaneo se encapsula en un objeto <a class="reference internal" href="#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">JSONResult</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#nettrackercore.core.results.JSONResult" title="nettrackercore.core.results.JSONResult">JSONResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-nettrackercore.core">
+<span id="contenido-de-los-modulos"></span><h2>Contenido de los módulos<a class="headerlink" href="#module-nettrackercore.core" title="Link to this heading"><span>#</span></a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="nettrackercore.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Referencia de la API</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nettrackercore.model.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Paquete nettrackercore.model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodulos">Submódulos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.controller">Módulo nettrackercore.core.controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_all_networks"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_all_networks()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_device_from_address"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_device_from_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_devices_from_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_devices_from_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.get_network_from_name"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.get_network_from_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.insert_device"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.insert_device()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.new_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.new_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.controller.NettrackerDAO.update_network"><code class="docutils literal notranslate"><span class="pre">NettrackerDAO.update_network()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.dba">Módulo nettrackercore.core.dba</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA"><code class="docutils literal notranslate"><span class="pre">DBA</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_devices"><code class="docutils literal notranslate"><span class="pre">DBA.get_devices()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_network"><code class="docutils literal notranslate"><span class="pre">DBA.get_network()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_networks"><code class="docutils literal notranslate"><span class="pre">DBA.get_networks()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.dba.DBA.get_services"><code class="docutils literal notranslate"><span class="pre">DBA.get_services()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.exceptions">Módulo nettrackercore.core.exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.ExecutionError"><code class="docutils literal notranslate"><span class="pre">ExecutionError</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.IllegalArgumentException"><code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidAddressException"><code class="docutils literal notranslate"><span class="pre">InvalidAddressException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidArgumentsException"><code class="docutils literal notranslate"><span class="pre">InvalidArgumentsException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.InvalidPortsException"><code class="docutils literal notranslate"><span class="pre">InvalidPortsException</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.exceptions.NettrackerException"><code class="docutils literal notranslate"><span class="pre">NettrackerException</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.parsers">Módulo nettrackercore.core.parsers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser"><code class="docutils literal notranslate"><span class="pre">NmapParser</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.create_command"><code class="docutils literal notranslate"><span class="pre">NmapParser.create_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_params"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_params()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_ports"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_ports()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.parse_targets"><code class="docutils literal notranslate"><span class="pre">NmapParser.parse_targets()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.ports_to_list"><code class="docutils literal notranslate"><span class="pre">NmapParser.ports_to_list()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.validate_address"><code class="docutils literal notranslate"><span class="pre">NmapParser.validate_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.parsers.NmapParser.validate_ports"><code class="docutils literal notranslate"><span class="pre">NmapParser.validate_ports()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.results">Módulo nettrackercore.core.results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult"><code class="docutils literal notranslate"><span class="pre">JSONResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_address"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_address()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_host"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_host()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_hostname"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_hostname()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_items"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_items()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_keys"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_keys()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_os"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_os()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_services"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_services()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.results.JSONResult.get_values"><code class="docutils literal notranslate"><span class="pre">JSONResult.get_values()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core.scanner">Módulo nettrackercore.core.scanner</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger"><code class="docutils literal notranslate"><span class="pre">Logger</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger.error"><code class="docutils literal notranslate"><span class="pre">Logger.error()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Logger.log"><code class="docutils literal notranslate"><span class="pre">Logger.log()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner"><code class="docutils literal notranslate"><span class="pre">Scanner</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.cleanup"><code class="docutils literal notranslate"><span class="pre">Scanner.cleanup()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.execute_command"><code class="docutils literal notranslate"><span class="pre">Scanner.execute_command()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nettrackercore.core.scanner.Scanner.scan"><code class="docutils literal notranslate"><span class="pre">Scanner.scan()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-nettrackercore.core">Contenido de los módulos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Alberto Jiménez Huertas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Alberto Jiménez Huertas.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

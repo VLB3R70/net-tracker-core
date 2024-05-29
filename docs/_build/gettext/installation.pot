@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/installation.rst:2
+msgid "Instalación"
+msgstr ""
+
+#: ../../source/installation.rst:4
+msgid "Debido a su naturaleza inestable, Net-Tracker necesita seguir ciertos pasos específicos para la instalación. A continuación se detallan los pasos recomendados para realizar la correcta instalación de la aplicación."
+msgstr ""
+
+#: ../../source/installation.rst:8
+msgid "Linux"
+msgstr ""
+
+#: ../../source/installation.rst:11
+#: ../../source/installation.rst:98
+msgid "Entorno virtual"
+msgstr ""
+
+#: ../../source/installation.rst:13
+msgid "Se recomienda usar un entorno virtual para mantener la aplicación encapsulada del resto del sistema. Para instalar y configurar un entorno virtual en un entorno UNIX/Linux, sigue estos pasos:"
+msgstr ""
+
+#: ../../source/installation.rst:20
+msgid "Con el paquete instalado, ejecuta el siguiente comando para crear el entorno:"
+msgstr ""
+
+#: ../../source/installation.rst:23
+msgid "Es recomendable crear un directorio separado para el entorno virtual."
+msgstr ""
+
+#: ../../source/installation.rst:29
+msgid "Donde el último ``venv`` corresponde al nombre que tendrá el directorio del entorno virtual. Con el entorno virtual instalado y creado, solo es necesario activarlo con el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:37
+#: ../../source/installation.rst:118
+msgid "Instalación de la aplicación"
+msgstr ""
+
+#: ../../source/installation.rst:39
+msgid "Con el entorno virtual activado, instala la aplicación. Actualmente, al ser una versión inestable, se debe instalar desde el repositorio oficial de `Github <https://github.com/VLB3R70/net-tracker-core>`_. Ejecuta los siguientes comandos:"
+msgstr ""
+
+#: ../../source/installation.rst:50
+msgid "También es posible encapsular la construcción del proyecto y luego instalarlo con los siguientes comandos:"
+msgstr ""
+
+#: ../../source/installation.rst:57
+msgid "Este método es recomendable usarlo en entornos de desarrollo y nunca en el entorno del sistema."
+msgstr ""
+
+#: ../../source/installation.rst:60
+#: ../../source/installation.rst:140
+msgid "Instalación de las traducciones"
+msgstr ""
+
+#: ../../source/installation.rst:62
+msgid "La aplicación contiene traducciones para el inglés. El idioma predeterminado es el español, pero el usuario puede elegir usar el inglés. Las traducciones vienen previamente instaladas y la aplicación es plenamente funcional en ambos idiomas, pero es posible reinstalar las traducciones por si el usuario lo necesita con el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:71
+#: ../../source/installation.rst:149
+msgid "Despliegue"
+msgstr ""
+
+#: ../../source/installation.rst:73
+msgid "La aplicación necesita una conexión a una base de datos MongoDB y Docker correctamente instalado para poder desplegar la API en un contenedor. Es posible crear un contenedor para la base de datos si no se desea una instalación completa de MongoDB. Dentro del directorio del proyecto, ejecuta el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:81
+msgid "Con este comando, se procede a crear la imagen de la aplicación establecida en el fichero Dockerfile y, posteriormente, se crea el contenedor con la imagen creada. Si además queremos crear un contenedor para la base de datos, debemos indicar el perfil de este contenedor:"
+msgstr ""
+
+#: ../../source/installation.rst:89
+msgid "Una vez creados los contenedores y desplegada la API, podemos comprobarlo abriendo un navegador y visitando `<http://localhost:5000>`_. También es posible acceder a la API desde ``http://<IP>:5000``."
+msgstr ""
+
+#: ../../source/installation.rst:92
+#: ../../source/installation.rst:165
+msgid "Después de la instalación, simplemente ejecuta el comando ``net-tracker`` para iniciar la aplicación."
+msgstr ""
+
+#: ../../source/installation.rst:95
+msgid "Windows"
+msgstr ""
+
+#: ../../source/installation.rst:100
+msgid "Si tu entorno es Windows, los pasos a seguir son diferentes. Cuando se instala `Python <https://www.python.org/downloads/>`_, también se instalan las herramientas para crear entornos virtuales. Para crear el entorno virtual, ejecuta el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:109
+msgid "Para poder ejecutar el comando ``python`` desde la terminal de Windows, este debe ser accesible desde el **PATH**."
+msgstr ""
+
+#: ../../source/installation.rst:111
+msgid "Para activar el entorno virtual, ejecuta el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:120
+msgid "Los pasos para instalar la aplicación en un entorno Windows son similares a los de un entorno Linux. Ejecuta los siguientes comandos:"
+msgstr ""
+
+#: ../../source/installation.rst:130
+msgid "También es posible encapsular la construcción del proyecto y luego instalarlo con los siguientes comandos en un entorno Windows:"
+msgstr ""
+
+#: ../../source/installation.rst:137
+msgid "Todo esto se debe realizar con el entorno virtual activado."
+msgstr ""
+
+#: ../../source/installation.rst:142
+msgid "Para el entorno Windows, también es posible reinstalar las traducciones. Utiliza el mismo comando que en Linux para instalarlas:"
+msgstr ""
+
+#: ../../source/installation.rst:151
+msgid "Actualmente, el despliegue con contenedores Docker no está disponible para Windows, ya que en este tipo de sistemas no podemos crear contenedores con el parámetro de red en ``host``. Por ello, el usuario deberá tener un servicio de base de datos MongoDB activo y el despliegue de la API se deberá hacer manualmente."
+msgstr ""
+
+#: ../../source/installation.rst:155
+msgid "Para desplegar la API REST, ejecuta el siguiente comando:"
+msgstr ""
+
+#: ../../source/installation.rst:158
+msgid "Estos comandos deben ejecutarse desde el directorio raíz del proyecto."
+msgstr ""

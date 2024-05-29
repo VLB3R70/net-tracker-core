@@ -1,0 +1,325 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: ../../source/api/nettrackercore.shell.rst:2
+msgid "Paquete nettrackercore.shell"
+msgstr "nettrackercore.shell package"
+
+#: ../../source/api/nettrackercore.shell.rst:5
+msgid "Submódulos"
+msgstr "Submodules"
+
+#: ../../source/api/nettrackercore.shell.rst:8
+msgid "Módulo nettrackercore.shell.helpers"
+msgstr "nettrackercore.shell.helpers module"
+
+#: nettrackercore.shell.helpers.Helper:1 nettrackercore.shell.shell.Shell:1 of
+msgid "Bases: :py:class:`object`"
+msgstr "Bases: :py:class:`object`"
+
+#: nettrackercore.shell.helpers.Helper:1 of
+msgid ""
+"La clase **Helper** se encarga de añadir funciones para mostrar las "
+"ayudas de los comandos disponibles en la terminal. Usando "
+":py:class:`rich.markdown.Markdown` se pueden mostrar las ayudas en "
+"formato `Markdown <https://www.markdownguide.org/getting-started/>`_ para"
+" que las ayudas sean más legibles."
+msgstr ""
+"The **Helper** class is responsible for adding functions to display the "
+"help messages for the available commands in the terminal. Using "
+":py:class:`rich.markdown.Markdown`, help messages can be displayed in "
+"`Markdown <https://www.markdownguide.org/getting-started/>`_ format to make "
+"them more readable."
+
+#: nettrackercore.shell.helpers.Helper.print_dba_help:1 of
+msgid ""
+"Este método muestra la ayuda sobre el DBA en formato Markdown. A esta "
+"ayuda se accede desde el objeto **DBA** y muestra los comandos posibles "
+"del objeto."
+msgstr ""
+"This method displays the DBA help in Markdown format. This help is accessed "
+"from the **DBA** object and shows the possible commands of the object."
+
+#: nettrackercore.shell.helpers.Helper.print_main_help:1 of
+msgid ""
+"Este método muestra la ayuda principal del programa en formato Markdown. "
+"A esta ayuda se accede en el principio del programa. Esta ayuda muestra "
+"los 3 comandos principales: **scanner** para acceder al escáner, **dba** "
+"para acceder al administrador de base de datos y **help** para mostrar el"
+" propio mensaje de ayuda."
+msgstr ""
+"This method displays the main help of the program in Markdown format. This "
+"help is accessed at the start of the program. This help shows the 3 main "
+"commands: **scanner** to access the scanner, **dba** to access the database "
+"manager, and **help** to display the help message itself."
+
+#: nettrackercore.shell.helpers.Helper.print_scan_help:1 of
+msgid ""
+"Este método muestra la ayuda sobre el escáner en formato Markdown. A esta"
+" ayuda se accede desde el escáner y muestra los comandos posibles. Los "
+"comandos posibles son: **set** para establecer el valor de una opción, "
+"**get** para obtener los valores de una opción, **scan** para realizar el"
+" escaneo con las opciones asignadas y **help** para mostrar el mensaje de"
+" ayuda."
+msgstr ""
+"This method displays the scanner help in Markdown format. This help is accessed "
+"from the scanner and shows the possible commands. The possible commands are: "
+"**set** to set the value of an option, **get** to get the values of an option, "
+"**scan** to perform the scan with the assigned options, and **help** to display "
+"the help message."
+
+#: ../../source/api/nettrackercore.shell.rst:16
+msgid "Módulo nettrackercore.shell.shell"
+msgstr "nettrackercore.shell.shell module"
+
+#: nettrackercore.shell.shell.Shell:1 of
+msgid ""
+"La clase **Shell** representa la terminal de comandos por donde el "
+"usuario interacciona con el núcleo de la aplicación. Esta terminal está "
+"inspirada en la terminal de comandos ofrecida por `Kali Linux Metasploit "
+"Framework <https://www.kali.org/docs/tools/starting-metasploit-framework-"
+"in-kali/>`_."
+msgstr ""
+"The **Shell** class represents the command terminal where the user interacts "
+"with the core of the application. This terminal is inspired by the command "
+"terminal offered by `Kali Linux Metasploit Framework "
+"<https://www.kali.org/docs/tools/starting-metasploit-framework-in-kali/>`_."
+
+#: nettrackercore.shell.shell.Shell:6 of
+msgid ""
+"El usuario puede elegir varios objetos ofrecidos por el núcleo y debe de "
+"establecer los parámetros necesarios para ejecutar los comandos "
+"correspondientes. El diseño de la terminal está implementado con `rich "
+"<https://rich.readthedocs.io/en/stable/index.html>`_, un paquete escrito "
+"en Python que ayuda escribir y mostrar texto más complejo por la terminal"
+" de comandos de una forma más bonita.::"
+msgstr ""
+"The user can choose several objects offered by the core and must set the necessary "
+"parameters to execute the corresponding commands. The terminal design is implemented "
+"with `rich <https://rich.readthedocs.io/en/stable/index.html>`_, a Python package "
+"that helps write and display more complex text in the command terminal in a more "
+"beautiful way.::"
+
+#: nettrackercore.shell.shell.Shell:17 of
+msgid ""
+"Los objetos que pueden usarse son un escáner(scanner) y un administrador "
+"de base de datos(dba). Con el escáner se pueden realizar escaneos de la "
+"red o equipos concretos para posteriormente almacenarlos en la base de "
+"datos. El objeto dba es el encargado de realizar consultas a la base de "
+"datos y mostrar al usuario los resultados de forma comprensible."
+msgstr ""
+"The objects that can be used are a scanner and a database administrator (dba). "
+"With the scanner, network or specific device scans can be performed and then stored "
+"in the database. The dba object is responsible for querying the database and displaying "
+"the results to the user in a comprehensible manner."
+
+#: nettrackercore.shell.shell.Shell.build_params:1 of
+msgid ""
+"Existen ciertos parámetros que corresponden a *interrogantes booleanos* y"
+" en función de su valor se deben de añadir más o menos valores al comando"
+" final del escáner. Estos parámetros se encuentran dentro del diccionario"
+" con las opciones mapeadas."
+msgstr ""
+"There are certain parameters that correspond to *boolean queries* and depending on "
+"their value, more or fewer values should be added to the final scanner command. These "
+"parameters are found within the dictionary with the mapped options."
+
+#: nettrackercore.shell.shell.Shell.build_params
+#: nettrackercore.shell.shell.Shell.get_options
+#: nettrackercore.shell.shell.Shell.save_scan
+#: nettrackercore.shell.shell.Shell.set_options of
+msgid "Parámetros"
+msgstr "Parameters"
+
+#: nettrackercore.shell.shell.Shell.build_params:5 of
+msgid "es el diccionario con las opciones mapeadas"
+msgstr "is the dictionary with the mapped options"
+
+#: nettrackercore.shell.shell.Shell.build_params of
+msgid "Devuelve"
+msgstr "Returns"
+
+#: nettrackercore.shell.shell.Shell.build_params:8 of
+msgid "el valor final del parámetro `OPTIONS`"
+msgstr "the final value of the `OPTIONS` parameter"
+
+#: nettrackercore.shell.shell.Shell.build_params of
+msgid "Tipo del valor devuelto"
+msgstr "Return type"
+
+#: nettrackercore.shell.shell.Shell.dba:1 of
+msgid ""
+"Este método hace uso del objeto `~nettrackercore.core.dba.DBA` para "
+"realizar consultas a la base de datos y devolver el resultado al usuario "
+"en forma de tabla. Los comandos que se deben lanzar tienen una sintaxis "
+"propia, ya que no se puede usar el lenguaje SQL para realizar consultas a"
+" la base de datos."
+msgstr ""
+"This method uses the `~nettrackercore.core.dba.DBA` object to query the database "
+"and return the result to the user in table form. The commands that need to be issued "
+"have their own syntax, as SQL language cannot be used to query the database."
+
+#: nettrackercore.shell.shell.Shell.dba:5 of
+msgid ""
+"Desde la `shell` solo podemos realizar dos acciones: **obtener** y "
+"**listar**. Solo es posible obtener o todas las redes de la base de datos"
+" o solo una red en función de su nombre. Se pueden listar solo los "
+"dispositivos dentro de una red por su nombre y los servicios de un "
+"dispositivo dentro de una red."
+msgstr ""
+"From the `shell`, we can only perform two actions: **get** and **list**. It is only "
+"possible to get either all networks from the database or just one network based on its "
+"name. Only devices within a network by their name and the services of a device within "
+"a network can be listed."
+
+#: nettrackercore.shell.shell.Shell.get_options:1 of
+msgid ""
+"Este método se encarga de obtener los valores de las distintas opciones "
+"usadas por el objeto. Dichas opciones están mapeadas en un diccionario "
+"para mejorar el acceso a ellas. El usuario puede obtener el valor de una "
+"opción o de todas las opciones mapeadas con la opción `ALL`."
+msgstr ""
+"This method is responsible for obtaining the values of the different options used by the "
+"object. These options are mapped in a dictionary to improve access to them. The user can "
+"get the value of one option or all mapped options with the `ALL` option."
+
+#: nettrackercore.shell.shell.Shell.get_options:5 of
+msgid "es el diccionario con las distintas opciones del objeto mapeadas"
+msgstr "is the dictionary with the different mapped options of the object"
+
+#: nettrackercore.shell.shell.Shell.get_options:6 of
+msgid ""
+"es la opción de la cual se obtendrá el valor. Si se indica `ALL` o `all` "
+"se devuelven los valores de todas las opciones."
+msgstr ""
+"is the option from which the value will be obtained. If `ALL` or `all` is specified, "
+"the values of all options are returned."
+
+#: nettrackercore.shell.shell.Shell.handler:1 of
+msgid "Este método es necesario para capturar la señal de teclado `Ctrl+C`"
+msgstr "This method is necessary to capture the `Ctrl+C` keyboard signal"
+
+#: nettrackercore.shell.shell.Shell.main_menu:1 of
+msgid ""
+"Este método muestra el prompt principal del programa donde el usuario "
+"elige qué objeto quiere usar."
+msgstr ""
+"This method displays the main prompt of the program where the user chooses which "
+"object to use."
+
+#: nettrackercore.shell.shell.Shell.save_scan:1 of
+msgid ""
+"Este método se encarga de guardar el resultado del escaneo en la base de "
+"datos. Ciertos parámetros corresponden a las opciones mapeadas del "
+"escáner."
+msgstr ""
+"This method is responsible for saving the scan result in the database. Certain parameters "
+"correspond to the mapped options of the scanner."
+
+#: nettrackercore.shell.shell.Shell.save_scan:4 of
+msgid ""
+"el resultado del escaneo en forma de objeto "
+":py:class:`~nettrackercore.core.results.JSONResult`"
+msgstr ""
+"the scan result in the form of a "
+":py:class:`~nettrackercore.core.results.JSONResult` object"
+
+#: nettrackercore.shell.shell.Shell.save_scan:6 of
+msgid "son las opciones mapeadas del escáner"
+msgstr "are the mapped options of the scanner"
+
+#: nettrackercore.shell.shell.Shell.scanner:1 of
+msgid ""
+"El método :py:func:`~nettrackercore.core.shell.scanner` establece la "
+"lógica de uso del objeto. Cuando el usuario decide usar el escáner este "
+"método se ejecuta. Primero se crea un objeto "
+":py:class:`~nettrackercore.core.scanner.Scanner` y posteriormente se crea"
+" un diccionario con las opciones permitidas por el escáner."
+msgstr ""
+"The method :py:func:`~nettrackercore.core.shell.scanner` establishes the logic of the "
+"object. When the user decides to use the scanner, this method is executed. First, a "
+":py:class:`~nettrackercore.core.scanner.Scanner` object is created and then a dictionary "
+"with the allowed scanner options is created."
+
+#: nettrackercore.shell.shell.Shell.scanner:6 of
+msgid "El usuario introduce una opción dentro de las posibles:"
+msgstr "The user enters one of the possible options:"
+
+#: nettrackercore.shell.shell.Shell.scanner:8 of
+msgid "**exit** Sale de la terminal"
+msgstr "**exit** Exits the terminal"
+
+#: nettrackercore.shell.shell.Shell.scanner:9 of
+msgid "**help** Muestra la ayuda del escáner"
+msgstr "**help** Displays the scanner help"
+
+#: nettrackercore.shell.shell.Shell.scanner:10 of
+msgid ""
+"**set <opcion> <valor>** establece el valor de una opción mapeada al "
+"introducido por el usuario"
+msgstr ""
+"**set <option> <value>** sets the value of a mapped option to the one entered by the user"
+
+#: nettrackercore.shell.shell.Shell.scanner:11 of
+msgid ""
+"**get <opcion> | ALL** devuelve el valor de la opción introducida por el "
+"usuario. Si se indica `ALL` o `all` se devuelven todos los valores"
+msgstr ""
+"**get <option> | ALL** returns the value of the option entered by the user. If `ALL` or "
+"`all` is specified, all values are returned"
+
+#: nettrackercore.shell.shell.Shell.scanner:12 of
+msgid ""
+"**scan** Empieza a escanear la red con los datos establecidos por el "
+"usuario y pregunta al usuario si quiere almacenar dicha información en la"
+" base de datos."
+msgstr ""
+"**scan** Starts scanning the network with the data set by the user and asks the user if "
+"they want to store the information in the database."
+
+#: nettrackercore.shell.shell.Shell.set_options:1 of
+msgid ""
+"Método que se encarga de establecer un valor a la opción pasada por "
+"parámetro. Las diferentes opciones se establecen previamente en un "
+"diccionario."
+msgstr ""
+"Method responsible for setting a value to the option passed as a parameter. The different "
+"options are previously set in a dictionary."
+
+#: nettrackercore.shell.shell.Shell.set_options:4 of
+msgid "es el diccionario con las diferentes opciones mapeadas."
+msgstr "is the dictionary with the different mapped options."
+
+#: nettrackercore.shell.shell.Shell.set_options:5 of
+msgid ""
+"es la **opción** dentro de las **opciones** mapeadas la cual se va a "
+"modificar."
+msgstr ""
+"is the **option** within the **mapped options** that is going to be modified."
+
+#: nettrackercore.shell.shell.Shell.set_options:6 of
+msgid "es el valor que se establecerá a la opción."
+msgstr "is the value that will be set to the option."
+
+#: ../../source/api/nettrackercore.shell.rst:24
+msgid "Contenido de los módulos"
+msgstr "Module contents"

@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core
+# package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: ../../source/api/nettrackercore.api.rst:2
+msgid "Paquete nettrackercore.api"
+msgstr "nettrackercore.api package"
+
+#: ../../source/api/nettrackercore.api.rst:5
+msgid "Submódulos"
+msgstr "Submodules"
+
+#: ../../source/api/nettrackercore.api.rst:8
+msgid "Módulo nettrackercore.api.app"
+msgstr "nettrackercore.api.app module"
+
+#: ../../source/api/nettrackercore.api.rst:16
+msgid "Contenido de los módulos"
+msgstr "Module content"
+

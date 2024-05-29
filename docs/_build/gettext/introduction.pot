@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 21:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/introduction.rst:2
+msgid "Introducción"
+msgstr ""
+
+#: ../../source/introduction.rst:4
+msgid "**Net-Tracker** es una aplicación diseñada para ayudar a los administradores de sistemas a monitorizar redes utilizando diversas herramientas existentes. La herramienta principal empleada para esta monitorización es `Nmap <https://nmap.org/>`_. Con **Nmap**, se realizan escaneos sobre una red basados en los parámetros que el usuario proporciona, los cuales deben ser compatibles con **Nmap**."
+msgstr ""
+
+#: ../../source/introduction.rst:9
+msgid "Posteriormente, la información obtenida se procesa y almacena en una base de datos `MongoDB <https://www.mongodb.com>`_, permitiendo al usuario consultarla cuando sea necesario."
+msgstr ""
+
+#: ../../source/introduction.rst:12
+msgid "Todo esto, junto a una **API REST** desarrollada con `Flask <https://flask.palletsprojects.com/en/3.0.x/>`_, hace posible que la aplicación sea accesible desde un terminal móvil. Para más detalles sobre el proyecto, visita su página en GitHub: `Net-Tracker-App <https://github.com/VLB3R70/net-tracker-app>`_."
+msgstr ""
+
+#: ../../source/introduction.rst:17
+msgid "Requisitos"
+msgstr ""
+
+#: ../../source/introduction.rst:19
+msgid "Python 3.7 o superior (Se recomienda la última versión)"
+msgstr ""
+
+#: ../../source/introduction.rst:20
+msgid "MongoDB 7.0 o superior"
+msgstr ""
+
+#: ../../source/introduction.rst:21
+msgid "Docker 26 o superior"
+msgstr ""
+
+#: ../../source/introduction.rst:22
+msgid "Nmap 7.80 o superior"
+msgstr ""
+
+#: ../../source/introduction.rst:24
+msgid "La aplicación funciona tanto en Linux como en Windows. Para Windows, se recomienda el uso de la nueva terminal `Windows Terminal <https://github.com/microsoft/terminal/releases>`_."
+msgstr ""
+
+#: ../../source/introduction.rst:27
+msgid "Aunque se han realizado pruebas en entornos Windows y la aplicación ha funcionado correctamente, se pueden experimentar fallos en la conexión con la base de datos o al desplegar la API REST."
+msgstr ""
+
+#: ../../source/introduction.rst:31
+msgid "Contribuciones"
+msgstr ""
+
+#: ../../source/introduction.rst:33
+msgid "Debido a que la aplicación está en desarrollo y aún no es estable ni contiene todas las funcionalidades planeadas, todas las contribuciones y ayuda serán bienvenidas. El código fuente está disponible en `GitHub <https://github.com/VLB3R70/net-tracker-core>`_."
+msgstr ""
+
+#: ../../source/introduction.rst:37
+msgid "Enlaces de interés"
+msgstr ""
+
+#: ../../source/introduction.rst:39
+msgid ":doc:`installation`"
+msgstr ""
+
+#: ../../source/introduction.rst:40
+msgid "Manual sobre la instalación de la aplicación."
+msgstr ""
+
+#: ../../source/introduction.rst:42
+msgid ":doc:`api/nettrackercore`"
+msgstr ""
+
+#: ../../source/introduction.rst:43
+msgid "Documentación técnica en profundidad sobre la aplicación. Explicación de clases, objetos y herramientas utilizadas."
+msgstr ""

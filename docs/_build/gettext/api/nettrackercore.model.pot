@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api/nettrackercore.model.rst:2
+msgid "Paquete nettrackercore.model"
+msgstr ""
+
+#: ../../source/api/nettrackercore.model.rst:5
+msgid "Submódulos"
+msgstr ""
+
+#: ../../source/api/nettrackercore.model.rst:8
+msgid "Módulo nettrackercore.model.model"
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Device:1
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Service:1
+msgid "Bases: :py:class:`~mongoengine.document.EmbeddedDocument`"
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Device.address:1
+#: ../../docstring of nettrackercore.model.model.Device.device_id:1
+#: ../../docstring of nettrackercore.model.model.Device.device_name:1
+#: ../../docstring of nettrackercore.model.model.Device.os_type:1
+#: ../../docstring of nettrackercore.model.model.Network.address:1
+#: ../../docstring of nettrackercore.model.model.Network.id:1
+#: ../../docstring of nettrackercore.model.model.Network.network_id:1
+#: ../../docstring of nettrackercore.model.model.Network.network_name:1
+#: ../../docstring of nettrackercore.model.model.Service.name:1
+#: ../../docstring of nettrackercore.model.model.Service.protocol:1
+msgid "A unicode string field."
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Device.services:1
+#: ../../docstring of nettrackercore.model.model.Network.devices:1
+msgid "A list field that wraps a standard field, allowing multiple instances of the field to be used as a list in the database."
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Device.services:4
+#: ../../docstring of nettrackercore.model.model.Network.devices:4
+msgid "If using with ReferenceFields see: :ref:`many-to-many-with-listfields`"
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Device.services:7
+#: ../../docstring of nettrackercore.model.model.Network.devices:7
+msgid "Required means it cannot be empty - as the default for ListFields is []"
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Device.to_json:1
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Network.to_json:1
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Service.to_json:1
+msgid "Convert this document to JSON."
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Device.to_json:0
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Network.to_json:0
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Service.to_json:0
+msgid "Parámetros"
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Device.to_json:3
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Network.to_json:3
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Service.to_json:3
+msgid "Serialize field names as they appear in MongoDB (as opposed to attribute names on this document). Defaults to True."
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.Network:1
+msgid "Bases: :py:class:`~mongoengine.document.Document`"
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.DoesNotExist:1
+msgid "Bases: :py:class:`~mongoengine.errors.DoesNotExist`"
+msgstr ""
+
+#: ../../../nettrackercore/model/model.py:docstring of nettrackercore.model.model.MultipleObjectsReturned:1
+msgid "Bases: :py:class:`~mongoengine.errors.MultipleObjectsReturned`"
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Network.gateway:1
+msgid "An embedded document field - with a declared document_type. Only valid values are subclasses of :class:`~mongoengine.EmbeddedDocument`."
+msgstr ""
+
+#: ../../docstring of nettrackercore.model.model.Network.subnet_mask:1
+#: ../../docstring of nettrackercore.model.model.Service.port:1
+msgid "32-bit integer field."
+msgstr ""
+
+#: ../../source/api/nettrackercore.model.rst:16
+msgid "Contenido de los módulos"
+msgstr ""

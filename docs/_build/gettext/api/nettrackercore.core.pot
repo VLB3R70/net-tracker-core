@@ -1,0 +1,568 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Alberto Jiménez Huertas
+# This file is distributed under the same license as the net-tracker-core package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: net-tracker-core \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/api/nettrackercore.core.rst:2
+msgid "Paquete nettrackercore.core"
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:5
+msgid "Submódulos"
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:8
+msgid "Módulo nettrackercore.core.controller"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO:1
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA:1
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser:1
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger:1
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:1
+msgid "Bases: :py:class:`object`"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO:1
+msgid "El objeto **NettrackerDAO** corresponde al objeto de acceso a datos, más conocido como DAO(Data Access Object). Este objeto es el encargado de realizar las llamadas a la base de datos mediante el módulo `mongoengine <https://docs.mongoengine.org/index.html>`_, el cual es un ODM (Object-Document Mapper) y nos permite operar con la base de datos de forma más sencilla."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO:6
+msgid "Este objeto trabaja con el resultado obtenido del escaneo en forma del objeto :py:class:`~nettrackercore.core.results.JSONResult`."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_all_networks:1
+msgid "Este método realiza una consulta a la base de datos para obtener el id y el nombre de todas las redes. :return: Se devuelve el resultado de la consulta realizada :rtype: :py:class:`~mongoengine.queryset.queryset.QuerySet`"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_device_from_address:1
+msgid "Este método obtiene la información de un dispositivo específico dentro de una red también específica. :param network_name: El nombre de la red. :type network_name: str :param address: La dirección de red del dispositivo. :type address: str"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_device_from_address:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_networks:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_host:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_items:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_keys:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_values:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:0
+msgid "Devuelve"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_device_from_address:7
+msgid "La información del dispositivo específico."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_device_from_address:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_networks:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_items:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_keys:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_values:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:0
+msgid "Tipo del valor devuelto"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_devices_from_network:1
+msgid "Este método obtiene todos los dispositivos dentro de una red específica. :param network_name: El nombre de la red. :type network_name: str :return: Se devuelve el resultado de la consulta realizada. Si no existen dispositivos se devuelve una lista vacía :rtype: :py:class:`~mongoengine.base.datastructures.BaseList` | list"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.get_network_from_name:1
+msgid "Este método obtiene la información de una red específica por su nombre. :param name: El nombre de la red. :type name: str :return: Se devuelve el resultado de la consulta realizada :rtype: Network"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.new_network:1
+msgid "Este método realiza una operación CRUD de creación de un nuevo registro en la base de datos. Los datos obtenidos por parámetros son definidos por el usuario durante la ejecución del programa, el resto deben ser obtenidos con los métodos pseudo-privados complementarios. La operación fuerza la inserción en la base de datos ya que `mongoengine` permite la operación `upsert`. Si la operación sufre algún error será posteriormente capturada en el programa."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.new_network:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:0
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_ports:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:0
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.log:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:0
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:0
+msgid "Parámetros"
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.new_network:7
+msgid "El nombre de la red. Debe ser único."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.new_network:9
+msgid "La dirección de red a guardar."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.new_network:11
+msgid "La dirección de la máscara de red en forma numérica."
+msgstr ""
+
+#: ../../../nettrackercore/core/controller.py:docstring of nettrackercore.core.controller.NettrackerDAO.update_network:1
+msgid "Este método se encarga de actualizar los valores de la base de datos a los últimos obtenidos en el escaneo. La operación de actualización es atómica por lo que se actualizará todo el documento y sus valores.  De esta forma siempre nos aseguramos de tener la información más actualizada posible."
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:16
+msgid "Módulo nettrackercore.core.dba"
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA:1
+msgid "El objeto **DBA** se encarga de realizar consultas a la base de datos mediante :py:class:`~nettrackercore.core.controller.NettrackerDAO` y mostrar los resultados en forma de tabla para el usuario. Como la base de datos no es relacional, los datos que se muestran en las tablas son simples. Para datos más complejos como las listas u objetos dentro del modelo se usan comandos específicos."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:1
+msgid "Este método se encarga de obtener la lista de dispositivos de una red determinada y los devuelve en forma de tabla. En este caso, se muestra el número total de servicios activos, ya que dentro del modelo de datos los servicios objetos y esto es un valor demasiado complejo para `~rich.table.Table`."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:5
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:7
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:5
+msgid "es el nombre de la red"
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:7
+msgid "Una tabla con la información de los dispositivos"
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_devices:8
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:10
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_networks:6
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:11
+msgid ":py:class:`~rich.table.Table`"
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:1
+msgid "Este método se encarga de obtener el resultado completo de una red específica y muestra en forma de tabla el mismo. Dentro del modelo de datos la puerta de enlace dentro de una red corresponde a un objeto, este valor es demasiado complejo para `~rich.table.Table` por lo que solo se muestra la dirección de IP del dispositivo. En el caso de la lista de dispositivos ocurre lo mismo por lo que solo se muestra el número total de valores de la lista. Se necesita un nombre de red para realizar la consulta."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_network:9
+msgid "Una tabla con la información completa de una red."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_networks:1
+msgid "Este método devuelve una tabla con el resultado de obtener todas las redes de la base de datos. Los datos que se muestran son: el identificador, el nombre dado y la dirección de red. Esta información es necesaria para poder realizar otras consultas."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_networks:5
+msgid "Una tabla con las redes de la base de datos."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:1
+msgid "Este método se encarga de obtener los servicios activos de un dispositivo determinado en una red determinada y los muestra en forma de tabla. Se muestra el nombre del servicio, el número del puerto y el protocolo en el que está trabajando."
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:6
+msgid "es la dirección IP del dispositivo"
+msgstr ""
+
+#: ../../../nettrackercore/core/dba.py:docstring of nettrackercore.core.dba.DBA.get_services:10
+msgid "Una tabla con la información de los servicios"
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:24
+msgid "Módulo nettrackercore.core.exceptions"
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.ExecutionError:1
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.IllegalArgumentException:1
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidAddressException:1
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidArgumentsException:1
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidPortsException:1
+msgid "Bases: :py:class:`~nettrackercore.core.exceptions.NettrackerException`"
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.ExecutionError:1
+msgid "Esta excepción se lanza cuando ocurre un error durante la ejecución del programa."
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.IllegalArgumentException:1
+msgid "Esta excepción se lanza cuando el usuario ha introducido un argumento que no debería introducir."
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidAddressException:1
+msgid "Esta excepción se lanza cuando la dirección IP introducida por el usuario no es válida."
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidArgumentsException:1
+msgid "Esta excepción se lanza cuando un argumento introducido por el usuario no es válido."
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.InvalidPortsException:1
+msgid "Esta excepción se lanza cuando los puertos introducidos por el usuario no son válidos."
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.NettrackerException:1
+msgid "Bases: :py:class:`Exception`"
+msgstr ""
+
+#: ../../../nettrackercore/core/exceptions.py:docstring of nettrackercore.core.exceptions.NettrackerException:1
+msgid "Excepción base para todas las excepciones del programa."
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:32
+msgid "Módulo nettrackercore.core.parsers"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser:1
+msgid "NmapParser se encarga de formatear los parámetros introducidos por el usuario y los devuelve como una lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:1
+msgid "El objeto `Popen <https://docs.python.org/3/library/subprocess.html#popen-objects>`_ necesita los argumentos que posteriormente ejecutará en un formato de lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:4
+msgid "Este método es el encargado de crear dicha lista después de validar todos los parámetros introducidos por el usuario. Además, el resultado de la ejecución se debe de almacenar en un fichero XML por lo que de forma predeterminada se establece el parámetro `-oX`."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:8
+msgid "Es posible que el programa se use desde un sistema operativo Windows, en ese caso, el comando que devolverá será una cadena de caracteres completa. Si el programa se ejecuta desde un sistema UNIX/Linux el comando se convertirá en una lista con los argumentos necesarios."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:12
+msgid "Direcciones IP introducidas por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:14
+msgid "Son los puertos introducidos por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:16
+msgid "Son los parámetros opcionales introducidos por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:18
+msgid "Opción elegida por el usuario para ejecutar el comando con privilegios o no."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:20
+msgid "Ruta absoluta del fichero temporal donde se almacenará el resultado en formato XML."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.create_command:23
+msgid "La lista del comando completo que se ejecutará con :py:mod:`subprocess` o una cadena de caracteres"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:1
+msgid "Este método se encarga de devolver los parámetros opcionales introducidos por el usuario formateados como una lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:4
+msgid "Parámetros opcionales introducidos por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:0
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_ports:0
+msgid "Muestra"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_params:7
+msgid "Lista de parámetros opcionales introducidos por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:1
+msgid "Este método se encarga de formatear y validar los puertos introducidos por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:3
+msgid "Son los puertos a validar"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_ports:5
+msgid "Puertos validados"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:1
+msgid "Este método se encarga de devolver las direcciones correctamente validadas. Si no son válidas se lanza una excepción."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:3
+msgid "Dirección IP introducida por el usuario."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.parse_targets:6
+msgid "Direcciones IP validadas"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:1
+msgid "Por cómo funciona Nmap, es posible establecer los puertos con comas (,) o guiones (-) para establecer rangos o puertos concretos."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:4
+msgid "Son los puertos a validar."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.ports_to_list:6
+msgid "Puertos introducidos en formato de lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:1
+msgid "Este método se encarga de validar las direcciones IP ya sean de red o no con el módulo `ipaddress <https://docs.python.org/3/library/ipaddress.html#module-ipaddress>`_"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:4
+msgid "Es la dirección IP a validar"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_address:6
+msgid "Verdadero o falso en función de la dirección IP"
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_ports:1
+msgid "Este método se encarga de validar los puertos introducidos por el usuario dentro de una lista. Si existe algún puerto inválido se lanza una excepción."
+msgstr ""
+
+#: ../../../nettrackercore/core/parsers.py:docstring of nettrackercore.core.parsers.NmapParser.validate_ports:4
+msgid "Es la lista de puertos a validar"
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:40
+msgid "Módulo nettrackercore.core.results"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult:1
+msgid "Bases: :py:class:`dict`"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult:1
+msgid "Este objeto encapsula el resultado de la ejecución del escaneo. Este objeto hereda el objeto `dict <https://docs.python.org/3/library/stdtypes.html#dict>`_ y obtiene un diccionario mediante el constructor que actualiza su valor. Este diccionario se obtiene en la lectura del fichero XML con el resultado del escaneo."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:1
+msgid "Obtiene el valor cuya clave corresponde a `address`. Este método además tiene en cuenta que el escaneo detecta la dirección MAC del equipo. Dicho valor se añade a la clave `address` y corresponde a una lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:4
+msgid "Ejemplo"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:13
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_host:3
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:3
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:15
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:9
+msgid "el valor que corresponde a `host`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_address:15
+msgid "el valor que corresponde a `address`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_host:1
+msgid "Obtiene el valor cuya clave corresponde a `host`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:1
+msgid "Este método obtiene el nombre del host"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_hostname:6
+msgid "el valor que corresponde a `hostname`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_items:1
+msgid "Obtiene todos los pares clave-valor del objeto JSONResult."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_items:3
+msgid "lista con todos los pares clave-valor del objeto."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_keys:1
+msgid "Obtiene todas las claves del objeto JSONResult."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_keys:3
+msgid "lista con todas las claves del objeto."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:1
+msgid "Este método obtiene el valor de la calve que corresponde a `os` dentro de `host`. Este valor a su vez contiene más información que para la lógica del programa no es relevante por lo que el dato final corresponde a `osmatch`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:4
+msgid "Al igual que con las direcciones, es posible que el escaneo detecte varios sistemas operativos en una misma máquina; estos, los muestra como una lista con su información. El escáner Nmap, al encontrar varios sistemas operativos, indica un porcentaje de veracidad; este porcentaje indica lo seguro que está de dicho escaneo. El primer valor siempre es el más elevado (el más confiable) por lo que, si el valor es una lista, siempre se escoge el primer valor de la lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:10
+msgid "También es posible que el escáner no sea capaz de detectar un sistema operativo válido. En estos casos el valor de `osmatch` corresponde a `None` o `Null` en otros lenguajes. Si obtenemos un valor nulo y queremos trabajar con él se lanzará una excepción `TypeError <https://docs.python.org/3/library/exceptions.html#TypeError>`_ y, en ese caso, se retornará una cadena indicando que no se ha podido encontrar un sistema operativo válido."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_os:17
+msgid "el valor que corresponde a `osmatch`."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:1
+msgid "Este método se encarga de obtener los valores correspondientes a los puertos abiertos y los servicios corriendo en ellos. Se retorna una lista de diccionarios donde la sintaxis de estos es la siguiente:"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:4
+msgid "Sintaxis de estos puertos abiertos"
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_services:11
+msgid "lista de diccionarios con los valores de los servicios correspondientes a los puertos abiertos."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_values:1
+msgid "Obtiene todos los valores del objeto JSONResult."
+msgstr ""
+
+#: ../../../nettrackercore/core/results.py:docstring of nettrackercore.core.results.JSONResult.get_values:3
+msgid "lista con todos los valores del objeto."
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:48
+msgid "Módulo nettrackercore.core.scanner"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger:1
+msgid "La clase **Logger** se encarga de escribir mensajes en los ficheros designados. Existen dos ficheros: uno de `log` y otro de errores. Estos ficheros se crean previamente."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.error:1
+msgid "Este método se encarga de escribir los mensajes de error en un log. Cuando ha ocurrido un error o se ha lanzado una excepción, la traza de dicho error o la salida estándar de error de un proceso se guarda en el log. En este formato también se guarda la fecha."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.log:1
+msgid "Este método se encarga escribir un mensaje concreto en el log. Para añadir más información se escribe la fecha del día en el momento de la ejecución del programa."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.log:4
+msgid "Configuración del programa."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.log:5
+msgid "Mensaje a escribir dentro del log."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Logger.log:6
+msgid "Comando lanzado por el subproceso"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:1
+msgid "Objeto que representa un escáner. Este escáner se encarga de usar el paquete de Nmap previamente instalado en la máquina. El usuario establece ciertos parámetros que posteriormente serán usados por el paquete Nmap. Dichos parámetros son:"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:5
+msgid "**targets**: puede ser una dirección de red en formato CIDR, una dirección o varias direcciones IP, etc."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:7
+msgid "**ports**: es un parámetro que establece los puertos que se escanearán, si no se establece nada se escanean todos."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:9
+msgid "El formato de los puertos es:"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:11
+msgid "`80` -> Solo se escanea el puerto 80"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:12
+msgid "`80,443` -> Se escanean los puertos 80 y 443 únicamente"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:13
+msgid "`1-1024` -> Solo se escanean los puertos comprendidos entre el 1 y el 1024"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner:15
+msgid "**params**: son otros parámetros permitidos por Nmap."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.cleanup:1
+msgid "Este método se encarga de eliminar el fichero temporal necesario para la lógica del programa."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:1
+msgid "Este método es el encargado de crear un subproceso y ejecutar el comando configurado por el usuario. La salida estándar y la salida de error se obtienen mediante un `pipe`; el código de retorno también se obtiene."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:4
+msgid "El comando configurado por el usuario en forma de lista."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.execute_command:6
+msgid "La salida estándar, la salida de error y el código de retorno."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:1
+msgid "El método `scan` realiza el escaneo sobre los objetivos asignados usando el paquete Nmap. La salida estándar del comando se almacena de un fichero de log y el resultado del escaneo se encapsula en un objeto :py:class:`~nettrackercore.core.results.JSONResult`"
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:5
+msgid "Es la dirección IP hacia donde se hará el escaneo. Puede ser una dirección de red o una dirección de equipo."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:8
+msgid "Son los puertos hacia donde se hará el escaneo. Los puertos deben estar comprendidos entre el 1 y el 65535, ambos incluidos."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:11
+msgid "Son parámetros opcionales introducidos por el usuario y aceptados por Nmap."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:13
+msgid "Ciertos parámetros necesitan permisos de superusuario para ejecutarse."
+msgstr ""
+
+#: ../../../nettrackercore/core/scanner.py:docstring of nettrackercore.core.scanner.Scanner.scan:19
+msgid "El resultado del escaneo se encapsula en un objeto :py:class:`~nettrackercore.core.results.JSONResult`."
+msgstr ""
+
+#: ../../source/api/nettrackercore.core.rst:56
+msgid "Contenido de los módulos"
+msgstr ""

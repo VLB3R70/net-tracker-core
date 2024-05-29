@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: net-tracker-core \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-26 21:57+0200\n"
+"POT-Creation-Date: 2024-05-29 20:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -25,43 +25,50 @@ msgid "Instalación"
 msgstr "Installation"
 
 #: ../../source/installation.rst:4
+#, fuzzy
 msgid ""
 "Debido a su naturaleza inestable, Net-Tracker necesita seguir ciertos "
-"pasos específicos para la instalación. A continuación, se detallan los "
-"pasos recomendados que se han seguido para realizar la correcta "
-"instalación de la aplicación."
+"pasos específicos para la instalación. A continuación se detallan los "
+"pasos recomendados para realizar la correcta instalación de la "
+"aplicación."
 msgstr ""
 "Due to its unstable nature, Net-Tracker requires following certain "
 "specific steps for installation. Below are the recommended steps that "
 "have been followed to ensure the correct installation of the application."
 
 #: ../../source/installation.rst:8
+msgid "Linux"
+msgstr ""
+
+#: ../../source/installation.rst:11 ../../source/installation.rst:98
 msgid "Entorno virtual"
 msgstr "Virtual environment"
 
-#: ../../source/installation.rst:10
+#: ../../source/installation.rst:13
+#, fuzzy
 msgid ""
 "Se recomienda usar un entorno virtual para mantener la aplicación "
 "encapsulada del resto del sistema. Para instalar y configurar un entorno "
-"virtual en un entorno UNIX/Linux, se deben seguir los siguientes pasos:"
+"virtual en un entorno UNIX/Linux, sigue estos pasos:"
 msgstr ""
 "It is recommended to use a virtual environment to keep the application "
 "encapsulated from the rest of the system. To install and configure a "
 "virtual environment in a UNIX/Linux environment, follow these steps:"
 
-#: ../../source/installation.rst:17
+#: ../../source/installation.rst:20
+#, fuzzy
 msgid ""
-"Con el paquete instalado, se debe ejecutar el siguiente comando para "
-"crear el entorno:"
+"Con el paquete instalado, ejecuta el siguiente comando para crear el "
+"entorno:"
 msgstr ""
 "With the package installed, you should execute the following command to "
 "create the environment:"
 
-#: ../../source/installation.rst:20
+#: ../../source/installation.rst:23
 msgid "Es recomendable crear un directorio separado para el entorno virtual."
 msgstr "It's advisable to create a separate directory for the virtual environment."
 
-#: ../../source/installation.rst:26
+#: ../../source/installation.rst:29
 msgid ""
 "Donde el último ``venv`` corresponde al nombre que tendrá el directorio "
 "del entorno virtual. Con el entorno virtual instalado y creado, solo es "
@@ -71,11 +78,115 @@ msgstr ""
 "environment directory will have. With the virtual environment installed "
 "and created, you only need to activate it with the following command:"
 
-#: ../../source/installation.rst:34
+#: ../../source/installation.rst:37 ../../source/installation.rst:118
+msgid "Instalación de la aplicación"
+msgstr "Installation of the Application"
+
+#: ../../source/installation.rst:39
+#, fuzzy
+msgid ""
+"Con el entorno virtual activado, instala la aplicación. Actualmente, al "
+"ser una versión inestable, se debe instalar desde el repositorio oficial "
+"de `Github <https://github.com/VLB3R70/net-tracker-core>`_. Ejecuta los "
+"siguientes comandos:"
+msgstr ""
+"With the virtual environment installed and activated, the next step is to"
+" install the application. Currently, being an unstable version, it should"
+" be installed from the official repository on `GitHub "
+"<https://github.com/VLB3R70/net-tracker-core>`_. Below are the commands "
+"that need to be executed:"
+
+#: ../../source/installation.rst:50
+msgid ""
+"También es posible encapsular la construcción del proyecto y luego "
+"instalarlo con los siguientes comandos:"
+msgstr ""
+"It's also possible to encapsulate the project's construction and then "
+"install it with the following commands:"
+
+#: ../../source/installation.rst:57
+msgid ""
+"Este método es recomendable usarlo en entornos de desarrollo y nunca en "
+"el entorno del sistema."
+msgstr ""
+"This method is recommended for use in development environments and never "
+"in the system environment."
+
+#: ../../source/installation.rst:60 ../../source/installation.rst:140
+#, fuzzy
+msgid "Instalación de las traducciones"
+msgstr "Installation of the Application"
+
+#: ../../source/installation.rst:62
+msgid ""
+"La aplicación contiene traducciones para el inglés. El idioma "
+"predeterminado es el español, pero el usuario puede elegir usar el "
+"inglés. Las traducciones vienen previamente instaladas y la aplicación es"
+" plenamente funcional en ambos idiomas, pero es posible reinstalar las "
+"traducciones por si el usuario lo necesita con el siguiente comando:"
+msgstr ""
+"The application contains translations for English. The default language "
+"is Spanish, but the user can choose to use English. The translations come "
+"pre-installed and the application is fully functional in both languages. "
+"However, if needed, the translations can be reinstalled using the following command:"
+
+#: ../../source/installation.rst:71 ../../source/installation.rst:149
+msgid "Despliegue"
+msgstr "Deployment"
+
+#: ../../source/installation.rst:73
+#, fuzzy
+msgid ""
+"La aplicación necesita una conexión a una base de datos MongoDB y Docker "
+"correctamente instalado para poder desplegar la API en un contenedor. Es "
+"posible crear un contenedor para la base de datos si no se desea una "
+"instalación completa de MongoDB. Dentro del directorio del proyecto, "
+"ejecuta el siguiente comando:"
+msgstr ""
+"The application also requires a connection to a MongoDB database and "
+"Docker correctly installed to deploy the API in a container. It's "
+"possible to create a container for the database if you don't want to have"
+" a full MongoDB installation. Inside the project directory, execute the "
+"following command:"
+
+#: ../../source/installation.rst:81
+#, fuzzy
+msgid ""
+"Con este comando, se procede a crear la imagen de la aplicación "
+"establecida en el fichero Dockerfile y, posteriormente, se crea el "
+"contenedor con la imagen creada. Si además queremos crear un contenedor "
+"para la base de datos, debemos indicar el perfil de este contenedor:"
+msgstr ""
+"With this command, the image of the application established in the "
+"Dockerfile is created, and then the container is created with the created"
+" image. If we also want to create a container for the database, we need "
+"to specify the profile for this container:"
+
+#: ../../source/installation.rst:89
+#, fuzzy
+msgid ""
+"Una vez creados los contenedores y desplegada la API, podemos comprobarlo"
+" abriendo un navegador y visitando `<http://localhost:5000>`_. También es"
+" posible acceder a la API desde ``http://<IP>:5000``."
+msgstr ""
+"Once the containers are created and the API is deployed, we can verify it"
+" by opening a browser and visiting `<http://localhost:5000>`_. It's also "
+"possible to access the API from `http://<IP>:5000`."
+
+#: ../../source/installation.rst:92 ../../source/installation.rst:165
+#, fuzzy
+msgid ""
+"Después de la instalación, simplemente ejecuta el comando ``net-tracker``"
+" para iniciar la aplicación."
+msgstr ""
+"After the installation, simply execute the command ``net-tracker`` to "
+"start the application."
+
+#: ../../source/installation.rst:95
 msgid "Windows"
 msgstr "Windows"
 
-#: ../../source/installation.rst:36
+#: ../../source/installation.rst:100
 msgid ""
 "Si tu entorno es Windows, los pasos a seguir son diferentes. Cuando se "
 "instala `Python <https://www.python.org/downloads/>`_, también se "
@@ -87,7 +198,7 @@ msgstr ""
 "create virtual environments are also installed. To create the virtual "
 "environment, execute the following command:"
 
-#: ../../source/installation.rst:45
+#: ../../source/installation.rst:109
 msgid ""
 "Para poder ejecutar el comando ``python`` desde la terminal de Windows, "
 "este debe ser accesible desde el **PATH**."
@@ -95,92 +206,63 @@ msgstr ""
 "In order to execute the `python` command from the Windows terminal, it "
 "needs to be accessible from the **PATH**."
 
-#: ../../source/installation.rst:47
-msgid "Para activar el entorno virtual, debemos ejecutar el siguiente comando:"
+#: ../../source/installation.rst:111
+#, fuzzy
+msgid "Para activar el entorno virtual, ejecuta el siguiente comando:"
 msgstr ""
 "To activate the virtual environment, you need to execute the following "
 "command:"
 
-#: ../../source/installation.rst:54
-msgid "Instalación de la aplicación"
-msgstr "Installation of the Application"
-
-#: ../../source/installation.rst:56
+#: ../../source/installation.rst:120
 msgid ""
-"Con el entorno virtual instalado y activado, queda instalar la "
-"aplicación. Actualmente, al ser una versión inestable, se debe instalar "
-"desde el repositorio oficial de `Github <https://github.com/VLB3R70/net-"
-"tracker-core>`_. A continuación, se muestran los comandos que deben "
-"ejecutarse:"
+"Los pasos para instalar la aplicación en un entorno Windows son similares"
+" a los de un entorno Linux. Ejecuta los siguientes comandos:"
 msgstr ""
-"With the virtual environment installed and activated, the next step is to"
-" install the application. Currently, being an unstable version, it should"
-" be installed from the official repository on `GitHub "
-"<https://github.com/VLB3R70/net-tracker-core>`_. Below are the commands "
-"that need to be executed:"
+"The steps to install the application in a Windows environment are similar "
+"to those in a Linux environment. Run the following commands:"
 
-#: ../../source/installation.rst:69
+#: ../../source/installation.rst:130
+#, fuzzy
 msgid ""
 "También es posible encapsular la construcción del proyecto y luego "
-"instalarlo con los siguientes comandos:"
+"instalarlo con los siguientes comandos en un entorno Windows:"
 msgstr ""
 "It's also possible to encapsulate the project's construction and then "
 "install it with the following commands:"
 
-#: ../../source/installation.rst:76
+#: ../../source/installation.rst:137
+msgid "Todo esto se debe realizar con el entorno virtual activado."
+msgstr "All of this should be done with the virtual environment activated."
+
+#: ../../source/installation.rst:142
 msgid ""
-"Este método es recomendable usarlo en entornos de desarrollo y nunca en "
-"el entorno del sistema."
+"Para el entorno Windows, también es posible reinstalar las traducciones. "
+"Utiliza el mismo comando que en Linux para instalarlas:"
 msgstr ""
-"This method is recommended for use in development environments and never "
-"in the system environment."
+"For Windows environment, it's also possible to reinstall the translations. "
+"Use the same command as in Linux to install them:"
 
-#: ../../source/installation.rst:78
+#: ../../source/installation.rst:151
 msgid ""
-"Después de la instalación, simplemente deberemos ejecutar el comando "
-"``net-tracker`` para iniciar la aplicación."
+"Actualmente, el despliegue con contenedores Docker no está disponible "
+"para Windows, ya que en este tipo de sistemas no podemos crear "
+"contenedores con el parámetro de red en ``host``. Por ello, el usuario "
+"deberá tener un servicio de base de datos MongoDB activo y el despliegue "
+"de la API se deberá hacer manualmente."
 msgstr ""
-"After the installation, simply execute the command ``net-tracker`` to "
-"start the application."
+"Currently, deploying with Docker containers is not available for Windows, "
+"as in this type of system we cannot create containers with the network parameter "
+"set to 'host'. Therefore, the user will need to have an active MongoDB database "
+"service, and the deployment of the API will need to be done manually."
 
-#: ../../source/installation.rst:81
-msgid "Despliegue"
-msgstr "Deployment"
-
-#: ../../source/installation.rst:83
-msgid ""
-"La aplicación necesita, además, una conexión a una base de datos MongoDB "
-"y Docker correctamente instalado para poder desplegar la API en un "
-"contenedor. Es posible crear un contenedor para la base de datos si no se"
-" quiere tener una instalación completa de MongoDB. Dentro del directorio "
-"del proyecto, ejecutamos el siguiente comando:"
-msgstr ""
-"The application also requires a connection to a MongoDB database and "
-"Docker correctly installed to deploy the API in a container. It's "
-"possible to create a container for the database if you don't want to have"
-" a full MongoDB installation. Inside the project directory, execute the "
-"following command:"
-
-#: ../../source/installation.rst:91
-msgid ""
-"Con este comando, se procede a crear la imagen de la aplicación "
-"establecida en el fichero Dockerfile y posteriormente se crea el "
-"contenedor con la imagen creada. Si además queremos crear un contenedor "
-"para la base de datos, debemos indicar el perfil de este contenedor:"
-msgstr ""
-"With this command, the image of the application established in the "
-"Dockerfile is created, and then the container is created with the created"
-" image. If we also want to create a container for the database, we need "
-"to specify the profile for this container:"
-
-#: ../../source/installation.rst:99
+#: ../../source/installation.rst:155
 #, fuzzy
-msgid ""
-"Una vez creados los contenedores y desplegada la API, podemos comprobarlo"
-" abriendo un navegador y visitando ``http://localhost:5000``. También es "
-"posible acceder a la API desde ``http://<IP>:5000``."
+msgid "Para desplegar la API REST, ejecuta el siguiente comando:"
 msgstr ""
-"Once the containers are created and the API is deployed, we can verify it"
-" by opening a browser and visiting `<http://localhost:5000>`_. It's also "
-"possible to access the API from `http://<IP>:5000`."
+"To activate the virtual environment, you need to execute the following "
+"command:"
+
+#: ../../source/installation.rst:158
+msgid "Estos comandos deben ejecutarse desde el directorio raíz del proyecto."
+msgstr "These commands should be run from the project's root directory."
 
