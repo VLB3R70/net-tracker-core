@@ -43,7 +43,6 @@ el repositorio oficial de `Github <https://github.com/VLB3R70/net-tracker-core>`
 
     $ git clone https://github.com/VLB3R70/net-tracker-core.git
     $ cd net-tracker-core
-    $ pip install -r requirements.txt --upgrade
     $ pip install .
 
 .. note::
@@ -61,8 +60,8 @@ Instalación de las traducciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 La aplicación contiene traducciones para el inglés. El idioma predeterminado es el español, pero el usuario puede elegir
-usar el inglés. Para el correcto funcionamiento de la aplicación, debemos instalar las traducciones manualmente
-(en versiones posteriores este paso será automático).
+usar el inglés. Las traducciones vienen previamente instaladas y la aplicación es plenamente funcional en ambos idiomas,
+pero es posible reinstalar las traducciones por si el usuario lo necesita con el siguiente comando:
 
 .. code-block:: bash
 
@@ -124,7 +123,6 @@ Los pasos para instalar la aplicación en un entorno Windows son similares a los
 
     $ git clone https://github.com/VLB3R70/net-tracker-core.git
     $ cd net-tracker-core
-    $ pip install -r requirements.txt --upgrade
     $ pip install .
 
 .. note::
@@ -141,7 +139,7 @@ Los pasos para instalar la aplicación en un entorno Windows son similares a los
 Instalación de las traducciones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Para el entorno Windows, también es necesario instalar las traducciones. Utiliza el mismo comando que en Linux para instalarlas:
+Para el entorno Windows, también es posible reinstalar las traducciones. Utiliza el mismo comando que en Linux para instalarlas:
 
 .. code-block:: bash
 
