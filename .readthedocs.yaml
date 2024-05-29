@@ -8,6 +8,7 @@ build:
   tools:
     python: "3"
   commands:
+    - pip install -r requirements.txt
     - sphinx-build -b html -D language='en' docs/source $READTHEDOCS_OUTPUT/html/en
     - sphinx-build -b html -D language='es' docs/source $READTHEDOCS_OUTPUT/html/es
 
@@ -17,9 +18,3 @@ sphinx:
 formats:
   - pdf
   - epub
-
-python:
-  install:
-    - method: pip
-      path: .
-    - requirements: requirements.txt
