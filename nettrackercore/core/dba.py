@@ -6,6 +6,7 @@ from nettrackercore.core.controller import NettrackerDAO
 config = Configuration()
 translator = Translator()
 
+
 class DBA:
     """
     El objeto **DBA** se encarga de realizar consultas a la base de datos mediante
@@ -14,8 +15,8 @@ class DBA:
     complejos como las listas u objetos dentro del modelo se usan comandos específicos.
     """
 
-    def __init__(self):
-        self.dao = NettrackerDAO()
+    def __init__(self, db_name=config.data['db'], alias='main-nettracker'):
+        self.dao = NettrackerDAO(db_name=db_name, alias=alias)
 
     def get_networks(self):
         """

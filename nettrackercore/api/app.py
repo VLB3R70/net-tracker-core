@@ -35,23 +35,19 @@ def get_network(network_name):
 
 @app.route('/networks/<network_name>/devices', methods=['GET'])
 def get_devices(network_name):
-    try:
-        devices = NettrackerDAO.get_devices_from_network(network_name)
-        return jsonify(devices), 200
-    except AttributeError:
+    devices = NettrackerDAO.get_devices_from_network(network_name)
+    if len(devices) == 0:
         return jsonify({'error': 'Network not found'}), 404
+    return jsonify(devices), 200
 
 
 @app.route('/networks/<network_name>/devices/<address>', methods=['GET'])
 def get_device_from_address(network_name, address):
     try:
         device = NettrackerDAO.get_device_from_address(network_name, address)
-        if device:
-            return jsonify(device), 200
-        else:
-            return jsonify({'error': 'Device not found'}), 404
+        return jsonify(device), 200
     except DoesNotExist:
-        return jsonify({'error': 'Network not found'}), 404
+        return jsonify({'error': 'Device not found'}), 404
 
 
 if __name__ == '__main__':

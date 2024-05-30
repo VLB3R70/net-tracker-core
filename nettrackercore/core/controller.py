@@ -8,6 +8,7 @@ from nettrackercore.model.model import Device, Service, Network
 
 config = Configuration()
 
+
 class NettrackerDAO:
     """
     El objeto **NettrackerDAO** corresponde al objeto de acceso a datos, más conocido como DAO(Data Access Object). Este
@@ -19,9 +20,9 @@ class NettrackerDAO:
     objeto :py:class:`~nettrackercore.core.results.JSONResult`.
     """
 
-    def __init__(self, json_data: JSONResult = None):
+    def __init__(self, json_data: JSONResult = None, db_name=config.data['db'], alias='main-nettracker'):
         self.data = json_data
-        connect(config.data['db'])
+        connect(db_name, alias=alias)
 
     def __build_services(self, host):
         """
