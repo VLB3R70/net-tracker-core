@@ -16,7 +16,7 @@ class DBA:
     """
 
     def __init__(self, db_name=config.data['db'], alias='main-nettracker'):
-        self.dao = NettrackerDAO(db_name=db_name, alias=alias)
+        self.dao = NettrackerDAO(db_name=db_name)
 
     def get_networks(self):
         """

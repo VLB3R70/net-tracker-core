@@ -22,7 +22,7 @@ class NettrackerDAO:
 
     def __init__(self, json_data: JSONResult = None, db_name=config.data['db'], alias='main-nettracker'):
         self.data = json_data
-        connect(db_name, alias=alias)
+        connect(db=db_name)
 
     def __build_services(self, host):
         """
